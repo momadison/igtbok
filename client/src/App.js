@@ -1,21 +1,43 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React 7.0</h2>
-        </div>
-        <p className="App-intro">
-          To get started, you win <code>src/App.js</code> and save to reload.
-        </p>
+// pages
+import Main from "./pages/Main";
+import Donate from "./pages/Donate";
+import About from "./pages/About";
+import Impact from "./pages/Impact";
+import HopePearls from "./pages/HopePearls";
+import Gallery from "./pages/Gallery";
+import Programs from "./pages/Programs";
+import Resources from "./pages/Resources";
+import Blog from "./pages/Blog";
+import Contact from "./pages/Contact";
+
+// components
+import Nav from "./components/Nav";
+
+
+function App() {
+  return (
+    <Router>
+      <div>
+        <Nav />
+        <Switch>
+          <Route exact path="/" component={Main} />
+          <Route exact path="/donate" component={Donate} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/impact" component={Impact} />
+          <Route exact path="/hopepearls" component={HopePearls} />
+          <Route exact path="/gallery" component={Gallery} />
+          <Route exact path="/programs" component={Programs} />
+          <Route exact path="/resources" component={Resources} />
+          <Route exact path="/blog" component={Blog} />
+          <Route exact path="/contact" component={Contact} />
+          {/* <Route component={NoMatch} /> */}
+        </Switch>
       </div>
-    );
-  }
+    </Router>
+  );
 }
 
 export default App;
