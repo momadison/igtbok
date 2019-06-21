@@ -1,19 +1,20 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Sandbox from "./components/Sandbox";
+import Table from "./components/Table"
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React 7.0</h2>
-        </div>
-        <p className="App-intro">
-          To get started, you win <code>src/App.js</code> and save to reload.
-        </p>
+      <Router>
+    <div>
+      <div className="container">
+        <Route exact path="/" component={Sandbox} />
+        <Route exact path="/table" component={Table} />
       </div>
+    </div>
+  </Router>
     );
   }
 }
