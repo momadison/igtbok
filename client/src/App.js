@@ -12,6 +12,7 @@ import Programs from "./pages/Programs";
 import Resources from "./pages/Resources";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
+import Sandbox from "./components/Sandbox";
 
 // components
 import Nav from "./components/Nav";
@@ -27,7 +28,7 @@ function App() {
           <Route exact path="/donate" component={Donate} />
           <Route exact path="/about" component={About} />
           <Route exact path="/impact" component={Impact} />
-          <Route exact path="/hopepearls" component={HopePearls} />
+          <Route exact path="/hopepearls" component={Sandbox} />
           <Route exact path="/gallery" component={Gallery} />
           <Route exact path="/programs" component={Programs} />
           <Route exact path="/resources" component={Resources} />
