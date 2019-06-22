@@ -1,0 +1,11 @@
+.circleTable {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: 5C00BA;
+    color: red;
+}
+
+.circle2 {
+    box-shadow: 3px 4px 15px #B40202;
+}
