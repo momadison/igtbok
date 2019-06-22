@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const seatReservation = new Schema({
   guest: { type: String, required: true },
-  paid: { type: boolean, required: true },
+  paid: { type: Boolean, required: true },
   tableNumber: { type: Integer, required: true },
   tableTier: { type: Integer, required: true },
   seatNumber: { type: Integer, required: true },
