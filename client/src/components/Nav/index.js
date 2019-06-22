@@ -12,7 +12,6 @@ function Nav() {
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav ml-md-auto">
-                    
                     <li className="nav-item">
                         <a className="nav-link" href="/donate">Donate</a>
                     </li>
