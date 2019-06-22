@@ -2,42 +2,31 @@ import React from "react";
 
 function Nav() {
     return (
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">IGTBOK</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a className="navbar-brand" href="/">
+                <img src="assets/img/IGTBOK-Brand-Logo.png" height="70" alt="It's Going To Be OK" />
+            </a>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            <div className="collapse navbar-collapse" id="navbarNav">
+                <ul className="navbar-nav ml-md-auto">
+                    
+                    <li className="nav-item">
+                        <a className="nav-link" href="/donate">Donate</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/donate">Donate</a>
+                    <li className="nav-item">
+                        <a className="nav-link" href="/resources">Get Help</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">About</a>
+                    <li className="nav-item">
+                        <a className="nav-link" href="/about">About</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/impact">Impact</a>
+                    <li className="nav-item">
+                        <a className="nav-link" href="/impact">Impact</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/hopepearls">Hope & Pearls</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/gallery">Gallery</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/programs">Programs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/resources">Resources</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/blog">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contact">Contact</a>
+                    <li className="nav-item">
+                        <a className="nav-link" href="/contact">Contact</a>
                     </li>
                 </ul>
             </div>
