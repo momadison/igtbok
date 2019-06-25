@@ -2,14 +2,14 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // pages
-import Main from "./pages/Main";
-import Donate from "./pages/Donate";
-import About from "./pages/About";
+import Main from "./pages/main";
+import Donate from "./pages/donate";
+import About from "./pages/about";
 import Impact from "./pages/Impact";
 import HopePearls from "./pages/HopePearls";
 import Gallery from "./pages/Gallery";
 import Programs from "./pages/Programs";
-import Resources from "./pages/Resources";
+import Resources from "./pages/resources";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import Sandbox from "./components/Sandbox";
