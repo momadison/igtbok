@@ -91,9 +91,9 @@ class Wizard extends Component {
             tableWidth: this.state.tableWidth,
             tableLength: this.state.tableLength 
         })
-        .then(res => console.log(this.state))
+        .then(res => console.log(res.data))
         .catch(err => console.log(err));
-        // this.setRedirect();
+        this.setRedirect();
     }
     
     render() {
