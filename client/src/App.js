@@ -11,7 +11,9 @@ import Gallery from "./pages/Gallery";
 import Programs from "./pages/Programs";
 import Resources from "./pages/resources";
 import Blog from "./pages/Blog";
-import Contact from "./pages/contact";
+import Contact from "./pages/Contact";
+import Sandbox from "./components/Sandbox";
+import Wizard from "./components/Wizard"
 
 // components
 import Nav from "./components/Nav";
@@ -27,11 +29,11 @@ function App() {
           <Route exact path="/donate" component={Donate} />
           <Route exact path="/about" component={About} />
           <Route exact path="/impact" component={Impact} />
-          <Route exact path="/hopepearls" component={HopePearls} />
+          <Route exact path="/hopepearls" component={Sandbox} />
           <Route exact path="/gallery" component={Gallery} />
           <Route exact path="/programs" component={Programs} />
           <Route exact path="/resources" component={Resources} />
-          <Route exact path="/blog" component={Blog} />
+          <Route exact path="/blog" component={Wizard} />
           <Route exact path="/contact" component={Contact} />
           {/* <Route component={NoMatch} /> */}
         </Switch>
