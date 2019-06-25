@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // pages
-import Main from "./pages/main";
+import Main from "./pages/main/";
 import Donate from "./pages/donate";
 import About from "./pages/about";
 import Impact from "./pages/Impact";
