@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const reservations = require("./reservations");
+const venues = require("./venues.js");
 
 // Book routes
-router.use("/reservations", reservations);
+router.use("/api/venues", venues);
 
 module.exports = router;
