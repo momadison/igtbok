@@ -1,0 +1,16 @@
+.main-cat1-img {
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    overflow: auto;
+    margin: auto;
+    background-image: url("/assets/img/main-donate.jpg");
+}
+.main-cat2-img {
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    overflow: auto;
+    margin: auto;
+    background-image: url("/assets/img/main-help.jpg");
+}
