@@ -6,7 +6,7 @@ import Main from "./pages/Main";
 import Donate from "./pages/Donate";
 import About from "./pages/About";
 import Impact from "./pages/Impact";
-import HopePearls from "./pages/HopePearls";
+//import HopePearls from "./pages/HopePearls";
 import Gallery from "./pages/Gallery";
 import Programs from "./pages/Programs";
 import Resources from "./pages/Resources";
@@ -34,6 +34,7 @@ function App() {
           <Route exact path="/resources" component={Resources} />
           <Route exact path="/blog" component={Blog} />
           <Route exact path="/contact" component={Contact} />
+          <Route exact path="/loggedin" component={About} />
           {/* <Route component={NoMatch} /> */}
         </Switch>
       </div>

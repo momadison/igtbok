@@ -6,14 +6,14 @@ const Schema = mongoose.Schema;
 const seatReservation = new Schema({
   guest: { type: String, required: true },
   paid: { type: Boolean, required: true },
-  tableNumber: { type: Integer, required: true },
-  tableTier: { type: Integer, required: true },
-  seatNumber: { type: Integer, required: true },
+  tableNumber: { type: Number, required: true },
+  tableTier: { type: Number, required: true },
+  seatNumber: { type: Number, required: true },
   uniqueID: { type: String, required: true },
-  seatPrice: { type: Integer, required: true },
+  seatPrice: { type: Number, required: true },
   date: { type: Date, default: Date.now }
 });
 
-const Book = mongoose.model("Book", bookSchema);
+const Seat = mongoose.model("Seat", seatReservation);
 
-module.exports = seatReservation;
+module.exports = Seat;

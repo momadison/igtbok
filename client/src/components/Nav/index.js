@@ -1,9 +1,11 @@
 import React from "react";
 
+import LoginBtn from '../Auth/LoginBtn'
+
 function Nav() {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="#">IGTBOK</a>
+            <a className="navbar-brand" href="/">IGTBOK</a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
@@ -38,6 +40,10 @@ function Nav() {
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="/contact">Contact</a>
+                    </li>
+                    <li>
+                      <LoginBtn type='google' />
+                      <LoginBtn type='facebook' />
                     </li>
                 </ul>
             </div>
