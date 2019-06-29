@@ -1,7 +1,8 @@
 require('dotenv').config()
 const express = require("express");
+const mongoose = require("mongoose");
+const routes = require("./routes");
 const path = require("path");
-const mongoose = require('mongoose');
 // Passport Imports
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
@@ -94,13 +95,18 @@ const accessProtectionMiddleware = (req, res, next) => {
 
 // Define API routes here
 require("./routes/api/authentication")(app, accessProtectionMiddleware);
+app.use(routes);
 
 // Send every other request to the React app
+
+// Connect to Mongo DB
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/venuesDB")
+
 // Define any API routes before this runs
-app.get("*", (req, res) => {
-  console.log("this is a test");
-  res.sendFile(path.join(__dirname, "client/public/index.html"));
-});
+// app.get("*", (req, res) => {
+//   console.log("this is a test");
+//   res.sendFile(path.join(__dirname, "client/public/index.html"));
+// });
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);

@@ -1,0 +1,47 @@
+.btn {
+    margin: 20px;
+}
+
+.carousel-inner {
+    max-height: 350px;
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 50px;
+}
+
+.inputCaption {
+    top: 10px;
+}
+
+.venueNext {
+    position:absolute;
+    top: 1px;
+    right: 1%;
+}
+
+.sandboxTime {
+    position:absolute;
+    top: 1px;
+    right: 1%;
+}
+
+.stageNext {
+    position:absolute;
+    bottom: 175px;
+    right: 1%;
+}
+
+#stageBox {
+    margin: auto;
+    width: 90%;
+    height: 400px;
+    border: 1px solid #Dcea;
+    margin-top: 25px;
+    -moz-box-shadow:    inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow:         inset 0 0 10px #000000;
+    margin-bottom: 100px;
+     
+}
