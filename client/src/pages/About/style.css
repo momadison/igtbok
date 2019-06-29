@@ -1,6 +1,4 @@
-section {
-    padding: 2em;
-}
+section { padding: 2em; }
 
 h1 {
     display: flex;
@@ -18,16 +16,13 @@ h1:before, h1:after {
 h1:before { margin-right: .3em; }
 h1:after { margin-left: .3em; }
 
-.color {
-    background-color: #ccc;
-}
-
 .founder-pic, .founder-vid { 
     float: right; 
     clear: both;
     width: 33%;
     margin-left: 15px;
 }
+
 .founder-pic { clip-path: circle(50% at center); }
 .founder-vid {
     width: 45%;
@@ -35,30 +30,32 @@ h1:after { margin-left: .3em; }
     margin-top: 25px;
 }
 
-.board-group {
-    display: inline-block;
+/* BOARD MEMBERS */
+
+.board-img { width: 100%; }
+.board-name {
+    color: #ED1C22;
+    text-transform: uppercase;
+    font-size: 1em;
 }
 
-.board-card {
-    float: left;
-    border: 2px solid black;
-    margin: 15px;
-    max-width: calc(25% - 2%);
+.board-title {
+    font-style: italic;
+    font-size: .9em;
 }
 
-.board-img, .board-img img {
-    width: 100%;
-}
+.card-body { padding: 1rem; }
+.card { border: none; }
 
-.board-desc {
-    text-align: center;
-}
+
+/* MEDIA QUERIES */
 
 @media only screen and (max-width: 767px) {
-    .founder-pic, .founder-vid { 
-        width: 100%;
-    }
-    .founder-vid {
-        height: 384px;
-    }
-  }
+    .founder-pic, .founder-vid { width: 100%; }
+    .founder-vid { height: 384px; }
+}
+
+@media (min-width: 576px) { .card { max-width: 45%; } }
+@media (min-width: 768px) { .card { max-width: 29.2%; } }
+@media (min-width: 992px) { .card { max-width: 22%; } }
+@media (min-width: 1200px) { .card { max-width: 17.4%; } }

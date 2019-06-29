@@ -15,7 +15,7 @@ function About() {
             <section className="container">
                 <h1>Our Founder</h1>
                 <div className="founder-pic">
-                    <img src=".\assets\img\Tonya-Stafford-BW.jpg" alt="Tonya Stafford" srcset=".\assets\img\Tonya-Stafford-BW-200x200.jpg 200w, .\assets\img\Tonya-Stafford-BW-400x400.jpg 400w, .\assets\img\Tonya-Stafford-BW.jpg 500w" sizes="(max-width: 800px) 100vw, 500px" style={{width: "100%"}}/>
+                    <img className="board-img" src=".\assets\img\Tonya-Stafford-BW.jpg" alt="Tonya Stafford" srcset=".\assets\img\Tonya-Stafford-BW-200x200.jpg 200w, .\assets\img\Tonya-Stafford-BW-400x400.jpg 400w, .\assets\img\Tonya-Stafford-BW.jpg 500w" sizes="(max-width: 800px) 100vw, 500px" style={{width: "100%"}}/>
                 </div>
                 <div className="founder-vid">
                     <iframe src="https://www.youtube.com/embed/4PqqKMivKEQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" alt="Tonya Stafford interview" allowfullscreen style={{width: "100%", height:"100%"}}/>
@@ -46,104 +46,96 @@ function About() {
                 <h1>Board of Directors</h1>
                 <p>Meet the IGTBOK Board of Directors, members of the Dallas/Fort Worth community who manage our nonprofit organization and fight to end human trafficking.</p>
 
-                <div className="board-group">
-                    <div className="board-card">
-                        <div className="board-img">
-                            <img src="./assets/board-img/Board-Tonya-Stafford.jpg" alt="Tonya Stafford" />
-                        </div>
-                        <div className="board-desc">
-                            <div>Tonya Stafford</div>
-                            <div>Founder / CEO / Board President</div>
+                <div className="card-deck">
+                    <div className="card mb-4">
+                        <img className="board-img" src="./assets/board-img/Board-Tonya-Stafford.jpg" alt="Tonya Stafford" />
+                        <div className="card-body text-center">
+                            <div className="board-name">Tonya Stafford</div>
+                            <div className="board-title">Founder & CEO / Board President</div>
                         </div>
                     </div>
 
-                    <div className="board-card">
-                        <div className="board-img">
-                            <img src="./assets/board-img/Board-Anthony-Miller.jpg" alt="Anthony Miller" />
+                    <div className="card mb-4">
+                        <img className="board-img" src="./assets/board-img/Board-Anthony-Miller.jpg" alt="Anthony Miller" />
+                        <div className="card-body text-center">
+                            <div className="board-name">Anthony Miller</div>
+                            <div className="board-title">Vice-President</div>
                         </div>
-                        <div className="board-desc">
-                            <div>Anthony Miller</div>
-                            <div>Vice-President</div>
+                    </div>
+                    <div className="w-100 d-none d-sm-block d-md-none">{/* wrap every 2 on sm */}</div>
+
+                    <div className="card mb-4">
+                        <img className="board-img" src="./assets/board-img/Board-Sonobia-Clayton.jpg" alt="Sonobia Clayton" />
+                        <div className="card-body text-center">
+                            <div className="board-name">Sonobia Clayton</div>
+                            <div className="board-title">Board Chair</div>
+                        </div>
+                    </div>
+                    <div className="w-100 d-none d-md-block d-lg-none">{/* wrap every 3 on md */}</div>
+
+
+                    <div className="card mb-4">
+                        <img className="board-img" src="./assets/board-img/Board-Stephanie-Martinez.jpg" alt="Stephanie Martinez" />
+                        <div className="card-body text-center">
+                            <div className="board-name">Stephanie Martinez</div>
+                            <div className="board-title">Secretary</div>
+                        </div>
+                    </div>
+                    <div className="w-100 d-none d-sm-block d-md-none">{/* wrap every 2 on sm */}</div>
+                    <div className="w-100 d-none d-lg-block d-xl-none">{/* wrap every 4 on lg*/}</div>
+
+                    <div className="card mb-4">
+                        <img className="board-img" src="./assets/board-img/Board-Willie-Cowart.jpg" alt="Willie Cowart" />
+                        <div className="card-body text-center">
+                            <div className="board-name">Willie Cowart</div>
+                            <div className="board-title">Treasurer</div>
+                        </div>
+                    </div>
+                    <div className="w-100 d-none d-xl-block">{/* wrap every 5 on lg*/}</div>
+
+                    <div className="card mb-4">
+                        <img className="board-img" src="./assets/board-img/Camera-Shy.jpg" alt="Samantha Kang" />
+                        <div className="card-body text-center">
+                            <div className="board-name">Samantha Kang</div>
+                            <div className="board-title">Board Member</div>
+                        </div>
+                    </div>
+                    <div className="w-100 d-none d-sm-block d-md-none">{/* wrap every 2 on sm */}</div>
+                    <div className="w-100 d-none d-md-block d-lg-none">{/* wrap every 3 on md */}</div>
+
+                    <div className="card mb-4">
+                        <img className="board-img" src="./assets/board-img/Camera-Shy.jpg" alt="Sheila Wright Green" />
+                        <div className="card-body text-center">
+                            <div className="board-name">Sheila Wright Green</div>
+                            <div className="board-title">Board Member & Communication / Sponsorship Coordinator</div>
                         </div>
                     </div>
 
-                    <div className="board-card">
-                        <div className="board-img">
-                            <img src="./assets/board-img/Board-Sonobia-Clayton.jpg" alt="Sonobia Clayton" />
-                        </div>
-                        <div className="board-desc">
-                            <div>Sonobia Clayton</div>
-                            <div>Board Chair</div>
+                    <div className="card mb-4">
+                        <img className="board-img" src="./assets/board-img/Board-Stephany-Powell.jpg" alt="Stephany Powell" />
+                        <div className="card-body text-center">
+                            <div className="board-name">Stephany Powell</div>
+                            <div className="board-title">Board Member</div>
                         </div>
                     </div>
+                    <div className="w-100 d-none d-sm-block d-md-none">{/* wrap every 2 on sm */}</div>
+                    <div className="w-100 d-none d-lg-block d-xl-none">{/* wrap every 4 on lg*/}</div>
 
-                    <div className="board-card">
-                        <div className="board-img">
-                            <img src="./assets/board-img/Board-Stephanie-Martinez.jpg" alt="Stephanie Martinez" />
-                        </div>
-                        <div className="board-desc">
-                            <div>Stephanie Martinez</div>
-                            <div>Secretary</div>
+
+                    <div className="card mb-4">
+                        <img className="board-img" src="./assets/board-img/Board-Jonett-Mobley.jpg" alt="Jonett Mobley" />
+                        <div className="card-body text-center">
+                            <div className="board-name">Jonett Mobley</div>
+                            <div className="board-title">Board Member</div>
                         </div>
                     </div>
+                    <div className="w-100 d-none d-md-block d-lg-none">{/* wrap every 3 on md */}</div>
 
-                    <div className="board-card">
-                        <div className="board-img">
-                            <img src="./assets/board-img/Board-Willie-Cowart.jpg" alt="Willie Cowart" />
-                        </div>
-                        <div className="board-desc">
-                            <div>Willie Cowart</div>
-                            <div>Treasurer</div>
-                        </div>
-                    </div>
-
-                    <div className="board-card">
-                        <div className="board-img">
-                            <img src="./assets/board-img/Camera-Shy.jpg" alt="Samantha Kang" />
-                        </div>
-                        <div className="board-desc">
-                            <div>Samantha Kang</div>
-                            <div>Board Member</div>
-                        </div>
-                    </div>
-
-                    <div className="board-card">
-                        <div className="board-img">
-                            <img src="./assets/board-img/Camera-Shy.jpg" alt="Sheila Wright Green" />
-                        </div>
-                        <div className="board-desc">
-                            <div>Sheila Wright Green</div>
-                            <div>Board Member / Communication/Sponsorship Coordinator</div>
-                        </div>
-                    </div>
-
-                    <div className="board-card">
-                        <div className="board-img">
-                            <img src="./assets/board-img/Board-Stephany-Powell.jpg" alt="Stephany Powell" />
-                        </div>
-                        <div className="board-desc">
-                            <div>Stephany Powell</div>
-                            <div>Board Member</div>
-                        </div>
-                    </div>
-
-                    <div className="board-card">
-                        <div className="board-img">
-                            <img src="./assets/board-img/Board-Jonett-Mobley.jpg" alt="Jonett Mobley" />
-                        </div>
-                        <div className="board-desc">
-                            <div>Jonett Mobley</div>
-                            <div>Board Member</div>
-                        </div>
-                    </div>
-
-                    <div className="board-card">
-                        <div className="board-img">
-                            <img src="./assets/board-img/Camera-Shy.jpg" alt="Deborah Oliver" />
-                        </div>
-                        <div className="board-desc">
-                            <div>Deborah Oliver</div>
-                            <div>Board Member</div>
+                    <div className="card mb-4">
+                        <img className="board-img" src="./assets/board-img/Camera-Shy.jpg" alt="Deborah Oliver" />
+                        <div className="card-body text-center">
+                            <div className="board-name">Deborah Oliver</div>
+                            <div className="board-title">Board Member</div>
                         </div>
                     </div>
                 </div>
@@ -152,93 +144,86 @@ function About() {
             <section className="container">
                 <h1>Advisory Board</h1>
 
-                <div className="board-card">
-                    <div className="board-img">
-                        <img src="./assets/board-img/Advisory-Shantrell-Barnes.jpg" alt="Shantrell Barnes" />
+                <div className="card-deck">
+                    <div className="card mb-4">
+                        <img className="board-img" src="./assets/board-img/Advisory-Shantrell-Barnes.jpg" alt="Shantrell Barnes" />
+                        <div className="card-body text-center">
+                            <div className="board-name">Shantrell Barnes</div>
+                            <div className="board-title">Board Member</div>
+                        </div>
                     </div>
-                    <div className="board-desc">
-                        <div>Shantrell Barnes</div>
-                        <div>Board Member</div>
-                    </div>
-                </div>
 
-                <div className="board-card">
-                    <div className="board-img">
-                        <img src="./assets/board-img/Advisory-Connie-Chavez.jpg" alt="Connie Chavez" />
+                    <div className="card mb-4">
+                        <img className="board-img" src="./assets/board-img/Advisory-Connie-Chavez.jpg" alt="Connie Chavez" />
+                        <div className="card-body text-center">
+                            <div className="board-name">Connie Chavez</div>
+                            <div className="board-title">Board Member</div>
+                        </div>
                     </div>
-                    <div className="board-desc">
-                        <div>Connie Chavez</div>
-                        <div>Board Member</div>
-                    </div>
-                </div>
+                    <div className="w-100 d-none d-sm-block d-md-none">{/* wrap every 2 on sm */}</div>
 
-                <div className="board-card">
-                    <div className="board-img">
-                        <img src="./assets/board-img/Camera-Shy.jpg" alt="Mike Coleman" />
+                    <div className="card mb-4">
+                        <img className="board-img" src="./assets/board-img/Camera-Shy.jpg" alt="Mike Coleman" />
+                        <div className="card-body text-center">
+                            <div className="board-name">Mike Coleman</div>
+                            <div className="board-title">Board Member</div>
+                        </div>
                     </div>
-                    <div className="board-desc">
-                        <div>Mike Coleman</div>
-                        <div>Board Member</div>
-                    </div>
-                </div>
+                    <div className="w-100 d-none d-md-block d-lg-none">{/* wrap every 3 on md */}</div>
 
-                <div className="board-card">
-                    <div className="board-img">
-                        <img src="./assets/board-img/Advisory-Sylvia-Collins.jpg" alt="Sylvia Collins" />
+                    <div className="card mb-4">
+                        <img className="board-img" src="./assets/board-img/Advisory-Sylvia-Collins.jpg" alt="Sylvia Collins" />
+                        <div className="card-body text-center">
+                            <div className="board-name">Sylvia Collins</div>
+                            <div className="board-title">Board Member</div>
+                        </div>
                     </div>
-                    <div className="board-desc">
-                        <div>Sylvia Collins</div>
-                        <div>Board Member</div>
-                    </div>
-                </div>
+                    <div className="w-100 d-none d-sm-block d-md-none">{/* wrap every 2 on sm */}</div>
+                    <div className="w-100 d-none d-lg-block d-xl-none">{/* wrap every 4 on lg*/}</div>
 
-                <div className="board-card">
-                    <div className="board-img">
-                        <img src="./assets/board-img/Advisory-Nelly-Cuenca.jpg" alt="Nelly Cuenca" />
+                    <div className="card mb-4">
+                        <img className="board-img" src="./assets/board-img/Advisory-Nelly-Cuenca.jpg" alt="Nelly Cuenca" />
+                        <div className="card-body text-center">
+                            <div className="board-name">Nelly Cuenca</div>
+                            <div className="board-title">Treasurer</div>
+                        </div>
                     </div>
-                    <div className="board-desc">
-                        <div>Nelly Cuenca</div>
-                        <div>Treasurer</div>
-                    </div>
-                </div>
+                    <div className="w-100 d-none d-xl-block">{/* wrap every 5 on lg*/}</div>
 
-                <div className="board-card">
-                    <div className="board-img">
-                        <img src="./assets/board-img/Advisory-Bradley-Lockhart.jpg" alt="Bradley Lockhart" />
+                    <div className="card mb-4">
+                        <img className="board-img" src="./assets/board-img/Advisory-Bradley-Lockhart.jpg" alt="Bradley Lockhart" />
+                        <div className="card-body text-center">
+                            <div className="board-name">Bradley Lockhart</div>
+                            <div className="board-title">Board Member</div>
+                        </div>
                     </div>
-                    <div className="board-desc">
-                        <div>Bradley Lockhart</div>
-                        <div>Board Member</div>
-                    </div>
-                </div>
+                    <div className="w-100 d-none d-sm-block d-md-none">{/* wrap every 2 on sm */}</div>
+                    <div className="w-100 d-none d-md-block d-lg-none">{/* wrap every 3 on md */}</div>
 
-                <div className="board-card">
-                    <div className="board-img">
-                        <img src="./assets/board-img/Advisory-Marina-Ruiz.jpg" alt="Marina Ruiz" />
+                    <div className="card mb-4">
+                        <img className="board-img" src="./assets/board-img/Advisory-Marina-Ruiz.jpg" alt="Marina Ruiz" />
+                        <div className="card-body text-center">
+                            <div className="board-name">Marina Ruiz</div>
+                            <div className="board-title">Board Member</div>
+                        </div>
                     </div>
-                    <div className="board-desc">
-                        <div>Marina Ruiz</div>
-                        <div>Board Member</div>
-                    </div>
-                </div>
 
-                <div className="board-card">
-                    <div className="board-img">
-                        <img src="./assets/board-img/Camera-Shy.jpg" alt="Esther Noh" />
+                    <div className="card mb-4">
+                        <img className="board-img" src="./assets/board-img/Camera-Shy.jpg" alt="Esther Noh" />
+                        <div className="card-body text-center">
+                            <div className="board-name">Esther Noh</div>
+                            <div className="board-title">Board Member & Attorney</div>
+                        </div>
                     </div>
-                    <div className="board-desc">
-                        <div>Esther Noh</div>
-                        <div>Board Member / Attorney</div>
-                    </div>
-                </div>
+                    <div className="w-100 d-none d-sm-block d-md-none">{/* wrap every 2 on sm */}</div>
+                    <div className="w-100 d-none d-lg-block d-xl-none">{/* wrap every 4 on lg*/}</div>
 
-                <div className="board-card">
-                    <div className="board-img">
-                        <img src="./assets/board-img/Advisory-Judge-Paula-Rosales.jpg" alt="Judge Paula Rosales" />
-                    </div>
-                    <div className="board-desc">
-                        <div>Judge Paula Rosales</div>
-                        <div>Board Member</div>
+                    <div className="card mb-4">
+                        <img className="board-img" src="./assets/board-img/Advisory-Judge-Paula-Rosales.jpg" alt="Judge Paula Rosales" />
+                        <div className="card-body text-center">
+                            <div className="board-name">Judge Paula Rosales</div>
+                            <div className="board-title">Board Member</div>
+                        </div>
                     </div>
                 </div>
             </section>
