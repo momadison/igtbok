@@ -219,24 +219,22 @@ class Sandbox extends Component {
         const node = this.venueRef.current;
         const dimension = node.getBoundingClientRect();
 
-        e.target.left = this.coords.x;
-
-        // for (var i=0; i<tempArray.length; i++) {
-        //     let xLoc = tempArray[i].x - xDiff;
-        //     let yLoc = tempArray[i].y - yDiff;
-        //     if (tempArray[i].id === activeID) {
-        //         //TODO:  adjust the numbers to reflect the size of the table 
-        //         //this will also vary based on window size.  Or maybe just add padding to the circle
-        //         if(yLoc < (dimension.bottom) && yLoc > (dimension.top) &&
-        //                     xLoc < (dimension.right) && xLoc > (dimension.left)) {
-        //             tempArray[i].x = xLoc;
-        //             tempArray[i].y = yLoc;
-        //         } else {
-        //             // this.handleMouseUp();
-        //             console.log("ok");
-        //         }
-        //     }
-        // }
+        for (var i=0; i<tempArray.length; i++) {
+            let xLoc = tempArray[i].x - xDiff;
+            let yLoc = tempArray[i].y - yDiff;
+            if (tempArray[i].id === activeID) {
+                //TODO:  adjust the numbers to reflect the size of the table 
+                //this will also vary based on window size.  Or maybe just add padding to the circle
+                if(yLoc < (dimension.bottom) && yLoc > (dimension.top) &&
+                            xLoc < (dimension.right) && xLoc > (dimension.left)) {
+                    tempArray[i].x = xLoc;
+                    tempArray[i].y = yLoc;
+                } else {
+                    // this.handleMouseUp();
+                    console.log("ok");
+                }
+            }
+        }
         this.setState({
             tables: tempArray
         })
