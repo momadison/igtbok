@@ -9,10 +9,13 @@ const venuesSchema = new Schema({
     stageShape: { type: String },
     stageWidth: { type: Number },
     stageHeight: { type: Number },
+    stageLength: { type: Number },
     stageLocation: { type: String },
     tableCount: { type: Number, required: true },
     tableWidth: { type: Number, required: true },
-    tableLength: { type: Number, required: true }
+    tableLength: { type: Number, required: true },
+    seatCount: {type: Number},
+    active: {type: Boolean, required: true}
 });
 
 const Venues = mongoose.model("Venues", venuesSchema);
