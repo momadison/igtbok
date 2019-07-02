@@ -1,0 +1,61 @@
+section { padding: 2em; }
+
+h1 {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 1em;
+    text-transform: uppercase;
+}
+
+h1:before, h1:after {
+    content: "";
+    flex: 1;
+    border-top: 7px double #ED1C22;
+}
+h1:before { margin-right: .3em; }
+h1:after { margin-left: .3em; }
+
+.founder-pic, .founder-vid { 
+    float: right; 
+    clear: both;
+    width: 33%;
+    margin-left: 15px;
+}
+
+.founder-pic { clip-path: circle(50% at center); }
+.founder-vid {
+    width: 45%;
+    height: 20vw;
+    margin-top: 25px;
+}
+
+/* BOARD MEMBERS */
+
+.board-img { width: 100%; }
+.board-name {
+    color: #ED1C22;
+    text-transform: uppercase;
+    font-size: 1em;
+}
+
+.board-title {
+    font-style: italic;
+    font-size: .9em;
+}
+
+.card-body { padding: 1rem; }
+.card { border: none; }
+
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 767px) {
+    .founder-pic, .founder-vid { width: 100%; }
+    .founder-vid { height: 384px; }
+}
+
+@media (min-width: 576px) { .card { max-width: 45%; } }
+@media (min-width: 768px) { .card { max-width: 29.2%; } }
+@media (min-width: 992px) { .card { max-width: 22%; } }
+@media (min-width: 1200px) { .card { max-width: 17.4%; } }
