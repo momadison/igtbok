@@ -1,45 +1,195 @@
 import React from "react";
 import { Component } from "react"
 import "./Sandbox.css";
-import Icon from "../SVG";
-import Table from "../Table";
-import Wizard from "../Wizard";
-import Snapped from "../Snapped";
-import { Input, TextArea, FormBtn } from "../Form";
+import API from "../../utils/API";
 
-let tableArray = [{id:"table1",x:"200",y:"100", comp: "Icon"},
-                {id:"table2",x:"600", y:"250", comp: "Table"},
-                {id:"table3",x:"400",y:"400", comp: "FA"}];
-
-
+let tableArray = [{id:"test",x:"400",y:"400", comp: "FA"}];
 
 let activeID = "";
 
 class Sandbox extends Component {
+    constructor(props) {
+        super(props);
+        this.venueRef = React.createRef();
+        this.stageRef = React.createRef();
+    }
+
     state = {
+        boxSize: {},
+        venue: {},
         tables: tableArray,
+        stageWidth: 0,
+        stageLength: 0,
+        tableSize: 0,
         activeID: "",
-        circleForm: 0
+        venueWidth: 0,
+        venueHeight: 0,
+        windowSize: window.innerWidth,
+        stageX: 400,
+        stageY: 400
     };
 
     componentDidMount() {
-        console.log(this.state.tables);
+        
+        this.getVenue();
     }
+
+    placeBox = () => {
+        //place the bounding box to hold the venue seating arrangement.
+        let width = parseInt(this.state.venue.venueWidth);
+        let height = parseInt(this.state.venue.venueLength);
+        let ratio = (width > height) ? (height/width) : (width/height);
+        console.log("box ratio: ", ratio);
+        //increase the size of the box to match the dimensions of the venue
+        let sW = parseInt(window.innerWidth) - 200;
+        let sH = sW * ratio;
+        this.setState({
+            venueWidth: sW,
+            venueHeight: sH 
+        })
+        this.setStageAndTables();
+    }
+
+    rotateStage = () => {
+        let width = this.state.stageLength;
+        let length = this.state.stageWidth;
+        this.setState ({
+                    stageWidth: width,
+                    stageLength: length
+                })
+    }
+
+    
+
+    setStageAndTables = () => {
+        //set variables
+        let tableArray = [];
+        let placeX = "";
+        let placeY = "";
+        let table = {};
+        let stageX = 0;
+        let stageY = 0;
+
+        //get reference of bounding box
+        const node = this.venueRef.current;
+        //get bounding box dimensions
+        const dimension = node.getBoundingClientRect();
+        //check if venue width or length is bigger, flip and display in window based on window size
+        const bigger = (this.state.venue.venueWidth > this.state.venue.venueLength) ? 
+        (this.state.venue.venueWidth) : (this.state.venue.venueLength)
+        //scale tables and stage based on venue (bounding box) scale
+        const stageRatio = this.state.venue.stageLength / this.state.venue.stageWidth;
+        let tableSize = Math.floor((this.state.venue.tableWidth / bigger) * dimension.width);
+        let stageWidth = Math.floor((this.state.venue.stageWidth / bigger) * dimension.width);
+        let stageLength = Math.floor(stageWidth * stageRatio);
+        //set stage
+        this.setState({
+            stageWidth: stageWidth,
+            stageLength: stageLength
+        })
+        const noder = this.stageRef.current;
+        const stageStuff = this.stageRef.current.getBoundingClientRect();
+        console.log("stage stuff", stageStuff);
+        console.log("stageWidth", stageWidth);
+        console.log("stageLength", stageLength);
+        //check location of stage and place in venue
+        switch (this.state.venue.stageLocation) {
+            case "top-middle":
+                stageX = dimension.width/2;
+                stageY = dimension.top;
+                break;
+            case "top-left":
+                stageX = dimension.left + 10;
+                stageY = dimension.top + 10;
+                break;
+            case "top-right":
+                stageX = dimension.right - (stageWidth + 10);
+                stageY = dimension.top + 10;
+                break;
+            case "right":
+                this.rotateStage();
+                stageX = dimension.right - (stageLength + 10);
+                stageY = dimension.height/2 + stageLength/2
+                break;
+            case "bottom-right":
+                this.rotateStage();
+                stageX = dimension.right - (stageLength + 10);
+                stageY = dimension.bottom - (stageWidth + 10);
+                break;
+            case "bottom-middle":
+                stageX = dimension.width/2 + stageWidth;
+                stageY = dimension.bottom - (stageLength + 10);
+                break;
+            case "bottom-left":
+                stageX = dimension.left + 10;
+                stageY = dimension.bottom - (stageLength + 10);
+                break;
+            case "left":
+                this.rotateStage();
+                stageX = dimension.left + 10;
+                stageY = dimension.height/2 + stageWidth;
+                break;
+        }
+        //get table count and set an array with each table in it spaced out by table size
+        for (var i=0; i < this.state.venue.tableCount; i++) {
+            if (i === 0) {
+                //set the position of the first table
+                table = {
+                    id: "table"+[i],
+                    x: dimension.left + tableSize,
+                    y: dimension.top + tableSize
+                }
+            } else  {
+                //if the table is at the end of the venue move it down
+                let xCoord = (placeX <= dimension.right - (tableSize*5)) ? placeX + tableSize * 2 : dimension.left + (tableSize * 2);
+                let yCoord = (placeX <= dimension.right - (tableSize*5)) ? placeY : placeY + (tableSize);
+
+                //if the table lands on the stage move it off of the stage
+                if ((xCoord > stageStuff.left && xCoord < stageStuff.right) && (yCoord > stageStuff.top && yCoord < stageStuff.bottom)) {
+                    xCoord = stageStuff.right + (tableSize * 2);
+                }
+                //create table
+                table = {
+                    id: "table" + [i],
+                    x: xCoord,
+                    y: yCoord
+                }
+            }
+            //set table location and push into array
+            placeX = table.x;
+            placeY = table.y;
+            tableArray.push(table);
+        }
+        //set state
+        this.setState({ 
+            tableSize: tableSize,
+            tables: tableArray,
+            stageX: stageX,
+            stageY: stageY
+        })
+    }
+
+    getVenue = () => {
+        API.getVenue()
+            .then(res =>
+                this.setState({
+                    venue: res.data
+                })
+            )
+            .then(res => (
+                this.placeBox()
+            ))}
     
     handleBtnClick = (event) => {
         switch (event.target.id) {
-            case "circleRender":
-                this.setState({
-                    circleForm: (parseInt(this.state.circleForm)=== 0) ? 1 : 0
-                })
-                break;
             default:
-                console.log(event.target.id);
+                console.log(event.target);
+                console.log(this.state.venue);
         }
     }
 
     handleMouseDown = e => {
-        console.log("mouse down");
+        console.log(e.target)
         activeID = "";
         activeID = e.target.id;
         this.coords = {
@@ -56,9 +206,9 @@ class Sandbox extends Component {
       };
 
     handleMouseMove = (e) => {
-        console.log("mouse is moving");
-        console.log("Window inner width: ", window.innerWidth)
-        console.log("X: ",this.coords.x, "Y: ", this.coords.y);
+        console.log("X: ",this.coords.x);
+        console.log("pageX: ", e.pageX);
+        console.log("event target: ", e.target);
         const xDiff = this.coords.x - e.pageX;
         const yDiff = this.coords.y - e.pageY;
 
@@ -66,10 +216,23 @@ class Sandbox extends Component {
         this.coords.y = e.pageY;
 
         let tempArray = this.state.tables;
+        const node = this.venueRef.current;
+        const dimension = node.getBoundingClientRect();
+
         for (var i=0; i<tempArray.length; i++) {
+            let xLoc = tempArray[i].x - xDiff;
+            let yLoc = tempArray[i].y - yDiff;
             if (tempArray[i].id === activeID) {
-                tempArray[i].x = tempArray[i].x - xDiff;
-                tempArray[i].y = tempArray[i].y - yDiff;
+                //TODO:  adjust the numbers to reflect the size of the table 
+                //this will also vary based on window size.  Or maybe just add padding to the circle
+                if(yLoc < (dimension.bottom) && yLoc > (dimension.top) &&
+                            xLoc < (dimension.right) && xLoc > (dimension.left)) {
+                    tempArray[i].x = xLoc;
+                    tempArray[i].y = yLoc;
+                } else {
+                    // this.handleMouseUp();
+                    console.log("ok");
+                }
             }
         }
         this.setState({
@@ -80,88 +243,40 @@ class Sandbox extends Component {
     
     render() {
         return(
-            <>
-            <div><i id="circleRender" onClick={this.handleBtnClick} className="fas fa-circle fa-2x" style={{position: "absolute", left:90, top:90}} />
-            <div id="tableBox" style={{left: "135px", top: "100px", opacity: this.state.circleForm}}>
+            <div    className="venueBox"
+                    onClick = {this.handleAClick}
+                    ref = {this.venueRef}
+                    style={{
+                    width: this.state.venueWidth+"px",
+                    height: this.state.venueHeight+"px"}}>
 
-            </div>    
-            </div>
-            <div>{this.state.tables.map( (icons) => {
-                switch (icons.comp) {
-                    case "Icon":
-                        return (
-                            <div onClick={this.handleBtnClick}
+            {this.state.tables.map( (table) => {
+                return (
+                        <i  id={table.id}
+                            className="fas fa-circle"
+                            style={{ position: "absolute",
+                            left: table.x + "px",
+                            top: table.y + "px",
+                            fontSize: this.state.tableSize + "px"}}
+                            onClick={this.handleBtnClick}
                             onMouseDown={this.handleMouseDown}
-                            onMouseUp={this.handleMouseUp}>
-                            <Icon width="30%"
-                            id="table1" 
-                            fill="#49c"
-                            className="telephone"
-                            viewBox="0 0 32 32"
-                            style={{position: "absolute",
-                            left: this.state.tables.filter( (table) => {
-                                return (table.id === "table1")
-                            }).map( (table) => {
-                                return table.x
-                            })+"px",
-                            top: this.state.tables.filter( (table) => {
-                                return (table.id === "table1")
-                            }).map( (table) => {
-                                return table.y
-                            })+"px"}} 
-                            />
-                            </div>                       
-                        )
-                    case "FA":
-                        return (
-                            <div onClick={this.handleBtnClick}
-                            onMouseDown={this.handleMouseDown}
-                            onMouseUp={this.handleMouseUp}>
-                                <i id="table3" className="fas fa-history fa-10x"
-                                    style={{position: "absolute",
-                                    left: this.state.tables.filter( (table) => {
-                                    return (table.id === "table3")
-                                    }).map( (table) => {
-                                    return table.x
-                                    })+"px",
-                                    top: this.state.tables.filter( (table) => {
-                                    return (table.id === "table3")
-                                    }).map( (table) => {
-                                    return table.y
-                                    })+"px"}}>
-                                </i>
-                            </div>
-                        )
-                    case "Table":
-                        return (
-                            <div onClick={this.handleBtnClick}
-                            onMouseDown={this.handleMouseDown}
-                             onMouseUp={this.handleMouseUp}>
-                                <Table width={200}
-                                    id="table2"
-                                    fill="BA1900"
-                                    className="table"
-                                    style={{position: "absolute",
-                                    left: this.state.tables.filter( (table) => {
-                                    return (table.id === "table2")
-                                    }).map( (table) => {
-                                    return table.x
-                                    })+"px",
-                                    top: this.state.tables.filter( (table) => {
-                                    return (table.id === "table2")
-                                    }).map( (table) => {
-                                    return table.y
-                                    })+"px"}}
-                                />  
-                             </div>
-                        )
-                        default:
-                            return (
-                                <div></div>
-                            )
-                    }
-                })}</div>
-            </>
+                            onMouseUp={this.handleMouseUp}></i>
+                )
+                })}
+                <div    className="stage" 
+                        ref={this.stageRef}
+                        style={{    zIndex: "-1",
+                                    position: "absolute",
+                                    width: this.state.stageWidth+"px",
+                                    height: this.state.stageLength+"px",
+                                    left: this.state.stageX+"px",
+                                    top: this.state.stageY+"px"}}
+                                    onClick={this.handleBtnClick}
+                                    onMouseDown={this.handleMouseDown}
+                                    onMouseUp={this.handleMouseUp}>
+                    Stage
+                </div>
+                </div>
             )
         }
     } 

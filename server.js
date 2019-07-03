@@ -100,7 +100,11 @@ app.use(routes);
 // Send every other request to the React app
 
 // Connect to Mongo DB
+<<<<<<< HEAD
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/venuesDB", {useNewUrlParser: true})
+=======
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/venuesDB", { useNewUrlParser: true })
+>>>>>>> ccedb09312db02e5dc636f01701c63cddd815389
 
 // Define any API routes before this runs
 // app.get("*", (req, res) => {
