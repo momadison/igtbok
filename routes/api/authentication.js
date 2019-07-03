@@ -7,7 +7,7 @@ module.exports = function(app, accessProtectionMiddleware) {
   app.get('/auth/google/callback',
     passport.authenticate('google', { failureRedirect: '/' }),
     function(req, res) {
-      res.redirect('/loggedin')
+      res.redirect(`${process.env.PUBLIC_URL}/loggedin`)
     }
   )
 

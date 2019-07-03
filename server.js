@@ -14,7 +14,6 @@ const db = require('./models')
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -23,20 +22,21 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/public"));
 }
 
-mongoose.connect("mongodb://localhost/igtbok", { useNewUrlParser: true });
-
 // Passport functionality
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: process.env.NODE_ENV === 'production' ? "https://heroku.com/auth/google/callback" : "https://localhost:3000/auth/google/callback",
+  callbackURL: process.env.NODE_ENV === 'production' ? "https://heroku.com/auth/google/callback" : "http://localhost:3001/auth/google/callback",
   scope: ['email']
 },
 function(accessToken, refreshToken, profile, done) {
   var userEmail = profile.emails[0].value
   var username = userEmail.slice(0, userEmail.indexOf('@'))
   console.log(`${userEmail} : ${username}`)
-  done(null, user)
+  db.User.findOneAndUpdate({username: username}, {username: username, email: userEmail, authorization: 0}, {upsert: true, useFindAndModify: false}, function(err, result){
+    console.log(result)
+    done(null, result._id)
+  })
   // db.User.findOrCreate({
   //   where: {
   //     userName: username,
@@ -89,7 +89,7 @@ const accessProtectionMiddleware = (req, res, next) => {
   if (req.isAuthenticated()) {
     next()
   } else {
-    res.redirect('/')
+    res.send(false)
   }
 }
 
@@ -100,7 +100,7 @@ app.use(routes);
 // Send every other request to the React app
 
 // Connect to Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/venuesDB")
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/venuesDB", {useNewUrlParser: true})
 
 // Define any API routes before this runs
 // app.get("*", (req, res) => {
