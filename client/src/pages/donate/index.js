@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import DonateForm from "../../components/donateFormPriceOther/index.js";
+import CardPayment from "../../components/DonateCard/index.js"
+import BankWithdrawl from "../../components/DonateBank/index.js"
+import Recurring from "../../components/DonateRecurring/index.js";
+// import OneTime from "../../components/donateOnetime/index.js";
 
 
 class Donate extends Component {
@@ -18,8 +22,17 @@ class Donate extends Component {
         donateEmail: "",
         donateEmail2: "",
         donateComments: "",
-        donateRecurring: false,
-        donateOneTime: false
+        donateCardNumber: "",
+        donateCardCVV: "",
+        donateCardMonth: "",
+        donateCardYear: "",
+        donateBankRouting: "",
+        donateBankAccount: "",
+        donateBankReAccount: "",
+        donateBankAccountType: "",
+        donateRecurring: "",
+        donateRecurringDate: "",
+        donatePaymentType: ""
     }
 
     handleInputChange = event => {
@@ -32,6 +45,8 @@ class Donate extends Component {
             [name]: value
         });
     };
+
+    DatePickerOnChange = donateRecurringDate => this.setState({ donateRecurringDate })
 
     ActualDonationValue() {
         // return this.state.donateDonationValueCustom || this.state.donateDonationValue
@@ -56,12 +71,16 @@ class Donate extends Component {
         }
     }
 
+    DoTheyKnowTheirBankAccount() {
+        // function to check their account information on submit
+    }
+
     render() {
         console.log(this.state);
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col-md-4">
+                    <div className="col-md-6">
                         <h2>Donating Money</h2>
                         <div className="card">
                             <div className="cardBody">
@@ -101,7 +120,7 @@ class Donate extends Component {
                                     <div className="row">
                                         <div className="form-group col">
                                             <label htmlFor="InputCity">City</label>
-                                            <input type="text" value={this.state.donateCity} name="donateFirstName" onChange={this.donateCity} className="form-control" id="donateCity" placeholder="Dallas" />
+                                            <input type="text" value={this.state.donateCity} name="donateCity" onChange={this.handleInputChange} className="form-control" id="donateCity" placeholder="Dallas" />
                                         </div>
                                         <div className="form-group col">
                                             <label htmlFor="InputState">State</label>
@@ -131,26 +150,59 @@ class Donate extends Component {
                                     <div className="row">
                                         <div className="form-group col">
                                             <div className="form-check">
-                                                <input className="form-check-input" type="radio" value={this.state.donateRecurring} name="donateRecurring" onChange={this.handleInputChange} id="donateRecurring" checked />
+                                                <input className="form-check-input" type="radio" value="card" name="donatePaymentType" onChange={this.handleInputChange} />
                                                 <label className="form-check-label" for="exampleRadios1">
-                                                    Recurring Donation
+                                                    Card Payment
                                                 </label>
                                             </div>
                                         </div>
                                         <div className="form-group col">
                                             <div className="form-check">
-                                                <input className="form-check-input" type="radio" value={this.state.donateOneTime} name="donateRecurring" onChange={this.handleInputChange} id="donateOneTime" />
+                                                <input className="form-check-input" type="radio" value="bank" name="donatePaymentType" onChange={this.handleInputChange} />
                                                 <label className="form-check-label" for="exampleRadios2">
-                                                    One Time Donation
+                                                    Bank Withdrawl
                                                 </label>
                                             </div>
                                         </div>
-                                        {/* building components that will allow me to toggle content depending on recurrence */}
-
-
-                                        
-                                        {/* {this.state.donateDonationValue === "other" ? <DonateForm handleInputChange={this.handleInputChange} value={this.state.donateDonationValueCustom} /> : ""} */}
                                     </div>
+                                    <div className="row">
+                                        <div className="form-group col">
+                                            <div className="form-check">
+                                                <input className="form-check-input" type="radio" value="recurring" name="donateRecurring" onChange={this.handleInputChange} />
+                                                <label className="form-check-label" for="exampleRadios1">
+                                                    Recurring
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div className="form-group col">
+                                            <div className="form-check">
+                                                <input className="form-check-input" type="radio" value="oneTime" name="donateRecurring" onChange={this.handleInputChange} />
+                                                <label className="form-check-label" for="exampleRadios2">
+                                                    One Time
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {/* turn this on once components are built */}
+
+                                    {this.state.donatePaymentType == "" ? "" : this.state.donatePaymentType == "card" ? 
+                                    < CardPayment 
+                                    handleInputChange={this.handleInputChange} 
+                                    donateCardNumber={this.state.donateCardNumber} 
+                                    donateCardCVV={this.state.donateCardCVV} 
+                                    donateCardMonth={this.state.donateCardMonth} 
+                                    donateCardYear={this.state.donateCardYear}/> :
+                                     < BankWithdrawl 
+                                     handleInputChange={this.handleInputChange} 
+                                     donateBankRouting={this.state.donateBankRouting} 
+                                     donateBankAccount={this.state.donateBankAccount} 
+                                     donateBankReAccount={this.state.donateBankReAccount} 
+                                     donateBankAccountType={this.state.donateBankAccountType}
+                                     /> }
+                                    {this.state.donateRecurring == "recurring" ? < Recurring onChange={this.DatePickerOnChange} value={this.state.donateRecurringDate} /> : ""}
+
+                                    {/* {this.state.donateDonationValue === "other" ? <DonateForm handleInputChange={this.handleInputChange} value={this.state.donateDonationValueCustom} /> : ""} */}
+                                    
                                     <button type="submit" className="btn btn-primary">Submit</button>
                                 </form>
                                 {/* in the on submit function run this function to determine value */}
@@ -160,12 +212,12 @@ class Donate extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-md-6">
                         Something
                     </div>
-                    <div className="col-md-4">
+                    {/* <div className="col-md-4">
                         Something
-                    </div>
+                    </div> */}
                 </div>
             </div>
         )
