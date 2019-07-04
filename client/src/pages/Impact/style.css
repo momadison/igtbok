@@ -1,13 +1,5 @@
 section { padding: 2em; }
 
-/* h1 {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 1em;
-    text-transform: uppercase;
-} */
-
 h1:before, h1:after {
     content: "";
     flex: 1;
@@ -16,37 +8,65 @@ h1:before, h1:after {
 h1:before { margin-right: .3em; }
 h1:after { margin-left: .3em; }
 
-.founder-pic, .founder-vid { 
-    float: right; 
-    clear: both;
-    width: 33%;
-    margin-left: 15px;
+.pres-img { 
+    width: 100%;
+    margin-bottom: 2em;
 }
 
-.founder-pic { clip-path: circle(50% at center); }
-.founder-vid {
-    width: 45%;
-    height: 20vw;
-    margin-top: 25px;
+.btn-group {
+    display: flex;
 }
 
-/* BOARD MEMBERS */
-
-.board-img { width: 100%; }
-.board-name {
-    color: #ED1C22;
-    text-transform: uppercase;
-    font-size: 1em;
+.btn {
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	cursor: pointer;
+	padding: 15px 30px;
+	display: inline-block;
+	margin: 15px 30px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	transition: all 0.5s;
 }
 
-.board-title {
-    font-style: italic;
-    font-size: .9em;
+.btn:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	transition: all 0.5s;
 }
 
-.card-body { padding: 1rem; }
-.card { border: none; }
+.btn:before {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	position: relative;
+	-webkit-font-smoothing: antialiased;
+}
 
+.btn-1 {
+	border: 3px solid #ED1C22;
+	color: #ED1C22;
+}
+.btn-1a:hover,
+.btn-1a:active {
+	color: #ffffff;
+	background: #ED1C22;
+}
 
 /* MEDIA QUERIES */
 
