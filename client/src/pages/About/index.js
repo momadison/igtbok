@@ -6,14 +6,14 @@ function About() {
         <main>
 
             <section className="container">
-                <h1>History</h1>
+                <h2>History</h2>
                 <p><b>It’s Going To Be Ok Inc. (IGTBOK)</b> is a 170(b)(1)(A)(vi) non-profit charity started in 2014 by Tonya Stafford, a survivor herself of human trafficking, in Dallas, Texas.
                     The IGTBOK mission is to create a just world where women, children, and all vulnerable adults are safe, respected, and valued. The vision is to eradicate human trafficking, one survivor at a time, regardless of ethnicity or background.
                     With these principles, IGTBOK has grown in recognition throughout the state of Texas and continues reaching lives across the entire United States.</p>
             </section>
 
             <section className="container">
-                <h1>Our Founder</h1>
+                <h2>Our Founder</h2>
                 <div className="founder-pic">
                     <img className="board-img" src=".\assets\img\Tonya-Stafford-BW.jpg" alt="Tonya Stafford" srcset=".\assets\img\Tonya-Stafford-BW-200x200.jpg 200w, .\assets\img\Tonya-Stafford-BW-400x400.jpg 400w, .\assets\img\Tonya-Stafford-BW.jpg 500w" sizes="(max-width: 800px) 100vw, 500px" style={{ width: "100%" }} />
                 </div>
@@ -45,7 +45,7 @@ function About() {
             </section>
 
             <section className="container">
-                <h1>Board of Directors</h1>
+                <h2>Board of Directors</h2>
                 <p>Meet the IGTBOK Board of Directors, members of the Dallas/Fort Worth community who manage our nonprofit organization and fight to end human trafficking.</p>
 
                 <div className="card-deck">
@@ -144,7 +144,7 @@ function About() {
             </section>
 
             <section className="container">
-                <h1>Advisory Board</h1>
+                <h2>Advisory Board</h2>
 
                 <div className="card-deck">
                     <div className="card mb-4">

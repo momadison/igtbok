@@ -1,29 +1,29 @@
 section { padding: 2em; }
 
-h1:before, h1:after {
+h2:before, h2:after {
     content: "";
     flex: 1;
     border-top: 7px double #ED1C22;
 }
-h1:before { margin-right: .3em; }
-h1:after { margin-left: .3em; }
+h2:before { margin-right: .3em; }
+h2:after { margin-left: .3em; }
 
 .pres-img { 
-    width: 100%;
-    margin-bottom: 2em;
+	margin: 0 auto 1em;
+	width: 66%;
+	display: flex;
 }
 
 /* BUTTONS */
 
 .btn-group {
-	display: inherit;
+	display: block;
 	text-align: center;
-	margin-bottom: 30px;
+	margin: 0 auto 1em;
 }
 
 .btn-1 {
 	width: 250px;
-	background: none;
 	border: 3px solid #ED1C22;
 	color: #ED1C22;
 	padding: 15px;
@@ -32,20 +32,19 @@ h1:after { margin-left: .3em; }
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	font-weight: 700;
-	outline: none;
 	position: relative;
-	-webkit-transition: all 0.5s;
-	-moz-transition: all 0.5s;
-	transition: all 0.5s;
+	-webkit-transition: all 0.35s;
+	-moz-transition: all 0.35s;
+	transition: all 0.35s;
 }
 
 .btn-1:after {
 	content: '';
 	position: absolute;
 	z-index: -1;
-	-webkit-transition: all 0.5s;
-	-moz-transition: all 0.5s;
-	transition: all 0.5s;
+	-webkit-transition: all 0.35s;
+	-moz-transition: all 0.35s;
+	transition: all 0.35s;
 }
 
 .btn-1:before {
@@ -68,15 +67,11 @@ h1:after { margin-left: .3em; }
 	background: #ED1C22;
 }
 
-.btn-1b:hover,
-.btn-1b:active {
-	color: #ffffff;
+.btn-1b:hover, .btn-1b:active {	
+	color: #ffffff; 
+	text-decoration: none;
 }
-
-.btn-1b:hover:after,
-.btn-1b:active:after {
-	height: 100%;
-}
+.btn-1b:hover:after, .btn-1b:active:after {	height: 100%; }
 
 /* MEDIA QUERIES */
 

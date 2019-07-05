@@ -3,7 +3,7 @@ section {
     font-family: 'Lato', sans-serif;
 }
 
-h1 {
+h2 {
     display: flex;
     align-items: center;
     text-align: center;
@@ -13,13 +13,13 @@ h1 {
     text-transform: uppercase;
 }
 
-h1:before, h1:after {
+h2:before, h2:after {
     content: "";
     flex: 1;
     border-top: 7px double #ED1C22;
 }
-h1:before { margin-right: .3em; }
-h1:after { margin-left: .3em; }
+h2:before { margin-right: .3em; }
+h2:after { margin-left: .3em; }
 
 .founder-pic, .founder-vid { 
     float: right; 
