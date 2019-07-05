@@ -21,11 +21,12 @@ class Wizard extends Component {
         stageType: "",
         stageShape: "",
         stageWidth: 0,
-        stageHeight: 0,
+        stageLength: 0,
         stageLocation: "",
         tableCount: 0,
         tableWidth: 0,
-        tableLength: 0
+        tableLength: 0,
+        seatCount: 0
     };
 
     componentDidMount() {
@@ -85,11 +86,13 @@ class Wizard extends Component {
             stageType: this.state.stageType,
             stageShape: this.state.stageShape,
             stageWidth: this.state.stageWidth,
-            stageHeight: this.state.stageHeight,
+            stageLength: this.state.stageLength,
             stageLocation: this.state.stageLocation,
             tableCount: this.state.tableCount,
             tableWidth: this.state.tableWidth,
-            tableLength: this.state.tableLength 
+            tableLength: this.state.tableLength,
+            seatCount: this.state.seatCount,
+            active: true
         })
         .then(res => console.log(res.data))
         .catch(err => console.log(err));
@@ -172,26 +175,31 @@ class Wizard extends Component {
                                 
                                     <Select
                                         id="stageType"
+                                        name="stageType"
                                         options={stageType}
+                                        onChange={this.handleInputChange}
                                         small="select stage type" />
                                 </div>
                                 <div className="col-md-4">
                                     <Select
                                         id="stageShape"
+                                        name="stageShape"
                                         options={stageShape}
+                                        onChange={this.handleInputChange}
                                         small="select stage shape" />
                                 </div>
                                 <div className="col-md-4">
                                     <Select
                                         id="stageLocation"
+                                        name="stageLocation"
                                         options={stageLocation}
+                                        onChange={this.handleInputChange}
                                         small="select stage location" />
                                 </div>
                             </div>
                             <div className="row" style={{marginTop: "10px"}}>
                                 <div className="col-md-6">
                                 <Input
-                                    value={this.state.stageWidth}
                                     id="stageWidth"
                                     name="stageWidth"
                                     type="number"
@@ -201,15 +209,15 @@ class Wizard extends Component {
                                 </div>
                                 <div className="col-md-6">
                                 <Input
-                                    value={this.state.stageHeight}
-                                    id="stageHeight"
-                                    name="stageHeight"
+                                    id="stageLength"
+                                    name="stageLength"
                                     type="number"
                                     onChange={this.handleInputChange}
+                                    placeholder="Length of Stage"
                                     small="please enter the length of your stage in feet" />
 
                                 <FormBtn
-                                    disabled={!(this.state.stageHeight && this.state.stageWidth)}
+                                    disabled={!(this.state.stageLength && this.state.stageWidth && this.state.stageType && this.state.stageLocation && this.state.stageShape)}
                                     onClick={this.handleFormSubmit}
                                     className="btn btn-danger stageNext"
                                 >
@@ -232,7 +240,6 @@ class Wizard extends Component {
                             <p> Lets setup your table count and size.</p>
                         <form>
                                 <Input
-                                    value={this.state.tableCount}
                                     id="tableCount"
                                     onChange={this.handleInputChange} 
                                     placeholder="Table Count"
@@ -240,13 +247,19 @@ class Wizard extends Component {
                                     type="number"
                                     small="how many tables will you have at this venue"/>
                                 <Input
-                                    value={this.state.tableWidth} 
                                     type="number"
                                     id="tableWidth"
                                     name="tableWidth"
                                     onChange={this.handleInputChange}
                                     placeholder="Table Length"
                                     small="please enter the length of your table in feet"/>
+                                <Input
+                                    type="number"
+                                    id="seatCount"
+                                    name="seatCount"
+                                    onChange={this.handleInputChange}
+                                    placeholder="Seats per Table"
+                                    small="how many seats per table will you have"/>
                                 <FormBtn
                                     disabled={!(this.state.tableCount && this.state.tableWidth)}
                                     onClick={this.handleSandboxTransition}
@@ -260,8 +273,6 @@ class Wizard extends Component {
 
                 </div>
             </div>
-            {/* {this.state.activeID === 3 ?
-                <div id="stageBox" ></div>: null} */}
             </> 
         )
     }
