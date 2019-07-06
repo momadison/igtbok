@@ -32,15 +32,33 @@ class Donate extends Component {
         donateBankAccountType: "",
         donateRecurring: "",
         donateRecurringDate: "",
-        donatePaymentType: ""
-    }
+        donatePaymentType: "",
+        volunteerFirstName: "",
+        volunteerMiddleName: "",
+        volunteerLastName: "",
+        volunteerEmailAddress: "",
+        volunteerPhone: "",
+        volunteerCompany: "",
+        volunteerWhy: "",
+        volunteerPrevious: "",
+        volunteerExpertise: "",
+        volunteerAdvocateTeaching: false,
+        volunteerFundraising: false,
+        volunteerSocialMedia: false
 
+    }
+    checkboxHandleInputString = event => {
+        let target = event.target;
+        let value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+        this.setState({
+            [name]: value
+        });
+    }
     handleInputChange = event => {
-        // Getting the value and name of the input which triggered the change
         let value = event.target.value;
         const name = event.target.name;
 
-        // Updating the input's state
         this.setState({
             [name]: value
         });
@@ -49,30 +67,52 @@ class Donate extends Component {
     DatePickerOnChange = donateRecurringDate => this.setState({ donateRecurringDate })
 
     ActualDonationValue() {
-        // return this.state.donateDonationValueCustom || this.state.donateDonationValue
-
-        if (Number.isInteger(this.state.donateDonationValueCustom)) {
+        console.log(this.state.donateDonationValueCustom);
+        console.log(this.state.donateDonationValue);
+        console.log(this.state.donateActualDonationValue);
+        if (Number.isInteger(parseInt(this.state.donateDonationValueCustom))) {
             this.setState({ donateActualDonationValue: this.state.donateDonationValueCustom });
-            console.log("sup dawg");
-        }
-        else if (Number.isInteger(this.state.donateDonationValue)) {
+        } else if (Number.isInteger(parseInt(this.state.donateDonationValue))) {
             this.state.donateActualDonationValue.setState(this.state.donateDonationValue);
+        } else if (Number.isInteger(parseInt(this.state.donateDonationValue))) {
+            this.state.donateDonationValueCustom.setState("");
         } else {
             alert("you must enter a donation value")
         }
-        // figure out how to get them to put in a number
     }
-
-    DoTheyKnowTheirEmail() {
-        if (this.state.donateEmail === this.state.donateEmail2) {
-            console.log("emails match, proceed");
-        } else {
-            alert("you don't know your own email address")
+    DonateSubmitVerification = event => {
+        event.preventDefault();
+        if (this.state.donateFirstName === "") {
+            alert("Please enter your first name.")
+        } else if (this.state.donateLastName === "") {
+            alert("Please enter your last name.")
+        } else if (this.state.donateAddress === "") {
+            alert("Please enter your address.")
+        } else if (this.state.donateCity === "") {
+            alert("Please enter your city.")
+        } else if (this.state.donateState === "") {
+            alert("Please enter your state.")
+        } else if (!this.state.donateEmail.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) || this.state.donateEmail2 !== this.state.donateEmail) {
+            alert("Please enter a valid email address & make sure it is the same in both entry fields.")
+        } else if (this.state.donateBankAccount !== this.state.donateBankReAccount) {
+            alert("The bank account number you entered in the 'Account Number' field doesn't match the account number you entered into the 'Re-enter Account No.' field.")
         }
+        this.ActualDonationValue();
     }
-
-    DoTheyKnowTheirBankAccount() {
-        // function to check their account information on submit
+    VolunteerSubmitVerification = event => {
+        event.preventDefault();
+        // is there a first name
+        if (this.state.volunteerFirstName === "") {
+            alert("Please enter your first name.")
+        } else if (this.state.volunteerLastName === "") {
+            alert("Please enter your last name.")
+        } else if (!this.state.volunteerEmailAddress.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+            alert("Please enter a valid email address.")
+        } else if (this.state.volunteerPhone === "") {
+            alert("Please enter your phone number.")
+        } else if (this.state.volunteerWhy === "") {
+            alert("Please tell why you want to volunteer")
+        }
     }
 
     render() {
@@ -84,7 +124,7 @@ class Donate extends Component {
                         <h2>Donating Money</h2>
                         <div className="card">
                             <div className="cardBody">
-                                <form className="p-2">
+                                <form className="p-2" onSubmit={this.DonateSubmitVerification}>
                                     <div className="row">
                                         <div className="form-group col">
                                             <label htmlFor="exampleFormControlInput1">First Name</label>
@@ -149,6 +189,12 @@ class Donate extends Component {
                                     </div>
                                     <div className="row">
                                         <div className="form-group col">
+                                            <label for="exampleFormControlTextarea1">Comments</label>
+                                            <textarea value={this.state.donateComments} name="donateComments" onChange={this.handleInputChange} className="form-control" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="form-group col">
                                             <div className="form-check">
                                                 <input className="form-check-input" type="radio" value="card" name="donatePaymentType" onChange={this.handleInputChange} />
                                                 <label className="form-check-label" for="exampleRadios1">
@@ -185,25 +231,25 @@ class Donate extends Component {
                                     </div>
                                     {/* turn this on once components are built */}
 
-                                    {this.state.donatePaymentType == "" ? "" : this.state.donatePaymentType == "card" ? 
-                                    < CardPayment 
-                                    handleInputChange={this.handleInputChange} 
-                                    donateCardNumber={this.state.donateCardNumber} 
-                                    donateCardCVV={this.state.donateCardCVV} 
-                                    donateCardMonth={this.state.donateCardMonth} 
-                                    donateCardYear={this.state.donateCardYear}/> :
-                                     < BankWithdrawl 
-                                     handleInputChange={this.handleInputChange} 
-                                     donateBankRouting={this.state.donateBankRouting} 
-                                     donateBankAccount={this.state.donateBankAccount} 
-                                     donateBankReAccount={this.state.donateBankReAccount} 
-                                     donateBankAccountType={this.state.donateBankAccountType}
-                                     /> }
+                                    {this.state.donatePaymentType == "" ? "" : this.state.donatePaymentType == "card" ?
+                                        < CardPayment
+                                            handleInputChange={this.handleInputChange}
+                                            donateCardNumber={this.state.donateCardNumber}
+                                            donateCardCVV={this.state.donateCardCVV}
+                                            donateCardMonth={this.state.donateCardMonth}
+                                            donateCardYear={this.state.donateCardYear} /> :
+                                        < BankWithdrawl
+                                            handleInputChange={this.handleInputChange}
+                                            donateBankRouting={this.state.donateBankRouting}
+                                            donateBankAccount={this.state.donateBankAccount}
+                                            donateBankReAccount={this.state.donateBankReAccount}
+                                            donateBankAccountType={this.state.donateBankAccountType}
+                                        />}
                                     {this.state.donateRecurring == "recurring" ? < Recurring onChange={this.DatePickerOnChange} value={this.state.donateRecurringDate} /> : ""}
 
                                     {/* {this.state.donateDonationValue === "other" ? <DonateForm handleInputChange={this.handleInputChange} value={this.state.donateDonationValueCustom} /> : ""} */}
-                                    
-                                    <button type="submit" className="btn btn-primary">Submit</button>
+
+                                    <button type="submit" className="btn btn-primary" id="donateSubmit">Submit</button>
                                 </form>
                                 {/* in the on submit function run this function to determine value */}
                                 {/* DoTheyKnowTheirEmail();
@@ -213,11 +259,85 @@ class Donate extends Component {
                         </div>
                     </div>
                     <div className="col-md-6">
-                        Something
+                        <h2>Volunteer Form</h2>
+                        <div className="card">
+                            <div className="cardBody">
+                                <form className="p-2" onSubmit={this.VolunteerSubmitVerification}>
+                                    <p>Please fill out our volunteer form if you wish to volunteer your time to our organization and support your
+                                        local community.  Once we receive your application, it will be reviewed and we will contact you with more
+                                    information.</p>
+                                    <h5>Contact Information</h5>
+                                    <div className="row">
+                                        <div className="form-group col">
+                                            <label htmlFor="volunteerFName">First Name</label>
+                                            <input type="text" value={this.state.volunteerFirstName} name="volunteerFirstName" onChange={this.handleInputChange} className="form-control" id="donateFirstName" placeholder="Jane" />
+                                        </div>
+                                        <div className="form-group col">
+                                            <label htmlFor="volunteerFName">Middle Name</label>
+                                            <input type="text" value={this.state.volunteerMiddleName} name="volunteerMiddleName" onChange={this.handleInputChange} className="form-control" id="donateLastName" placeholder="Jones" />
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="form-group col">
+                                            <label htmlFor="volunteerLName">Last Name</label>
+                                            <input type="text" value={this.state.volunteerLastName} name="volunteerLastName" onChange={this.handleInputChange} className="form-control" id="donateFirstName" placeholder="Smith" />
+                                        </div>
+                                        <div className="form-group col">
+                                            <label htmlFor="volunteerEmail">Email Address</label>
+                                            <input type="text" value={this.state.volunteerEmailAddress} name="volunteerEmailAddress" onChange={this.handleInputChange} className="form-control" id="donateLastName" placeholder="me@volunteer.com" />
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="form-group col">
+                                            <label htmlFor="volunteerPhone">Phone</label>
+                                            <input type="text" value={this.state.volunteerPhone} name="volunteerPhone" onChange={this.handleInputChange} className="form-control" id="donateFirstName" placeholder="(123)456-7890" />
+                                        </div>
+                                        <div className="form-group col">
+                                            <label htmlFor="volunteerCompany">Company</label>
+                                            <input type="text" value={this.state.volunteerCompany} name="volunteerCompany" onChange={this.handleInputChange} className="form-control" id="donateLastName" placeholder="Volunteer &amp; Co" />
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="form-group col">
+                                            <label for="volunteerWhy">Please explain why you want to volunteer for It's Going To Be Ok?</label>
+                                            <textarea value={this.state.volunteerWhy} name="volunteerWhy" onChange={this.handleInputChange} className="form-control" rows="2"></textarea>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="form-group col">
+                                            <label for="volunteerPreviousExperience">List any current or previous volunteer experience.If None, please type N/A</label>
+                                            <textarea value={this.state.volunteerPrevious} name="volunteerPrevious" onChange={this.handleInputChange} className="form-control" rows="2"></textarea>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="form-group col">
+                                            <label for="volunteerExpertise">Areas of Expertise</label>
+                                            <textarea value={this.state.volunteerExpertise} name="volunteerExpertise" onChange={this.handleInputChange} className="form-control" rows="2"></textarea>
+                                        </div>
+                                    </div>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" value="" name="volunteerAdvocateTeaching" onChange={this.checkboxHandleInputString} />
+                                        <label className="form-check-label" for="defaultCheck1">
+                                            Advocate/Teaching
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" value="" name="volunteerFundraising" onChange={this.checkboxHandleInputString} />
+                                        <label className="form-check-label" for="defaultCheck1">
+                                            Fundraising
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" value="" name="volunteerSocialMedia" onChange={this.checkboxHandleInputString} />
+                                        <label className="form-check-label" for="defaultCheck1">
+                                            Social Media
+                                        </label>
+                                    </div>
+                                    <button type="submit" className="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    {/* <div className="col-md-4">
-                        Something
-                    </div> */}
                 </div>
             </div>
         )
