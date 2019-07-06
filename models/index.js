@@ -1,3 +1,4 @@
 module.exports = {
-    Venues: require("./venues")
+    Venues: require("./venues"),
+    Tables: require("./tables")
   };

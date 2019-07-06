@@ -6,5 +6,8 @@ export default {
     },
     getVenue: function(dbModel) {
         return axios.get("/api/venues", dbModel);
+    },
+    saveTables: function(dbModel) {
+        return axios.post("/api/tables", dbModel);
     }
 }
