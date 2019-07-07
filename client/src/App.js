@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // pages
-import Main from "./pages/Main";
+import Main from "./pages/main/";
 import Donate from "./pages/Donate";
-import About from "./pages/About/";
+import About from "./pages/About";
 import Impact from "./pages/Impact";
 //import HopePearls from "./pages/HopePearls";
 import Gallery from "./pages/Gallery";
@@ -13,36 +13,17 @@ import Resources from "./pages/Resources";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import Sandbox from "./components/Sandbox";
-import Wizard from "./components/Wizard";
-import Drag from "./components/Drag";
+import Wizard from "./components/Wizard"
+
+import PrivateRoute from './components/Auth/PrivateRoute'
 
 // components
 import Nav from "./components/Nav";
 
 
-class App extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      loggedin: false
-    }
-  }
-
-  handleLogin = (action) => {
-    if(action === 'login'){
-      this.setState({
-        loggedin: true
-      })
-    } else if (action === 'logout'){
-      this.setState({
-        loggedin: false
-      })
-    }
-  }
-
-  render(){
-    return (
-      <Router>
+function App() {
+  return (
+    <Router>
       <div>
         <Nav />
         <Switch>
@@ -53,16 +34,16 @@ class App extends Component {
           <Route exact path="/hopepearls" component={Sandbox} />
           <Route exact path="/gallery" component={Gallery} />
           <Route exact path="/programs" component={Programs} />
-          <Route exact path="/resources" component={Drag} />
+          <Route exact path="/resources" component={Resources} />
           <Route exact path="/blog" component={Wizard} />
           <Route exact path="/contact" component={Contact} />
-          <Route exact path="/loggedin#" component={Main} />
+          <Route exact path="/loggedin" component={() => <h1>Logged In Successfully</h1>} />
+          <Route exact path='/private' component={PrivateRoute} />
           {/* <Route component={NoMatch} /> */}
         </Switch>
       </div>
-      </Router>
-    );
-  }
+    </Router>
+  );
 }
 
 export default App;

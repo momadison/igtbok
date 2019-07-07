@@ -1,16 +1,9 @@
 const router = require("express").Router();
 const venues = require("./venues");
+const authentication = require("./authentication");
 
 // Book routes
 router.use("/venues", venues);
-
-router.get('/auth/google', passport.authenticate('google'));
-
-router.get('/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: '/' }),
-  function(req, res) {
-    res.redirect('/loggedin')
-  }
-)
+router.use("/auth", authentication);
 
 module.exports = router;

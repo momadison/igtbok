@@ -37,34 +37,22 @@ function(accessToken, refreshToken, profile, done) {
     console.log(result)
     done(null, result._id)
   })
-  // db.User.findOrCreate({
-  //   where: {
-  //     userName: username,
-  //     email: userEmail,
-  //     googleId: profile.id
-  //   }
-  // }).spread(function (userResult, created) {
-  //   console.log(userResult.dataValues.id)
-  //   if(created){
-  //     return done(null, userResult.dataValues.id)
-  //   } else {
-  //     return done(null, userResult.dataValues.id);
-  //   }
-  // }).catch(function(err) {
-  //   console.log(err)
-  // })
 }))
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_CLIENT_ID,
     clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL: process.env.NODE_ENV === 'production' ? "https://heroku.com/auth/facebook/callback" : "https://localhost:3000/auth/facebook/callback"
+    callbackURL: process.env.NODE_ENV === 'production' ? "https://heroku.com/auth/facebook/callback" : "http://localhost:3001/auth/facebook/callback",
+    profileFields: ['id', 'emails', 'name']
   },
   function(accessToken, refreshToken, profile, done) {
-    done(null, user)
-    // User.findOrCreate(..., function(err, user) {
-    //   if (err) { return done(err); }
-    //   done(null, user);
-    // });
+    console.log(profile)
+    // var userEmail = profile.emails[0].value
+    // var username = userEmail.slice(0, userEmail.indexOf('@'))
+    // console.log(`${userEmail} : ${username}`)
+    // db.User.findOneAndUpdate({username: username}, {username: username, email: userEmail, authorization: 0}, {upsert: true, useFindAndModify: false}, function(err, result){
+    //   console.log(result)
+    //   done(null, result._id)
+    // })
   }
 ));
 
@@ -100,11 +88,7 @@ app.use(routes);
 // Send every other request to the React app
 
 // Connect to Mongo DB
-<<<<<<< HEAD
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/venuesDB", {useNewUrlParser: true})
-=======
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/venuesDB", { useNewUrlParser: true })
->>>>>>> ccedb09312db02e5dc636f01701c63cddd815389
 
 // Define any API routes before this runs
 // app.get("*", (req, res) => {
