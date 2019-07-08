@@ -8,6 +8,6 @@ export default {
         return axios.get("/api/venues", dbModel);
     },
     getAuth: function() {
-        return axios.get("/api/checkAuth");
+        return axios.get("/api/auth/checkAuth");
     }
 }

@@ -26,13 +26,12 @@ if (process.env.NODE_ENV === "production") {
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: process.env.NODE_ENV === 'production' ? "https://heroku.com/auth/google/callback" : "http://localhost:3001/auth/google/callback",
+  callbackURL: process.env.NODE_ENV === 'production' ? "https://heroku.com/auth/google/callback" : "http://localhost:3001/api/auth/google/callback",
   scope: ['email']
 },
 function(accessToken, refreshToken, profile, done) {
   var userEmail = profile.emails[0].value
   var username = userEmail.slice(0, userEmail.indexOf('@'))
-  console.log(`${userEmail} : ${username}`)
   db.User.findOneAndUpdate({username: username}, {username: username, email: userEmail, authorization: 0}, {upsert: true, useFindAndModify: false}, function(err, result){
     console.log(result)
     done(null, result._id)
@@ -41,11 +40,12 @@ function(accessToken, refreshToken, profile, done) {
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_CLIENT_ID,
     clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL: process.env.NODE_ENV === 'production' ? "https://heroku.com/auth/facebook/callback" : "http://localhost:3001/auth/facebook/callback",
+    callbackURL: process.env.NODE_ENV === 'production' ? "https://heroku.com/auth/facebook/callback" : "http://localhost:3001/api/auth/facebook/callback",
     profileFields: ['id', 'emails', 'name']
   },
   function(accessToken, refreshToken, profile, done) {
     console.log(profile)
+    done(null, profile.id)
     // var userEmail = profile.emails[0].value
     // var username = userEmail.slice(0, userEmail.indexOf('@'))
     // console.log(`${userEmail} : ${username}`)
@@ -82,7 +82,7 @@ const accessProtectionMiddleware = (req, res, next) => {
 }
 
 // Define API routes here
-require("./routes/api/authentication")(app, accessProtectionMiddleware);
+// require("./routes/api/authentication")(app, accessProtectionMiddleware);
 app.use(routes);
 
 // Send every other request to the React app

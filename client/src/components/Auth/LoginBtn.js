@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-const PORT = process.env.PORT || 3001
-
 export default class LoginButton extends Component {
   constructor(props){
     super(props)
@@ -12,8 +10,9 @@ export default class LoginButton extends Component {
   }
 
   componentDidMount() {
-    console.log('this is mounted')
-    const url = process.env.NODE_ENV === 'production' ? `http://herokuapp.com/api/auth/${this.props.type}` : `http://localhost:3001/api/auth/${this.props.type}`
+    const url = process.env.NODE_ENV === 'production'   // If production, use Heroku otherwise localhost
+      ? `http://herokuapp.com/api/auth/${this.props.type}`
+      : `http://localhost:3001/api/auth/${this.props.type}`
     this.setState({
       url: url
     })
