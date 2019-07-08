@@ -24,6 +24,20 @@
     max-width: 50%;
     flex-direction: column;
 }
+
+.main-flood {
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    overflow: auto;
+    margin: auto;
+    background-image: url("/assets/img/main-HB-2290-Group-Photo.jpg");
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 h1 {
     color: white;
     animation-delay: 200ms;
@@ -47,6 +61,11 @@ h1 {
     margin-top: 2rem;
 }
 
+.tonya-tint {
+    opacity: 0;
+    background: #000;
+}
+
 .tonyaMain {
     /* background-size: cover;
     background-position: center;
@@ -62,6 +81,10 @@ h1 {
     flex-direction: column;
 }
 
+.tonyaMain:hover {
+    opacity: .5;
+}
+
 .main-card-header {
     font-family: 'Lato', sans-serif;
 }
@@ -73,4 +96,8 @@ h1 {
     margin: 0;
     background-color: transparent;
     text-align: center;
+} */
+
+/* .darkBG {
+    background-color: #3a3e43;
 } */

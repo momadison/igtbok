@@ -3,6 +3,7 @@ import DonateForm from "../../components/donateFormPriceOther/index.js";
 import CardPayment from "../../components/DonateCard/index.js"
 import BankWithdrawl from "../../components/DonateBank/index.js"
 import Recurring from "../../components/DonateRecurring/index.js";
+import axios from "axios";
 // import OneTime from "../../components/donateOnetime/index.js";
 
 
@@ -67,9 +68,6 @@ class Donate extends Component {
     DatePickerOnChange = donateRecurringDate => this.setState({ donateRecurringDate })
 
     ActualDonationValue() {
-        console.log(this.state.donateDonationValueCustom);
-        console.log(this.state.donateDonationValue);
-        console.log(this.state.donateActualDonationValue);
         if (Number.isInteger(parseInt(this.state.donateDonationValueCustom))) {
             this.setState({ donateActualDonationValue: this.state.donateDonationValueCustom });
         } else if (Number.isInteger(parseInt(this.state.donateDonationValue))) {
@@ -113,6 +111,7 @@ class Donate extends Component {
         } else if (this.state.volunteerWhy === "") {
             alert("Please tell why you want to volunteer")
         }
+        axios.post("/api/email", this.state).then(res => console.log(res));
     }
 
     render() {

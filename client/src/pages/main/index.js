@@ -28,7 +28,7 @@ function Main() {
                             Two, to continue searching for those who are still trapped and rescue them.</p>
                         </div>
                     </div>
-                    <div className="animated fadeIn card text-white link-white bg-dark mb-3 main-card tonyaMain">
+                    <div className="animated fadeIn card text-white link-white bg-dark mb-3 main-card tonyaMain tonya-tint">
                     </div>
                     <div className="animated fadeIn card text-white link-white bg-dark mb-3 main-card">
                         <div className="card-header main-card-header">All financial gifts support our mission</div>
@@ -41,6 +41,51 @@ function Main() {
                                 <li>Electronic check</li>
                                 <li>Mailed Check</li>
                             </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col main-flood text-center">
+                    <h1 className="animated fadeInUp" id="mainHeader">HB 2290 - Human Trafficking Awareness Month</h1>
+                    {/* <h5 className="animated fadeInUp" id="subheadHeader">We are here to help you if you are a vicitm of human trafficing.</h5> */}
+                    <button className="btn btn-lg btn-danger">Learn More</button>
+                </div>
+            </div>
+            <div className="row bg-dark">
+                <div className="col">
+                    <div className="row">
+                        <div className="col-md-4 text-center">
+                            <i className="fas fa-users fa-5x"></i>
+                            <h3>36 Million</h3>
+                            <p>Estimated people who are slaves across the world</p>
+                        </div>
+                        <div className="col-md-4 text-center">
+                            <i className="fas fa-female fa-5x"></i>
+                            <h3>55%</h3>
+                            <p>Are women and girls</p>
+                        </div>
+                        <div className="col-md-4 text-center">
+                            <i className="fas fa-male fa-5x"></i>
+                            <h3>45%</h3>
+                            <p>Are men and boys</p>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-4 text-center">
+                            <i className="fas fa-child fa-5x"></i>
+                            <h3>26%</h3>
+                            <p>Are children</p>
+                        </div>
+                        <div className="col-md-4 text-center">
+                            <i className="fas fa-money-bill-alt fa-5x"></i>
+                            <h3>$90</h3>
+                            <p>Average cost of slave</p>
+                        </div>
+                        <div className="col-md-4 text-center">
+                            <i class="fas fa-dollar-sign fa-5x"></i>
+                            <h3>$150 billion dollars</h3>
+                            <p>How much money slavery generates</p>
                         </div>
                     </div>
                 </div>
