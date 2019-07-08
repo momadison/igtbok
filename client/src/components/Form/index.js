@@ -24,6 +24,7 @@ export function Select(props) {
       <>
       <small className="form-text">{props.small}</small>
     <select class="form-control" id={props.id} {...props}>
+        <option value="" selected disabled hidden>Choose here</option>
         {props.options.map( (value) => {
             return <option>{value}</option>
         })}

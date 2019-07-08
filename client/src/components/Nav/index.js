@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Nav.css"
 
 function Nav() {
     return (
 
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-lg bg-dark">
             <a className="navbar-brand" href="/">
                 <img src="assets/img/IGTBOK-Brand-Logo.png" height="70" alt="It's Going To Be OK" />
             </a>
@@ -14,19 +15,19 @@ function Nav() {
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav ml-md-auto">
                     <li className="nav-item">
-                        <Link className="nav-link" to="/donate/">Donate</Link>
+                        <Link className="nav-link" to="/donate/" data-hover="Donate">Donate</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/resources">Get Help</Link>
+                        <Link className="nav-link" to="/resources" data-hover="Get Help">Get Help</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/about">About</Link>
+                        <Link className="nav-link" to="/about" data-hover="About">About</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/impact">Impact</Link>
+                        <Link className="nav-link" to="/impact" data-hover="Impact">Impact</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/contact">Contact</Link>
+                        <Link className="nav-link" to="/contact" data-hover="Contact">Contact</Link>
                     </li>
                 </ul>
             </div>
