@@ -8,6 +8,7 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const session = require('express-session')
+const userController = require('./controllers/userController')
 // DB Imports
 const db = require('./models')
 
@@ -32,9 +33,10 @@ passport.use(new GoogleStrategy({
   scope: ['email']
 },
 function(accessToken, refreshToken, profile, done) {
-  var userEmail = profile.emails[0].value
-  var username = userEmail.slice(0, userEmail.indexOf('@'))
-  db.User.findOneAndUpdate({username: username}, {username: username, email: userEmail, authorization: 0}, {upsert: true, useFindAndModify: false}, function(err, result){
+  let userEmail = profile.emails[0].value
+  let username = userEmail.slice(0, userEmail.indexOf('@'))
+  let provider = profile.provider
+  db.User.findOneAndUpdate({username: username, provider: 'google'}, {username: username, email: userEmail, authorization: 0, provider: provider}, {upsert: true, useFindAndModify: false}, function(err, result){
     console.log(result)
     done(null, result._id)
   })
@@ -46,15 +48,13 @@ passport.use(new FacebookStrategy({
     profileFields: ['id', 'emails', 'name']
   },
   function(accessToken, refreshToken, profile, done) {
-    console.log(profile)
-    done(null, profile.id)
-    // var userEmail = profile.emails[0].value
-    // var username = userEmail.slice(0, userEmail.indexOf('@'))
-    // console.log(`${userEmail} : ${username}`)
-    // db.User.findOneAndUpdate({username: username}, {username: username, email: userEmail, authorization: 0}, {upsert: true, useFindAndModify: false}, function(err, result){
-    //   console.log(result)
-    //   done(null, result._id)
-    // })
+    let username = profile.username ? profile.username : profile.name.givenName + profile.name.familyName
+    let userEmail = profile.email ? profile.email : ''
+    let provider = profile.provider
+    db.User.findOneAndUpdate({username: username, provider: provider}, {username: username, email: userEmail, authorization: 0, provider: provider}, {upsert: true, useFindAndModify: false}, function(err, result){
+      console.log(result)
+      done(null, result._id)
+    })
   }
 ));
 
@@ -74,17 +74,7 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
-// Authentication for routes using passport
-const accessProtectionMiddleware = (req, res, next) => {
-  if (req.isAuthenticated()) {
-    next()
-  } else {
-    res.send(false)
-  }
-}
-
 // Define API routes here
-// require("./routes/api/authentication")(app, accessProtectionMiddleware);
 app.use(routes);
 
 // Send every other request to the React app

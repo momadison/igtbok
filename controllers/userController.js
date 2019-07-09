@@ -19,11 +19,6 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json)
   },
-  findOneOrCreate: function(req, res) {
-    console.log(req.query)
-    // db.User
-    //   .findOneAndUpdate({})
-  },
   checkAuth: function(req, res) {
     if(req.isAuthenticated()){
       res.send(true)
@@ -32,10 +27,9 @@ module.exports = {
     }
   },
   logout: function(req, res) {
-    console.log('logging out...')
     req.logout()
     req.user = null
-    res.redirect(`${process.env.PUBLIC_URL}/loggedin`)
+    res.redirect(`${process.env.PUBLIC_URL}/`)
   },
   googleLogin: passport.authenticate('google'),
   googleCB: passport.authenticate('google', {
