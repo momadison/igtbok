@@ -6,13 +6,13 @@ function Main() {
         <div className="container-fluid">
             <div className="row">
                 <div className="col-md-6 text-center main-cat1">
-                    <h1 className="animated fadeInUp" id="mainHeader">Need Help?</h1>
+                    <h1 className="main-header animated fadeInUp" id="mainHeader">Need Help?</h1>
                     <h5 className="animated fadeInUp" id="subheadHeader">We are here to help you if you are a vicitm of human trafficing.</h5>
                     <button className="btn btn-lg btn-danger">Get Help Now</button>
                 </div>
 
                 <div className="col-md-6 text-center main-cat2">
-                    <h1 className="animated fadeInUp" id="mainHeader">Donate</h1>
+                    <h1 className="main-header animated fadeInUp" id="mainHeader">Donate</h1>
                     <h5 className="animated fadeInUp" id="subheadHeader">Your contribution in time or resources allows us to help more victims.</h5>
                     <button className="btn btn-lg btn-danger">Donate Now</button>
                 </div>
@@ -47,7 +47,7 @@ function Main() {
             </div>
             <div className="row">
                 <div className="col main-flood text-center">
-                    <h1 className="animated fadeInUp" id="mainHeader">HB 2290 - Human Trafficking Awareness Month</h1>
+                    <h1 className="main-header animated fadeInUp" id="mainHeader">HB 2290 - Human Trafficking Awareness Month</h1>
                     {/* <h5 className="animated fadeInUp" id="subheadHeader">We are here to help you if you are a vicitm of human trafficing.</h5> */}
                     <button className="btn btn-lg btn-danger">Learn More</button>
                 </div>

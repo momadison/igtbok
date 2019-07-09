@@ -11,7 +11,7 @@ import Gallery from "./pages/Gallery";
 import Programs from "./pages/Programs";
 import Resources from "./pages/Resources";
 // import Blog from "./pages/Blog";
-import Contact from "./pages/Contact";
+import Contact from "./pages/contact";
 import Sandbox from "./components/Sandbox";
 import Wizard from "./components/Wizard";
 
@@ -26,9 +26,9 @@ function App() {
         <Nav />
         <Switch>
           <Route exact path="/" component={Main} />
-          <Route exact path="/donate/" component={Donate} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/impact" component={Impact} />
+          <Route exact path="/Donate/" component={Donate} />
+          <Route exact path="/About" component={About} />
+          <Route exact path="/Impact" component={Impact} />
           <Route exact path="/hopepearls" component={Sandbox} />
           <Route exact path="/gallery" component={Gallery} />
           <Route exact path="/programs" component={Programs} />
