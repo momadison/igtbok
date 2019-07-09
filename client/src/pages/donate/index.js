@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import DonateForm from "../../components/donateFormPriceOther/index.js";
 import CardPayment from "../../components/DonateCard/index.js"
 import BankWithdrawl from "../../components/DonateBank/index.js"
 import Recurring from "../../components/DonateRecurring/index.js";
+import DonateForm from "../../components/donateFormPriceOther/index.js";
 import axios from "axios";
-// import OneTime from "../../components/donateOnetime/index.js";
 
 
 class Donate extends Component {
