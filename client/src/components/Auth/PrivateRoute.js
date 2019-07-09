@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+// Import function to require a user to be logged in to access this component
 import withAuth from './withAuth'
 
 class PrivateRoute extends Component {
@@ -11,5 +12,5 @@ class PrivateRoute extends Component {
     )
   }
 }
-
+// Wrap export with "withAuth" to protect it, requiring a logged in user to access.
 export default withAuth(PrivateRoute)

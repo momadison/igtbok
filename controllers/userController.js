@@ -29,7 +29,7 @@ module.exports = {
   logout: function(req, res) {
     req.logout()
     req.user = null
-    res.redirect(`${process.env.PUBLIC_URL}/`)
+    res.redirect(`${process.env.PUBLIC_URL}/loggedout`)
   },
   googleLogin: passport.authenticate('google'),
   googleCB: passport.authenticate('google', {

@@ -37,6 +37,7 @@ function App() {
           <Route exact path="/blog" component={Wizard} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/loggedin" component={() => <h1>Logged In Successfully</h1>} />
+          <Route exact path="/loggedout" component={() => <h1>Logged Out Successfully</h1>} />
           <Route exact path='/private' component={PrivateRoute} />
           {/* <Route component={NoMatch} /> */}
         </Switch>
