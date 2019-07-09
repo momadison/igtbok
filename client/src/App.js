@@ -2,8 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // pages
-import Main from "./pages/Main";
-import Donate from "./pages/Donate";
+import Main from "./pages/Main/";
+import Donate from "./pages/Donate/";
 import About from "./pages/About/";
 import Impact from "./pages/Impact/";
 // import HopePearls from "./pages/HopePearls";
