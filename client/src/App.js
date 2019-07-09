@@ -11,7 +11,7 @@ import Gallery from "./pages/Gallery";
 import Programs from "./pages/Programs";
 import Resources from "./pages/Resources";
 // import Blog from "./pages/Blog";
-import Contact from "./pages/contact";
+import Contact from "./pages/Contact";
 import Sandbox from "./components/Sandbox";
 import Wizard from "./components/Wizard";
 
