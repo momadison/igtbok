@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // pages
-import Main from "./pages/Main";
+import Main from "./pages/Main/";
 import Donate from "./pages/Donate/";
 import About from "./pages/About/";
 import Impact from "./pages/Impact/";
@@ -11,7 +11,7 @@ import Gallery from "./pages/Gallery";
 import Programs from "./pages/Programs";
 import Resources from "./pages/Resources";
 // import Blog from "./pages/Blog";
-import Contact from "./pages/contact";
+import Contact from "./pages/Contact";
 import Sandbox from "./components/Sandbox";
 import Wizard from "./components/Wizard";
 

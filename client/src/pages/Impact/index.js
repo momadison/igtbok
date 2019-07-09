@@ -5,7 +5,7 @@ function Impact() {
     return (
         <main>
             <section className="container">
-                <h2>President's Volunteer Service Award</h2>
+                <h2 className="impact-h2">President's Volunteer Service Award</h2>
                 <img className="pres-img" src="./assets/img/PVSA-banner.jpg" />
                 <p>The President’s Volunteer Service Award (PVSA) is the premier federal volunteer program, in it's own words, "recognizing, celebrating, and holding up as role models Americans making a positive impact as engaged and deeply committed volunteers." 
                     <b>It’s Going To Be Ok Inc. (IGTBOK)</b> is proud to be both officially PVSA-recognized and a certifying organization for individuals seeking to join. 
@@ -17,7 +17,7 @@ function Impact() {
             </section>
 
             <section className="container">
-                <h2>Tan Parker Endorsement</h2>
+                <h2 className="impact-h2">HB 2290</h2>
             </section>
         </main>
     )
