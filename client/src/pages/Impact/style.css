@@ -27,6 +27,27 @@ section {
 	display: flex;
 }
 
+.carousel {
+	height: 400px;
+	width: 400px;
+}
+
+
+.carousel-inner {
+	max-height: 400px !important;
+	width: 100%;
+}
+
+.carousel-item {
+	/* width: 100%; */
+	height: 100%;
+}
+
+.carousel-inner img {
+	/* width: 100%; */
+	height: 400px;
+}
+
 /* BUTTONS */
 
 .btn-group {

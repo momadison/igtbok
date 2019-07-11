@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+// import "./carousel.js";
 
 function Impact() {
     return (
@@ -18,7 +19,40 @@ function Impact() {
 
             <section className="container">
                 <h2 className="impact-h2">HB 2290</h2>
+
+                <div id="demo" class="carousel slide" data-ride="carousel">
+                    {/* <!-- Indicators --> */}
+                    <ul class="carousel-indicators">
+                        <li data-target="#demo" data-slide-to="0" class="active"></li>
+                        <li data-target="#demo" data-slide-to="1"></li>
+                        <li data-target="#demo" data-slide-to="2"></li>
+                    </ul>
+
+                    {/* <!-- The slideshow --> */}
+                    <div class="carousel-inner">
+                        <div class="carousel-item active"><img src=".\assets\hb2290-img\web-0-800x800.jpg" alt="0"/></div>
+                        <div class="carousel-item"><img src=".\assets\hb2290-img\web-1-800x800.jpg" alt="1"/></div>
+                        <div class="carousel-item"><img src=".\assets\hb2290-img\web-2-800x800.jpg" alt="2"/></div>
+                        <div class="carousel-item"><img src=".\assets\hb2290-img\web-3-800x800.jpg" alt="3"/></div>
+                        <div class="carousel-item"><img src=".\assets\hb2290-img\web-4-800x800.jpg" alt="4"/></div>
+                        <div class="carousel-item"><img src=".\assets\hb2290-img\web-5-800x800.jpg" alt="5"/></div>
+                        <div class="carousel-item"><img src=".\assets\hb2290-img\web-6-800x800.jpg" alt="6"/></div>
+                        <div class="carousel-item"><img src=".\assets\hb2290-img\web-7-800x800.jpg" alt="7"/></div>
+                        <div class="carousel-item"><img src=".\assets\hb2290-img\web-8-800x800.jpg" alt="8"/></div>
+                        <div class="carousel-item"><img src=".\assets\hb2290-img\web-9-800x800.jpg" alt="9"/></div>
+                        <div class="carousel-item"><img src=".\assets\hb2290-img\web-10-800x800.jpg" alt="10"/></div>
+                    </div>
+
+                    {/* <!-- Left and right controls --> */}
+                    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#demo" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                </div>
             </section>
+
         </main>
     )
 }
