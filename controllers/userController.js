@@ -6,30 +6,15 @@ var fbRedirect = process.env.NODE_ENV === 'production'
   : 'http://localhost:3000/loggedin'
 
 module.exports = {
-  create: function(req, res) {
-    db.User
-      .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
-  findOne: function(req, res) {
-    console.log("req query", req.query);
-    db.User
-      .findOne({ active: true })
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json)
-  },
   checkAuth: function(req, res) {
     if(req.isAuthenticated()){
-      res.send(true)
+      db.User.findOne({_id: req.user}).then((user)=>{
+        console.log(user)
+        res.send({status: true, security: user.authorization})
+      })
     } else {
       res.send(false)
     }
-  },
-  logout: function(req, res) {
-    req.logout()
-    req.user = null
-    res.redirect(`${process.env.PUBLIC_URL}/loggedout`)
   },
   googleLogin: passport.authenticate('google'),
   googleCB: passport.authenticate('google', {
@@ -44,5 +29,10 @@ module.exports = {
   }),
   facebookRedirect: function(req, res) {
     res.redirect(`${process.env.PUBLIC_URL}/loggedin`)
+  },
+  logout: function(req, res) {
+    req.logout()
+    req.user = null
+    res.redirect(`${process.env.PUBLIC_URL}/loggedout`)
   }
 }

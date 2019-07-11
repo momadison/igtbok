@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import API from "../../utils/API";
 
 
-export default function withAuth(WrappedComponent) {
+export default function withAuth(WrappedComponent, security) {
   return class extends React.Component {
     constructor(props){
       super(props)
@@ -15,13 +15,13 @@ export default function withAuth(WrappedComponent) {
 
     componentDidMount(){
       API.getAuth().then((res)=>{
-        console.log(res)
+        console.log(res.data)
         this.checkAuthentication(res.data)
       })
     }
 
-    checkAuthentication = (status) => {
-      if(status){
+    checkAuthentication = (data) => {
+      if(data.status && data.security >= security){
         this.setState({
           isUserLoggedIn: true,
           isLoading: false
@@ -40,7 +40,7 @@ export default function withAuth(WrappedComponent) {
       if(this.state.isUserLoggedIn){
         return <WrappedComponent authData={this.state} {...this.props} />
       } else {
-        return <Redirect to={{pathname: "/", state: { from: this.props.location }}} />
+        return <Redirect to={{pathname: "/unauthorized", state: { from: this.props.location }}} />
       }
     }
   }

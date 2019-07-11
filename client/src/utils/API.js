@@ -7,7 +7,7 @@ export default {
     getVenue: function(dbModel) {
         return axios.get("/api/venues", dbModel);
     },
-    getAuth: function() {
+    getAuth: function(security) {
         return axios.get("/api/auth/checkAuth");
     }
 }

@@ -13,4 +13,4 @@ class PrivateRoute extends Component {
   }
 }
 // Wrap export with "withAuth" to protect it, requiring a logged in user to access.
-export default withAuth(PrivateRoute)
+export default withAuth(PrivateRoute, 1)

@@ -36,8 +36,9 @@ function App() {
           <Route exact path="/programs" component={Programs} />
           <Route exact path="/blog" component={Wizard} />
           <Route exact path="/contact" component={Contact} />
-          <Route exact path="/loggedin" component={() => <h1>Logged In Successfully</h1>} />
-          <Route exact path="/loggedout" component={() => <h1>Logged Out Successfully</h1>} />
+          <Route exact path="/loggedin" component={() => <h1 style={{textAlign: 'center'}}>Logged In Successfully</h1>} />
+          <Route exact path="/loggedout" component={() => <h1 style={{textAlign: 'center'}}>Logged Out Successfully</h1>} />
+          <Route exact path="/unauthorized" component={() => <h1 style={{textAlign: 'center'}}>You are not authorized to access this page</h1>} />
           <Route exact path='/private' component={PrivateRoute} />
           {/* <Route component={NoMatch} /> */}
         </Switch>
