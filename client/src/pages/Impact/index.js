@@ -5,6 +5,7 @@ import "./style.css";
 function Impact() {
     return (
         <main>
+            {/* PRES. VOLUNTEER SERVICE AWARD */}
             <section className="container">
                 <h2 className="impact-h2">President's Volunteer Service Award</h2>
                 <img className="pres-img" src="./assets/img/PVSA-banner.jpg" />
@@ -17,6 +18,7 @@ function Impact() {
                 </div>
             </section>
 
+            {/* REP. TAN PARKER */}
             <section className="container">
                 <h2>Endorsement of Rep. Parker</h2>
                 <img className="pres-img" src="./assets/impact-img/Tan-Parker.jpg" />
@@ -28,6 +30,7 @@ function Impact() {
                 </div>
             </section>
 
+            {/* HOUSE BILL 2290 */}
             <section className="container">
                 <h2 className="impact-h2">House Bill 2290</h2>
                 <img className="pres-img" src="./assets/hb2290-img/HB-2290-Group-Photo.jpg" alt="Group Photo" />
@@ -39,7 +42,6 @@ function Impact() {
                     <a className="btn-red btn-fx btn-2" href="https://txlege.texastribune.org/84/bills/HB2290/" target="_blank">HB 2290 Guide</a>
                     <a className="btn-red btn-fx btn-3" href=".\assets\hb2290-img\HB-2290-Letter-Rep-Parker.pdf" target="_blank">Letter from Rep. Parker on HB 2290</a>
                 </div>
-
                 <div className="house-vid">
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/b7N3Rt_EH-c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
@@ -74,7 +76,6 @@ function Impact() {
                         <span class="carousel-control-next-icon"></span></a>
                 </div>
             </section>
-
         </main>
     )
 }
