@@ -36,7 +36,7 @@ function(accessToken, refreshToken, profile, done) {
   let userEmail = profile.emails[0].value
   let username = userEmail.slice(0, userEmail.indexOf('@'))
   let provider = profile.provider
-  db.User.findOneAndUpdate({username: username, provider: 'google'}, {username: username, email: userEmail, authorization: 0, provider: provider}, {upsert: true, useFindAndModify: false}, function(err, result){
+  db.User.findOneAndUpdate({username: username, provider: 'google'}, {username: username, email: userEmail, provider: provider}, {upsert: true, useFindAndModify: false}, function(err, result){
     console.log(result)
     done(null, result._id)
   })
@@ -51,7 +51,7 @@ passport.use(new FacebookStrategy({
     let username = profile.username ? profile.username : profile.name.givenName + profile.name.familyName
     let userEmail = profile.email ? profile.email : ''
     let provider = profile.provider
-    db.User.findOneAndUpdate({username: username, provider: provider}, {username: username, email: userEmail, authorization: 0, provider: provider}, {upsert: true, useFindAndModify: false}, function(err, result){
+    db.User.findOneAndUpdate({username: username, provider: provider}, {username: username, email: userEmail, provider: provider}, {upsert: true, useFindAndModify: false}, function(err, result){
       console.log(result)
       done(null, result._id)
     })

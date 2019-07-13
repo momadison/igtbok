@@ -9,5 +9,8 @@ export default {
     },
     getAuth: function(security) {
         return axios.get("/api/auth/checkAuth");
+    },
+    getAllUsers: function() {
+      return axios.get("/api/users/getAllUsers")
     }
 }
