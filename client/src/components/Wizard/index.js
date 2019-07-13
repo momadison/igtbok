@@ -78,6 +78,10 @@ class Wizard extends Component {
         .catch(err => console.log(err));
         this.setRedirect();
     }
+
+    getVenue = (e) => {
+        e.preventDefault();
+    }
     
     render() {
         return (
@@ -94,7 +98,7 @@ class Wizard extends Component {
                             <h2 className="h3-responsive">Event Portal</h2>
                             <p>Let's plan an event!</p>
                             <button onClick={this.handleBtnClick} type="button" className="btn btn-danger" id="newEvent">New Event</button>
-                            <button type="button" className="btn btn-danger" id="editEvent">Edit Event</button>
+                            <button type="button" onClick={this.getVenue} className="btn btn-danger" id="editEvent">Edit Event</button>
                         </div>
                     </div>
                     
