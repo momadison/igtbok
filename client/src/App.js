@@ -8,6 +8,7 @@ import About from "./pages/About/";
 import Impact from "./pages/Impact/";
 import Blog from "./pages/Blog/";
 import AllBlogs from "./pages/AllBlogs";
+import Contact from "./pages/Contact";
 import FullBlogPost from "./pages/FullBlogPost";
 // import HopePearls from "./pages/HopePearls";
 import Gallery from "./pages/Gallery";

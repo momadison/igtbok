@@ -12,9 +12,12 @@ const userController = require('./controllers/userController')
 // DB Imports
 const db = require('./models')
 
-const PORT = process.env.PORT || 3001;
-const app = express();
 require("dotenv").config()
+
+
+const PORT = process.env.PORT || 3001;
+const URL = process.env.PUBLIC_URL === 'http://localhost:3000' ? 'http://localhost:3001' : 'https://igtbok-org.herokuapp.com'
+const app = express();
 
 
 // Define middleware here
@@ -29,7 +32,7 @@ if (process.env.NODE_ENV === "production") {
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: process.env.NODE_ENV === 'production' ? "https://heroku.com/auth/google/callback" : "http://localhost:3001/api/auth/google/callback",
+  callbackURL: `${URL}/api/auth/google/callback`,
   scope: ['email']
 },
 function(accessToken, refreshToken, profile, done) {
@@ -44,7 +47,7 @@ function(accessToken, refreshToken, profile, done) {
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_CLIENT_ID,
     clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL: process.env.NODE_ENV === 'production' ? "https://heroku.com/auth/facebook/callback" : "http://localhost:3001/api/auth/facebook/callback",
+    callbackURL: `${URL}/api/auth/facebook/callback`,
     profileFields: ['id', 'emails', 'name']
   },
   function(accessToken, refreshToken, profile, done) {

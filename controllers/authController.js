@@ -1,10 +1,6 @@
 const db = require("../models");
 const passport = require('passport');
 
-var fbRedirect = process.env.NODE_ENV === 'production'
-  ? 'https://heroku.com/loggedin'
-  : 'http://localhost:3000/loggedin'
-
 module.exports = {
   checkAuth: function(req, res) {
     if(req.isAuthenticated()){
