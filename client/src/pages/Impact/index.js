@@ -43,33 +43,41 @@ function Impact() {
                     <a className="btn-red btn-fx btn-3" href=".\assets\hb2290-img\HB-2290-Letter-Rep-Parker.pdf" target="_blank">Letter from Rep. Parker on HB 2290</a>
                 </div>
                 <div className="hb-media">
-                    <div id="demo" class="carousel slide" data-ride="carousel">
+                    <div id="impact-carousel" class="carousel impact-carousel slide" data-ride="carousel">
                         {/* <!-- Indicators --> */}
                         <ul class="carousel-indicators">
-                            <li data-target="#demo" data-slide-to="0" class="active"></li>
-                            <li data-target="#demo" data-slide-to="1"></li>
-                            <li data-target="#demo" data-slide-to="2"></li>
+                            <li data-target="#impact-carousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#impact-carousel" data-slide-to="1"></li>
+                            <li data-target="#impact-carousel" data-slide-to="2"></li>
+                            <li data-target="#impact-carousel" data-slide-to="3"></li>
+                            <li data-target="#impact-carousel" data-slide-to="4"></li>
+                            <li data-target="#impact-carousel" data-slide-to="5"></li>
+                            <li data-target="#impact-carousel" data-slide-to="6"></li>
+                            <li data-target="#impact-carousel" data-slide-to="7"></li>
+                            <li data-target="#impact-carousel" data-slide-to="8"></li>
+                            <li data-target="#impact-carousel" data-slide-to="9"></li>
+                            <li data-target="#impact-carousel" data-slide-to="10"></li>
                         </ul>
 
                         {/* <!-- The slideshow --> */}
-                        <div class="carousel-inner">
-                            <div class="carousel-item active"><img src=".\assets\hb2290-img\web-0-800x800.jpg" alt="0"/></div>
-                            <div class="carousel-item"><img src=".\assets\hb2290-img\web-1-800x800.jpg" alt="1"/></div>
-                            <div class="carousel-item"><img src=".\assets\hb2290-img\web-2-800x800.jpg" alt="2"/></div>
-                            <div class="carousel-item"><img src=".\assets\hb2290-img\web-3-800x800.jpg" alt="3"/></div>
-                            <div class="carousel-item"><img src=".\assets\hb2290-img\web-4-800x800.jpg" alt="4"/></div>
-                            <div class="carousel-item"><img src=".\assets\hb2290-img\web-5-800x800.jpg" alt="5"/></div>
-                            <div class="carousel-item"><img src=".\assets\hb2290-img\web-6-800x800.jpg" alt="6"/></div>
-                            <div class="carousel-item"><img src=".\assets\hb2290-img\web-7-800x800.jpg" alt="7"/></div>
-                            <div class="carousel-item"><img src=".\assets\hb2290-img\web-8-800x800.jpg" alt="8"/></div>
-                            <div class="carousel-item"><img src=".\assets\hb2290-img\web-9-800x800.jpg" alt="9"/></div>
-                            <div class="carousel-item"><img src=".\assets\hb2290-img\web-10-800x800.jpg" alt="10"/></div>
+                        <div class="carousel-inner impact-carousel-inner">
+                            <div class="carousel-item impact-carousel-item active"><img src=".\assets\hb2290-img\web-0-800x800.jpg" alt="0"/></div>
+                            <div class="carousel-item impact-carousel-item"><img src=".\assets\hb2290-img\web-1-800x800.jpg" alt="1"/></div>
+                            <div class="carousel-item impact-carousel-item"><img src=".\assets\hb2290-img\web-2-800x800.jpg" alt="2"/></div>
+                            <div class="carousel-item impact-carousel-item"><img src=".\assets\hb2290-img\web-3-800x800.jpg" alt="3"/></div>
+                            <div class="carousel-item impact-carousel-item"><img src=".\assets\hb2290-img\web-4-800x800.jpg" alt="4"/></div>
+                            <div class="carousel-item impact-carousel-item"><img src=".\assets\hb2290-img\web-5-800x800.jpg" alt="5"/></div>
+                            <div class="carousel-item impact-carousel-item"><img src=".\assets\hb2290-img\web-6-800x800.jpg" alt="6"/></div>
+                            <div class="carousel-item impact-carousel-item"><img src=".\assets\hb2290-img\web-7-800x800.jpg" alt="7"/></div>
+                            <div class="carousel-item impact-carousel-item"><img src=".\assets\hb2290-img\web-8-800x800.jpg" alt="8"/></div>
+                            <div class="carousel-item impact-carousel-item"><img src=".\assets\hb2290-img\web-9-800x800.jpg" alt="9"/></div>
+                            <div class="carousel-item impact-carousel-item"><img src=".\assets\hb2290-img\web-10-800x800.jpg" alt="10"/></div>
                         </div>
 
                         {/* <!-- Left and right controls --> */}
-                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                        <a class="carousel-control-prev" href="#impact-carousel" data-slide="prev">
                             <span class="carousel-control-prev-icon"></span></a>
-                        <a class="carousel-control-next" href="#demo" data-slide="next">
+                        <a class="carousel-control-next" href="#impact-carousel" data-slide="next">
                             <span class="carousel-control-next-icon"></span></a>
                     </div>
 
