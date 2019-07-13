@@ -57,35 +57,34 @@ function Main() {
             <div className="row bg-dark little-breathing-room">
                 <div className="col">
                     <div className="row">
-                        <div className="col-md-4 text-center">
+                        <div className="col-md-4 mb-4 text-center">
                             <i className="fas fa-users fa-5x main-icons"></i>
                             <h3 className="main-icon-title">36 Million</h3>
                             <p className="main-icon-subhead">Estimated people who are slaves across the world</p>
                         </div>
-                        <div className="col-md-4 text-center">
+                        <div className="col-md-4 mb-4 text-center">
                             <i className="fas fa-female fa-5x main-icons"></i>
                             <h3 className="main-icon-title">55%</h3>
                             <p className="main-icon-subhead">Are women and girls</p>
                         </div>
-                        <div className="col-md-4 text-center">
+                        <div className="col-md-4 mb-4 text-center">
                             <i className="fas fa-male fa-5x main-icons"></i>
                             <h3 className="main-icon-title">45%</h3>
                             <p className="main-icon-subhead">Are men and boys</p>
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-md-4 text-center">
+                        <div className="col-md-4 mb-4 text-center">
                             <i className="fas fa-child fa-5x main-icons"></i>
                             <h3 className="main-icon-title">26%</h3>
                             <p className="main-icon-subhead">Are children</p>
                         </div>
-                        <div className="col-md-4 text-center">
+                        <div className="col-md-4 mb-4 text-center">
                             <i className="fas fa-money-bill-alt fa-5x main-icons"></i>
                             <h3 className="main-icon-title">$90</h3>
                             <p className="main-icon-subhead">Average cost of slave</p>
                         </div>
-                        <div className="col-md-4 text-center">
-
+                        <div className="col-md-4 mb-4 text-center">
                             <i class="fas fa-dollar-sign fa-5x main-icons"></i>
                             <h3 className="main-icon-title">$150 billion dollars</h3>
                             <p className="main-icon-subhead">How much money slavery generates</p>

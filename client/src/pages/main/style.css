@@ -60,7 +60,7 @@
 }
 
 .main-card {
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .tonya-tint {
@@ -69,10 +69,6 @@
 }
 
 .tonyaMain {
-    /* background-size: cover;
-    background-position: center;
-    overflow: auto;
-    margin: auto; */
     background-size: cover;
     background-position: top;
     background-image: url("/assets/img/TonyaStaffordCol.jpg");
@@ -95,7 +91,8 @@
     font-size: 2em;
 }
  .little-breathing-room {
-     padding: 3rem 0;
+    padding: 4rem 0;
+    margin-top: 2em !important;
  }
 .main-icons {
     color: #fff;
@@ -129,4 +126,8 @@
     /* text-align: center; */
     font-size: 1em;
     font-weight: 500;
+}
+
+.row {
+    margin: 0 -15px 1em;
 }
