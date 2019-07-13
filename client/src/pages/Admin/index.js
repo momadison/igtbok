@@ -14,7 +14,6 @@ class Admin extends Component {
   }
 
   componentDidMount(){
-    console.log('testing component')
     API.getAllUsers().then((res)=>{
       console.log(res.data.users)
       this.setState({
@@ -36,6 +35,14 @@ class Admin extends Component {
       });
   };
 
+  handleSave = (event, i) => {
+    console.log(this.state.userData[i])
+    API.updateUser(this.state.userData[i]).then(function(res){
+      console.log('update user has returned.')
+      console.log(res.data)
+    })
+  }
+
   render(){
     if(this.state.loading){return (<h1 style={{alignText: 'center'}}>Loading...</h1>)}
 
@@ -44,23 +51,25 @@ class Admin extends Component {
         <div className="row">
           <div className="col-md-6">
             <h2>Users</h2>
-            <table class="table">
+            <table className="table">
               <thead>
                 <tr>
                   <th scope="col">Username</th>
                   <th scope="col">Email Address</th>
                   <th scope="col">Provider</th>
                   <th scope="col">Authorization</th>
+                  <th />
                 </tr>
               </thead>
               <tbody>
                 {this.state.userData.map((user, i)=>{
                   return(
-                    <tr>
+                    <tr key={i}>
                       <td>{user.username}</td>
                       <td>{user.email}</td>
                       <td>{user.provider}</td>
                       <td><input type='number' interval='1' value={user.authorization} name='authorization' onChange={(e) => this.handleInputChange(e, i)}/></td>
+                      <td><button className='btn btn-primary' onClick={(e) => this.handleSave(e, i)}>Save</button></td>
                     </tr>)
                 })}
               </tbody>
@@ -72,4 +81,9 @@ class Admin extends Component {
   }
 }
 
+<<<<<<< HEAD
 export default withAuth(Admin, 0);
+=======
+export default Admin;
+// export default withAuth(Admin, 2);
+>>>>>>> 732d85f377b5d4795a4671d66e2d7e7600116f55

@@ -1,0 +1,41 @@
+
+
+.footer-img-breathing-room {
+	margin-bottom: 1rem;
+}
+.footer-breathing-room {
+	margin-bottom: 15px;
+}
+.nav-item {
+    padding: 0 3px;
+}
+.footer-link-normal {
+	color: black;
+}
+.noDeco {
+	list-style: none;
+	color: #fff;
+}
+.footer-link-white {
+	color: white !important;
+}
+.footer-title {
+	/* padding-top: .5rem; */
+    /* color: white; */
+    font-family: 'Roboto Condensed', sans-serif;
+    /* text-align: center; */
+    font-size: 1em;
+    font-weight: 800;
+}
+.footer-hotline {
+    font-family: 'Roboto Condensed', sans-serif;
+	font-size: 6em;
+    font-weight: 800;
+}
+.footer-runningCopy {
+    /* color: white; */
+    font-family: 'Lato', sans-serif;
+    /* text-align: center; */
+    font-size: 1em;
+    font-weight: 500;
+}

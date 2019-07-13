@@ -227,7 +227,6 @@ class Donate extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    {/* turn this on once components are built */}
 
                                     {this.state.donatePaymentType == "" ? "" : this.state.donatePaymentType == "card" ?
                                         < CardPayment
@@ -245,14 +244,8 @@ class Donate extends Component {
                                         />}
                                     {this.state.donateRecurring == "recurring" ? < Recurring onChange={this.DatePickerOnChange} value={this.state.donateRecurringDate} /> : ""}
 
-                                    {/* {this.state.donateDonationValue === "other" ? <DonateForm handleInputChange={this.handleInputChange} value={this.state.donateDonationValueCustom} /> : ""} */}
-
                                     <button type="submit" className="btn btn-primary" id="donateSubmit">Submit</button>
                                 </form>
-                                {/* in the on submit function run this function to determine value */}
-                                {/* DoTheyKnowTheirEmail();
-                                ActualDonationValue(); */}
-                                {/* call the 'ActualDonationValue' function on submit to determine what the actual value is */}
                             </div>
                         </div>
                     </div>

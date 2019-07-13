@@ -51,7 +51,7 @@ passport.use(new FacebookStrategy({
     let username = profile.username ? profile.username : profile.name.givenName + profile.name.familyName
     let userEmail = profile.email ? profile.email : ''
     let provider = profile.provider
-    db.User.findOneAndUpdate({username: username, provider: provider}, {username: username, email: userEmail, provider: provider}, {upsert: true, useFindAndModify: false}, function(err, result){
+    db.User.findOneAndUpdate({username: username, provider: provider}, {username: username, email: userEmail, provider: provider}, {upsert: true, useFindAndModify: false, new: true}, function(err, result){
       console.log(result)
       done(null, result._id)
     })

@@ -4,7 +4,7 @@
     height: 400px;
     overflow: auto;
     margin: auto;
-    background-image: url("/assets/img/main-donate.jpg");
+    background-image: url("/assets/img/main-help2.jpg");
     display: flex;
     align-items: center;
     justify-content: center;
@@ -44,7 +44,7 @@
     font-family: 'Roboto Condensed', sans-serif;
     text-align: center;
     font-size: 5em;
-    text-shadow: 0px 0px 15px #000000;
+    text-shadow: 0px 0px 25px #000000;
     font-weight: 800;
 }
 #subheadHeader {
@@ -92,12 +92,39 @@
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 2em;
 }
-/* .btn {
-    margin: 0;
-    background-color: transparent;
+ .little-breathing-room {
+     padding: 3rem 0;
+ }
+.main-icons {
+    color: #fff;
+}
+.main-icon-title {
+    padding-top: .5rem;
+    color: white;
+    font-family: 'Roboto Condensed', sans-serif;
     text-align: center;
-} */
-
-/* .darkBG {
-    background-color: #3a3e43;
-} */
+    font-size: 3em;
+    font-weight: 800;
+}
+.main-icon-subhead {
+    color: white;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+.main-card-title {
+    padding-top: .5rem;
+    color: white;
+    font-family: 'Roboto Condensed', sans-serif;
+    /* text-align: center; */
+    font-size: 2em;
+    font-weight: 800;
+}
+.main-card-runningCopy {
+    color: white;
+    font-family: 'Lato', sans-serif;
+    /* text-align: center; */
+    font-size: 1em;
+    font-weight: 500;
+}
