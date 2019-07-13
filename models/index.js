@@ -1,5 +1,7 @@
 module.exports = {
     Venues: require("./venues"),
-    NewBlog: require("./blog")
+    Tables: require("./tables"),
+    NewBlog: require("./blog"),
+    User: require("./user")
   };
-  
+    
