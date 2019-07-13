@@ -15,5 +15,11 @@ export default {
     },
     updateTables: function(dbModel) {
         return axios.put("/api/tables", dbModel);
+    },
+    getAuth: function(security) {
+        return axios.get("/api/auth/checkAuth");
+    },
+    getAllUsers: function() {
+      return axios.get("/api/users/getAllUsers")
     }
 }
