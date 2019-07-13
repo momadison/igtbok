@@ -1,5 +1,7 @@
 import React from "react";
 import "./style.css";
+import Blog from "../../components/MainBlogLoad/index";
+
 
 function Main() {
     return (
@@ -7,7 +9,7 @@ function Main() {
             <div className="row">
                 <div className="col-md-6 text-center main-cat1">
                     <h1 className="main-header animated fadeInUp" id="mainHeader">Need Help?</h1>
-                    <h5 className="animated fadeInUp" id="subheadHeader">We are here to help you if you are a vicitm of human trafficing.</h5>
+                    <h5 className="animated fadeInUp" id="subheadHeader">We are here to help you if you are a vicitm of human trafficking.</h5>
                     <button className="btn btn-lg btn-danger">Get Help Now</button>
                 </div>
 
@@ -52,40 +54,77 @@ function Main() {
                     <button className="btn btn-lg btn-danger">Learn More</button>
                 </div>
             </div>
-            <div className="row bg-dark">
+            <div className="row bg-dark little-breathing-room">
                 <div className="col">
                     <div className="row">
                         <div className="col-md-4 text-center">
-                            <i className="fas fa-users fa-5x"></i>
-                            <h3>36 Million</h3>
-                            <p>Estimated people who are slaves across the world</p>
+                            <i className="fas fa-users fa-5x main-icons"></i>
+                            <h3 className="main-icon-title">36 Million</h3>
+                            <p className="main-icon-subhead">Estimated people who are slaves across the world</p>
                         </div>
                         <div className="col-md-4 text-center">
-                            <i className="fas fa-female fa-5x"></i>
-                            <h3>55%</h3>
-                            <p>Are women and girls</p>
+                            <i className="fas fa-female fa-5x main-icons"></i>
+                            <h3 className="main-icon-title">55%</h3>
+                            <p className="main-icon-subhead">Are women and girls</p>
                         </div>
                         <div className="col-md-4 text-center">
-                            <i className="fas fa-male fa-5x"></i>
-                            <h3>45%</h3>
-                            <p>Are men and boys</p>
+                            <i className="fas fa-male fa-5x main-icons"></i>
+                            <h3 className="main-icon-title">45%</h3>
+                            <p className="main-icon-subhead">Are men and boys</p>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-4 text-center">
-                            <i className="fas fa-child fa-5x"></i>
-                            <h3>26%</h3>
-                            <p>Are children</p>
+                            <i className="fas fa-child fa-5x main-icons"></i>
+                            <h3 className="main-icon-title">26%</h3>
+                            <p className="main-icon-subhead">Are children</p>
                         </div>
                         <div className="col-md-4 text-center">
-                            <i className="fas fa-money-bill-alt fa-5x"></i>
-                            <h3>$90</h3>
-                            <p>Average cost of slave</p>
+                            <i className="fas fa-money-bill-alt fa-5x main-icons"></i>
+                            <h3 className="main-icon-title">$90</h3>
+                            <p className="main-icon-subhead">Average cost of slave</p>
                         </div>
                         <div className="col-md-4 text-center">
+
+                            <i class="fas fa-dollar-sign fa-5x main-icons"></i>
+                            <h3 className="main-icon-title">$150 billion dollars</h3>
+                            <p className="main-icon-subhead">How much money slavery generates</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <Blog />
+
+
+            <div className="row">
+                <div className="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            Latest post from Twitter
+                        </div>
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                <p>Twitter post content: picking up the text as well as any images posted (does Twitter have image hosting?) Link to twitter page.</p>
+                                <footer class="blockquote-footer">Here's where it shows when it's posted</footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            Latest post from Instagram
+                        </div>
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                <p>Instagram post content: picking up the text as well as a link to the original post with maybe a thumbnail.</p>
+                                <footer class="blockquote-footer">Here's where it shows when it's posted</footer>
+                            </blockquote>
                             <i className="fas fa-dollar-sign fa-5x"></i>
                             <h3>$150 billion dollars</h3>
                             <p>How much money slavery generates</p>
+
                         </div>
                     </div>
                 </div>
