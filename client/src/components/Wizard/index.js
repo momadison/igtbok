@@ -5,12 +5,6 @@ import { Redirect } from "react-router"
 import API from "../../utils/API.js"
 import "./Wizard.css"
 
-let stageType = ["podium", "stage"]
-let stageShape = ["square", "circle"]
-let stageLocation = ["top-middle", "top-left", "top-right",
-                     "right", "bottom-right", "bottom-middle", 
-                     "bottom-left", "left"]
-
 class Wizard extends Component {
     state = {
         redirect: false,
@@ -18,20 +12,13 @@ class Wizard extends Component {
         venueName: "",
         venueWidth: "",
         venueLength: "",
-        stageType: "",
-        stageShape: "",
         stageWidth: 0,
         stageLength: 0,
-        stageLocation: "",
         tableCount: 0,
-        tableWidth: 0,
-        tableLength: 0,
-        seatCount: 0
+        tableWidth: 6,
+        seatCount: 0,
+        venueDate: Date.now()
     };
-
-    componentDidMount() {
-        console.log(this.state.tables);
-    }
     
     handleBtnClick = (event) => {
         switch (event.target.id) {
@@ -41,8 +28,6 @@ class Wizard extends Component {
                 })
                 break;
             case "venueNext":
-                console.log("here we go");
-                console.log(event.target)
                 break;
             default:
                 console.log(event.target.id);
@@ -51,8 +36,6 @@ class Wizard extends Component {
 
     handleInputChange = event => {
         const { name, value } = event.target;
-        console.log("Name: ", name);
-        console.log("Value: ", value);
         this.setState({
           [name]: value
         });
@@ -83,14 +66,11 @@ class Wizard extends Component {
             venueName: this.state.venueName,
             venueWidth: this.state.venueWidth,
             venueLength: this.state.venueLength,
-            stageType: this.state.stageType,
-            stageShape: this.state.stageShape,
+            venueDate: this.state.venueDate,
             stageWidth: this.state.stageWidth,
             stageLength: this.state.stageLength,
-            stageLocation: this.state.stageLocation,
             tableCount: this.state.tableCount,
             tableWidth: this.state.tableWidth,
-            tableLength: this.state.tableLength,
             seatCount: this.state.seatCount,
             active: true
         })
@@ -98,23 +78,27 @@ class Wizard extends Component {
         .catch(err => console.log(err));
         this.setRedirect();
     }
+
+    getVenue = (e) => {
+        e.preventDefault();
+    }
     
     render() {
         return (
             <>
-            <div id="carouselExampleSlidesOnly" className="carousel slide" data-ride="carousel">
+            <div id="carousel" className="carousel slide">
                 <div className="carousel-inner">
 
                     {/* OPENING SLIDE */}
                     <div className={this.state.activeID === 0 ?
                     "carousel-item active" :
                     "carousel-item"}>
-                        <img src="http://getwallpapers.com/wallpaper/full/f/2/8/672676.jpg" class="d-block w-100" alt="..." />
+                        <img src="http://getwallpapers.com/wallpaper/full/f/2/8/672676.jpg" className="d-block w-100" alt="..." />
                         <div className="carousel-caption">
                             <h2 className="h3-responsive">Event Portal</h2>
                             <p>Let's plan an event!</p>
                             <button onClick={this.handleBtnClick} type="button" className="btn btn-danger" id="newEvent">New Event</button>
-                            <button type="button" className="btn btn-danger" id="editEvent">Edit Event</button>
+                            <button type="button" onClick={this.getVenue} className="btn btn-danger" id="editEvent">Edit Event</button>
                         </div>
                     </div>
                     
@@ -122,84 +106,78 @@ class Wizard extends Component {
                     <div className={this.state.activeID === 1 ?
                     "carousel-item active" :
                     "carousel-item"}>
-                        <img src="https://backgroundcheckall.com/wp-content/uploads/2018/10/simple-hd-background-7.jpg" class="d-block w-100" alt="..." />
+                        <img src="https://backgroundcheckall.com/wp-content/uploads/2018/10/simple-hd-background-7.jpg" className="d-block w-100" alt="..." />
                         <div className="carousel-caption inputCaption">
                             <h2 className="h3-responsive">Let's get started on your new event</h2>
                             <p>Lets setup your venue</p>
                             <form>
-                                <Input
-                                    value={this.state.venueName}
-                                    id="venueName"
-                                    onChange={this.handleInputChange} 
-                                    placeholder="Venue Name"
-                                    name="venueName"
-                                    small="please enter your venue name"/>
-                                <Input
-                                    value={this.state.venueWidth} 
-                                    type="number"
-                                    id="venueWidth"
-                                    name="venueWidth"
-                                    onChange={this.handleInputChange}
-                                    placeholder="Width"
-                                    small="please enter the width of your venue in feet"/>
-                                <Input
-                                    value={this.state.venueLength}
-                                    id="venueLength"
-                                    name="venueLength"
-                                    type="number"
-                                    onChange={this.handleInputChange} 
-                                    placeholder="Length"
-                                    small="please enter the length of your venue in feet"/>
-                                <FormBtn
-                                    disabled={!(this.state.venueName && this.state.venueWidth && this.state.venueLength)}
-                                    onClick={this.handleFormSubmit}
-                                    className="btn btn-danger venueNext"
-                                >
-                                Next
-                                </FormBtn>
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <Input
+                                        id="venueName"
+                                        onChange={this.handleInputChange} 
+                                        placeholder="Venue Name"
+                                        name="venueName"
+                                        small="please enter your venue name"/>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <Input
+                                        id="venueDate"
+                                        name="venueDate"
+                                        type="date"
+                                        onChange={this.handleInputChange}
+                                        small="date of venue"></Input>
+                                
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-md-4">
+                                        <Input
+                                        value={this.state.venueLength}
+                                        id="venueLength"
+                                        name="venueLength"
+                                        type="number"
+                                        onChange={this.handleInputChange} 
+                                        placeholder="Length"
+                                        small="please enter the length of your venue in feet"/>
+                                    </div>
+                                    <div className="col-md-4">
+                                        <Input
+                                        value={this.state.venueWidth} 
+                                        type="number"
+                                        id="venueWidth"
+                                        name="venueWidth"
+                                        onChange={this.handleInputChange}
+                                        placeholder="Width"
+                                        small="please enter the width of your venue in feet"/>
+                                    </div>
+                                    <div className="col-md-4">
+                                        <FormBtn
+                                        disabled={!(this.state.venueName && this.state.venueWidth && this.state.venueLength)}
+                                        onClick={this.handleFormSubmit}
+                                        className="btn btn-danger venueNext" >
+                                            Next
+                                        </FormBtn>
+                                    </div>
+                                </div>
+                                
+                                
                             </form>
                         </div>
                     </div>
                     
-                    {/* SETTING UP STAGE */}
+                    {/* SETTING UP STAGE AND TABLES */}
                     <div className={this.state.activeID === 2 ?
                     "carousel-item active" :
                     "carousel-item"}>
                         <img src="http://sf.co.ua/15/10/wallpaper-d925f.jpg" className="d-block w-100" alt="..." />
                         <div className="carousel-caption">
-                            <h2 className="h3-responsive">Stage</h2>
-                            <p>Please provide more data on the stage</p>
+                            <h2 className="h3-responsive">Great Job!</h2>
+                            <p>Lets setup your stage and tables</p>
                             <form>
-                            <div className="row">
-                                <div className="col-md-4">
-                                
-                                    <Select
-                                        id="stageType"
-                                        name="stageType"
-                                        options={stageType}
-                                        onChange={this.handleInputChange}
-                                        small="select stage type" />
-                                </div>
-                                <div className="col-md-4">
-                                    <Select
-                                        id="stageShape"
-                                        name="stageShape"
-                                        options={stageShape}
-                                        onChange={this.handleInputChange}
-                                        small="select stage shape" />
-                                </div>
-                                <div className="col-md-4">
-                                    <Select
-                                        id="stageLocation"
-                                        name="stageLocation"
-                                        options={stageLocation}
-                                        onChange={this.handleInputChange}
-                                        small="select stage location" />
-                                </div>
-                            </div>
                             <div className="row" style={{marginTop: "10px"}}>
                                 <div className="col-md-6">
-                                <Input
+                                    <Input
                                     id="stageWidth"
                                     name="stageWidth"
                                     type="number"
@@ -208,67 +186,47 @@ class Wizard extends Component {
                                     small="please enter the width of your stage in feet"/>
                                 </div>
                                 <div className="col-md-6">
-                                <Input
+                                    <Input
                                     id="stageLength"
                                     name="stageLength"
                                     type="number"
                                     onChange={this.handleInputChange}
                                     placeholder="Length of Stage"
                                     small="please enter the length of your stage in feet" />
-
-                                <FormBtn
-                                    disabled={!(this.state.stageLength && this.state.stageWidth && this.state.stageType && this.state.stageLocation && this.state.stageShape)}
-                                    onClick={this.handleFormSubmit}
-                                    className="btn btn-danger stageNext"
-                                >
-                                Next
-                                </FormBtn>
-                                {this.renderRedirect()}
                                 </div>
                             </div>
-                            </form>
-                        </div>
-                    </div>
-                    
-                    {/* SETTING UP TABLES */}
-                    <div className={this.state.activeID === 3 ?
-                    "carousel-item active" :
-                    "carousel-item"}>
-                        <img src="https://us.123rf.com/450wm/tomertu/tomertu1506/tomertu150600340/41325485-glitter-vintage-lights-background-light-silver-purple-blue-gold-and-black-defocused-.jpg?ver=6" class="d-block w-100" alt="..." />
-                        <div className="carousel-caption inputCaption">
-                            <h2 className="h3-responsive">Table Time</h2>
-                            <p> Lets setup your table count and size.</p>
-                        <form>
-                                <Input
+                            <div className="row">
+                                <div className="col-md-4">
+                                    <Input
+                                    type="number"
                                     id="tableCount"
+                                    name="tableCount"
                                     onChange={this.handleInputChange} 
                                     placeholder="Table Count"
-                                    name="tableCount"
-                                    type="number"
                                     small="how many tables will you have at this venue"/>
-                                <Input
-                                    type="number"
-                                    id="tableWidth"
-                                    name="tableWidth"
-                                    onChange={this.handleInputChange}
-                                    placeholder="Table Length"
-                                    small="please enter the length of your table in feet"/>
-                                <Input
+                                </div>
+                                <div className="col-md-4">
+                                    <Input
                                     type="number"
                                     id="seatCount"
                                     name="seatCount"
                                     onChange={this.handleInputChange}
                                     placeholder="Seats per Table"
                                     small="how many seats per table will you have"/>
-                                <FormBtn
-                                    disabled={!(this.state.tableCount && this.state.tableWidth)}
+                                </div>
+                                <div className="col-md-4">
+                                    <FormBtn
+                                    disabled={!(this.state.stageLength && this.state.stageWidth)}
                                     onClick={this.handleSandboxTransition}
-                                    className="btn btn-danger sandboxTime"
+                                    className="btn btn-danger stageNext"
                                 >
                                 Next
-                                </FormBtn>
-                            </form>
+                                    </FormBtn>
+                                </div>
                             </div>
+                            {this.renderRedirect()}
+                            </form>
+                        </div>
                     </div>
 
                 </div>

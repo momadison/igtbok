@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Wizard from "../Wizard"
 
 // Import function to require a user to be logged in to access this component
 import withAuth from './withAuth'
@@ -7,7 +8,7 @@ class PrivateRoute extends Component {
   render(){
     return (
       <div>
-        <h1>This is a private route</h1>
+        <Wizard />
       </div>
     )
   }

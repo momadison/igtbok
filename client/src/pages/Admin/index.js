@@ -81,5 +81,4 @@ class Admin extends Component {
   }
 }
 
-export default Admin;
-// export default withAuth(Admin, 2);
+export default withAuth(Admin, 0);

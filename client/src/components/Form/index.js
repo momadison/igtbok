@@ -14,7 +14,7 @@ export function Input(props) {
 export function TextArea(props) {
   return (
     <div className="form-group">
-      <textarea className="form-control" rows="20" {...props} />
+      <textarea className="form-control" rows="5" {...props} />
     </div>
   );
 }
@@ -23,10 +23,10 @@ export function Select(props) {
     return (
       <>
       <small className="form-text">{props.small}</small>
-    <select class="form-control" id={props.id} {...props}>
-        <option value="" selected disabled hidden>Choose here</option>
+    <select className="form-control" id={props.id} {...props}>
+        <option value="default value" disabled hidden>Choose here</option>
         {props.options.map( (value) => {
-            return <option>{value}</option>
+            return <option key={value}>{value}</option>
         })}
     </select>
     </>
@@ -39,6 +39,12 @@ export function FormBtn(props) {
       {props.children}
     </button>
   );
+}
+
+export function FormCheck(props) {
+  return (
+    <div></div>
+  )
 }
 
 

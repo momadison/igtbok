@@ -1,10 +1,13 @@
 import React from "react";
+import { Redirect } from "react-router"
 import { Component } from "react"
 import "./Sandbox.css";
 import API from "../../utils/API";
+import FUNC from "../../utils/FUNC"
+import NavSB from "../NavSB";
+import { Input, FormBtn } from "../Form";
 
-let tableArray = [{id:"test",x:"400",y:"400", comp: "FA"}];
-
+let seatTestArray = [];
 let activeID = "";
 
 class Sandbox extends Component {
@@ -17,156 +20,50 @@ class Sandbox extends Component {
     state = {
         boxSize: {},
         venue: {},
-        tables: tableArray,
+        tables: [],
         stageWidth: 0,
         stageLength: 0,
         tableSize: 0,
+        seatSize: 0,
         activeID: "",
         venueWidth: 0,
         venueHeight: 0,
         windowSize: window.innerWidth,
-        stageX: 400,
-        stageY: 400
+        stageX: 0,
+        stageY: 0,
+        dimension: {},
+        spacing: 1,
+        stageMargin: 1,
+        msg: "Layout Setup"
     };
 
     componentDidMount() {
-        
         this.getVenue();
     }
 
-    placeBox = () => {
-        //place the bounding box to hold the venue seating arrangement.
-        let width = parseInt(this.state.venue.venueWidth);
-        let height = parseInt(this.state.venue.venueLength);
-        let ratio = (width > height) ? (height/width) : (width/height);
-        console.log("box ratio: ", ratio);
-        //increase the size of the box to match the dimensions of the venue
-        let sW = parseInt(window.innerWidth) - 200;
-        let sH = sW * ratio;
-        this.setState({
-            venueWidth: sW,
-            venueHeight: sH 
-        })
-        this.setStageAndTables();
+    componentWillMount() {
+        window.addEventListener("resize", this.handleResize)
     }
 
-    rotateStage = () => {
-        let width = this.state.stageLength;
-        let length = this.state.stageWidth;
-        this.setState ({
-                    stageWidth: width,
-                    stageLength: length
-                })
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.handleResize)
     }
 
-    
+    handleResize = () => {
+        this.setState(FUNC.placeBox(this.state.venue.venueWidth, this.state.venue.venueLength, window.innerWidth));
+        FUNC.setStage(this)
+    }
 
-    setStageAndTables = () => {
-        //set variables
-        let tableArray = [];
-        let placeX = "";
-        let placeY = "";
-        let table = {};
-        let stageX = 0;
-        let stageY = 0;
-
-        //get reference of bounding box
-        const node = this.venueRef.current;
-        //get bounding box dimensions
-        const dimension = node.getBoundingClientRect();
-        //check if venue width or length is bigger, flip and display in window based on window size
-        const bigger = (this.state.venue.venueWidth > this.state.venue.venueLength) ? 
-        (this.state.venue.venueWidth) : (this.state.venue.venueLength)
-        //scale tables and stage based on venue (bounding box) scale
-        const stageRatio = this.state.venue.stageLength / this.state.venue.stageWidth;
-        let tableSize = Math.floor((this.state.venue.tableWidth / bigger) * dimension.width);
-        let stageWidth = Math.floor((this.state.venue.stageWidth / bigger) * dimension.width);
-        let stageLength = Math.floor(stageWidth * stageRatio);
-        //set stage
+    setRedirect = () => {
         this.setState({
-            stageWidth: stageWidth,
-            stageLength: stageLength
+            redirect: true
         })
-        const noder = this.stageRef.current;
-        const stageStuff = this.stageRef.current.getBoundingClientRect();
-        console.log("stage stuff", stageStuff);
-        console.log("stageWidth", stageWidth);
-        console.log("stageLength", stageLength);
-        //check location of stage and place in venue
-        switch (this.state.venue.stageLocation) {
-            case "top-middle":
-                stageX = dimension.width/2;
-                stageY = dimension.top;
-                break;
-            case "top-left":
-                stageX = dimension.left + 10;
-                stageY = dimension.top + 10;
-                break;
-            case "top-right":
-                stageX = dimension.right - (stageWidth + 10);
-                stageY = dimension.top + 10;
-                break;
-            case "right":
-                this.rotateStage();
-                stageX = dimension.right - (stageLength + 10);
-                stageY = dimension.height/2 + stageLength/2
-                break;
-            case "bottom-right":
-                this.rotateStage();
-                stageX = dimension.right - (stageLength + 10);
-                stageY = dimension.bottom - (stageWidth + 10);
-                break;
-            case "bottom-middle":
-                stageX = dimension.width/2 + stageWidth;
-                stageY = dimension.bottom - (stageLength + 10);
-                break;
-            case "bottom-left":
-                stageX = dimension.left + 10;
-                stageY = dimension.bottom - (stageLength + 10);
-                break;
-            case "left":
-                this.rotateStage();
-                stageX = dimension.left + 10;
-                stageY = dimension.height/2 + stageWidth;
-                break;
-        }
-        //get table count and set an array with each table in it spaced out by table size
-        for (var i=0; i < this.state.venue.tableCount; i++) {
-            if (i === 0) {
-                //set the position of the first table
-                table = {
-                    id: "table"+[i],
-                    x: dimension.left + tableSize,
-                    y: dimension.top + tableSize
-                }
-            } else  {
-                //if the table is at the end of the venue move it down
-                let xCoord = (placeX <= dimension.right - (tableSize*5)) ? placeX + tableSize * 2 : dimension.left + (tableSize * 2);
-                let yCoord = (placeX <= dimension.right - (tableSize*5)) ? placeY : placeY + (tableSize);
+    }
 
-                //if the table lands on the stage move it off of the stage
-                if ((xCoord > stageStuff.left && xCoord < stageStuff.right) && (yCoord > stageStuff.top && yCoord < stageStuff.bottom)) {
-                    xCoord = stageStuff.right + (tableSize * 2);
-                }
-                //create table
-                table = {
-                    id: "table" + [i],
-                    x: xCoord,
-                    y: yCoord
-                }
-            }
-            //set table location and push into array
-            placeX = table.x;
-            placeY = table.y;
-            tableArray.push(table);
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            return <Redirect to='../resources' />
         }
-        //set state
-        this.setState({ 
-            tableSize: tableSize,
-            tables: tableArray,
-            stageX: stageX,
-            stageY: stageY
-        })
     }
 
     getVenue = () => {
@@ -176,107 +73,319 @@ class Sandbox extends Component {
                     venue: res.data
                 })
             )
-            .then(res => (
-                this.placeBox()
-            ))}
-    
-    handleBtnClick = (event) => {
-        switch (event.target.id) {
-            default:
-                console.log(event.target);
-                console.log(this.state.venue);
-        }
+            .then( () => 
+                //place Boundary
+                this.setState(FUNC.placeBox(this.state.venue.venueWidth, this.state.venue.venueLength, window.innerWidth))
+            )
+            .then( () => 
+                FUNC.setStage(this)
+            )
     }
 
+    setTables= () => {
+        //SET TABLES
+        //get table count and set an array with each table in it spaced out by table size
+        const stageBoundary = this.stageRef.current.getBoundingClientRect();
+        let xCoord = 0;
+        let yCoord = 0;
+        let dimension = this.state.dimension;
+        let tableSize = this.state.tableSize;
+        let placeX = 0;
+        let placeY = 0;
+        let table = {};
+        let seat = {};
+        let tableArray=[];
+        
+        for (var i=0; i < this.state.venue.tableCount; i++) {
+            if (i === 0) {
+                //set the position of the first table
+                xCoord = dimension.left + tableSize;
+                yCoord = dimension.top + tableSize;
+            } else  {
+                   
+                //if the table is below the venue
+                if (yCoord >= (dimension.bottom - (tableSize*2))) {
+                    this.setState({
+                        msg: "Not enough Space"
+                    });
+                } else {
+                    //if the table is at the end of the venue move it down
+                    xCoord = ((placeX+(tableSize*2.5)*(this.state.spacing)) <= dimension.right - (tableSize)) ? placeX + ((tableSize*2)*(this.state.spacing)) : dimension.left + (tableSize);
+                    yCoord = ((placeX+(tableSize*2.5)*(this.state.spacing)) <= dimension.right - (tableSize)) ? placeY : placeY + (tableSize*2*this.state.spacing); 
+                    this.setState({
+                        msg: "Layout Setup"
+                    })
+                }
+                //if the table lands on the stage move it off of the stage
+                if (xCoord > (Math.floor(stageBoundary.left) - (Math.floor((tableSize+(this.state.seatSize*2)) * this.state.stageMargin)))  &&  
+                xCoord < (Math.floor(stageBoundary.right) + (Math.floor((tableSize+(this.state.seatSize*2)) * this.state.stageMargin))) &&
+                (yCoord < (stageBoundary.bottom + (tableSize * this.state.stageMargin)) && 
+                yCoord > stageBoundary.top)) {
+                    xCoord = (stageBoundary.right + ((tableSize+(this.state.seatSize*2)) * this.state.stageMargin))
+                    if ((xCoord+(tableSize*2.5)*(this.state.spacing)) >= dimension.right - (tableSize)) {
+                        xCoord = dimension.left + tableSize;
+                        yCoord = yCoord + (tableSize*2*this.state.spacing);
+                    }
+                }
+        
+            }
+
+            // create an array of seats to add to array
+            let seating = []
+            let radius = tableSize/1.5;
+            let angle;
+            let xOffset = radius/2
+            let yOffset = radius/1.35;
+            for (var j=0; j < this.state.venue.seatCount; j++ ) {
+                //create seats
+                angle = (j / (this.state.venue.seatCount/2)) * Math.PI;
+                seat = {
+                    id: "seat"+[i]+[j],
+                    x: (radius * Math.cos(angle)) + xOffset,
+                    y: (radius * Math.sin(angle)) + yOffset
+                }
+                seating.push(seat);
+                seatTestArray.push(seat);
+            }
+                
+            //create table
+            table = {
+                id: "table" + [i],
+                x: xCoord,
+                y: yCoord,
+                seat: seating,
+                tableCheck: false,
+                tablePrice: 0,
+                seatPrice: 0,
+                message: ""
+            }
+            //set table location and push into array
+            placeX = xCoord;
+            placeY = yCoord;
+
+            tableArray.push(table);
+        }
+
+        //set state
+        this.setState({ 
+            tableSize: tableSize,
+            tables: tableArray,
+        })
+    }
+
+    handleTransition = (e) => {
+        e.preventDefault();
+        API.saveTables({
+            venue: this.state.venue.venueName,
+            stageX: this.state.stageX,
+            stageY: this.state.stageY,
+            windowSize: this.state.windowSize,
+            tables: this.state.tables,
+            venueRef: this.venueRef.current.getBoundingClientRect()
+        })
+        .then(res=>console.log(res.data))
+        .catch(err=> console.log(err))
+        this.setRedirect();
+    }
+
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+          [name]: value
+        });
+        this.setTables();
+      };
+
+
     handleMouseDown = e => {
-        console.log(e.target)
         activeID = "";
         activeID = e.target.id;
         this.coords = {
             x: e.pageX,
             y: e.pageY
         }
-        document.addEventListener('mousemove', this.handleMouseMove);
+        if (e.target.id === "mainStage") {
+            document.addEventListener('mousemove', this.handleStageMove)
+        } else {
+            document.addEventListener('mousemove', this.handleMouseMove);
+        }
     }
 
-    handleMouseUp = () => {
-        console.log("mouse up");
-        document.removeEventListener('mousemove', this.handleMouseMove);
+    handleMouseUp = (event) => {
+
+    if (event) {
+        if (event.target.id === "mainStage") {
+            document.removeEventListener('mousemove', this.handleStageMove);
+            this.setTables();
+        } else {
+            document.removeEventListener('mousemove', this.handleMouseMove);
+        }
+    }
         this.coords = {};
       };
 
-    handleMouseMove = (e) => {
-        console.log("X: ",this.coords.x);
-        console.log("pageX: ", e.pageX);
-        console.log("event target: ", e.target);
-        const xDiff = this.coords.x - e.pageX;
-        const yDiff = this.coords.y - e.pageY;
+    handleStageMove = (event) => {
+        const xDiff = this.coords.x - event.pageX;
+        const yDiff = this.coords.y - event.pageY;
+        this.coords.x = event.pageX;
+        this.coords.y = event.pageY;
 
-        this.coords.x = e.pageX;
-        this.coords.y = e.pageY;
+        let xStage = this.state.stageX;
+        let yStage = this.state.stageY;
 
-        let tempArray = this.state.tables;
         const node = this.venueRef.current;
         const dimension = node.getBoundingClientRect();
 
+        let xLoc = xStage - xDiff;
+        let yLoc = yStage - yDiff;
+
+        this.setState({
+            stageX: xLoc,
+            stageY: yLoc
+        })
+
+    }
+
+    handleMouseMove = (event) => {
+        let tempArray = [];
+        const xDiff = this.coords.x - event.pageX;
+        const yDiff = this.coords.y - event.pageY;
+        this.coords.x = event.pageX;
+        this.coords.y = event.pageY;
+
+        //Create temp Array to load into the state
+        tempArray = this.state.tables;
+        
+        const node = this.venueRef.current;
+        const dimension = node.getBoundingClientRect();
+
+        //Only lets you drag within the box
         for (var i=0; i<tempArray.length; i++) {
             let xLoc = tempArray[i].x - xDiff;
             let yLoc = tempArray[i].y - yDiff;
             if (tempArray[i].id === activeID) {
-                //TODO:  adjust the numbers to reflect the size of the table 
-                //this will also vary based on window size.  Or maybe just add padding to the circle
-                if(yLoc < (dimension.bottom) && yLoc > (dimension.top) &&
-                            xLoc < (dimension.right) && xLoc > (dimension.left)) {
+                if((yLoc + this.state.tableSize) < (dimension.bottom) && yLoc > (dimension.top) &&
+                xLoc < (dimension.right-this.state.tableSize) && xLoc > (dimension.left)) {
+                    
                     tempArray[i].x = xLoc;
                     tempArray[i].y = yLoc;
                 } else {
-                    // this.handleMouseUp();
-                    console.log("ok");
-                }
+                    if (yLoc > dimension.bottom) {
+                        tempArray[i].x = xLoc;
+                    } else {
+                        this.handleMouseUp();
+                    }
+                } 
             }
         }
-        this.setState({
-            tables: tempArray
-        })
-
+            this.setState({
+                tables: tempArray
+            })
     };
     
-    render() {
+render() {
         return(
+            <>
+            <NavSB>
+            <form>
+                <div className="row">
+                    <div className="col-md-3">
+                        <Input
+                        id="spacing"
+                        onChange={this.handleInputChange}
+                        value={this.state.spacing}
+                        placeholder="Table Spacing"
+                        name="spacing"
+                        type="number"
+                        step="0.1"
+                        small="spacing between tables"/>
+                    </div>
+                    <div className="col-md-3">
+                        <Input
+                            type="number"
+                            step="0.1"
+                            id="stageMargin"
+                            name="stageMargin"
+                            onChange={this.handleInputChange}
+                            value={this.state.stageMargin}
+                            placeholder="Stage Margin"
+                            small="table spacing from stage"/>
+                    </div>
+                    <div className="col-md-3">
+                        <span className="navbar-brand" href="#">{this.state.msg}</span>
+                    </div>
+                    <div className="col-md-3">
+                        <FormBtn
+                            onClick={this.handleTransition}
+                            className="btn btn-danger"
+                        >
+                            Next
+                        </FormBtn>
+                    </div>
+                </div>
+            </form>
+            </NavSB>
+
             <div    className="venueBox"
                     onClick = {this.handleAClick}
                     ref = {this.venueRef}
                     style={{
                     width: this.state.venueWidth+"px",
                     height: this.state.venueHeight+"px"}}>
-
             {this.state.tables.map( (table) => {
                 return (
-                        <i  id={table.id}
-                            className="fas fa-circle"
+                        <div  id={table.id}
+                             key={table.id}
+                            className="circle"
                             style={{ position: "absolute",
                             left: table.x + "px",
                             top: table.y + "px",
                             fontSize: this.state.tableSize + "px"}}
                             onClick={this.handleBtnClick}
                             onMouseDown={this.handleMouseDown}
-                            onMouseUp={this.handleMouseUp}></i>
+                            onMouseUp={this.handleMouseUp}>
+                                <i className="fas fa-circle"
+                                    style={{pointerEvents: "none"}}></i>
+                                <div className="seatWrapper">
+                                {table.seat.map( (seat) => {
+                                    return (
+                                        <div id={seat.id}
+                                            key={seat.id}
+                                            style={{pointerEvents: "none", 
+                                                    fontSize: this.state.seatSize+"px",
+                                                    position: "absolute",
+                                                    left: seat.x+"px",
+                                                    top: seat.y+"px"}}>
+                                        <i key={seat.id} className="fas fa-circle"
+                                        style={{pointerEvents: "none",
+                                                fontSize: this.state.seatSize+"px"}}></i>
+                                        </div>
+                                    )
+                                })}</div>
+                            </div>          
                 )
+                
                 })}
-                <div    className="stage" 
-                        ref={this.stageRef}
-                        style={{    zIndex: "-1",
-                                    position: "absolute",
-                                    width: this.state.stageWidth+"px",
-                                    height: this.state.stageLength+"px",
-                                    left: this.state.stageX+"px",
-                                    top: this.state.stageY+"px"}}
-                                    onClick={this.handleBtnClick}
-                                    onMouseDown={this.handleMouseDown}
-                                    onMouseUp={this.handleMouseUp}>
-                    Stage
+                <div    
+                        className="stage" 
+                            ref={this.stageRef}
+                            id="mainStage"
+                            style={{    
+                            position: "absolute",
+                            width: this.state.stageWidth+"px",
+                            height: this.state.stageLength+"px",
+                            left: this.state.stageX+"px",
+                            top: this.state.stageY+"px"}}
+                            onClick={this.handleBtnClick}
+                            onMouseDown={this.handleMouseDown}
+                            onMouseUp={this.handleMouseUp}>
+                    <i className="fas fa-rectangle-landscape" style={{
+                        
+                    }}></i>
                 </div>
                 </div>
+                {this.renderRedirect()}
+                </>
             )
         }
     } 

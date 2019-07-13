@@ -17,21 +17,22 @@ class MainBlog extends Component {
     }
 
     render() {
+        let blogLimiter = 4;
         console.log(this.state);
         return (
                 <div className="row little-breathing-room">
-                    {this.state.blogs.map(blog => (
-                         <div className="col-md-3">
+                    {this.state.blogs.slice(1).slice(-4).map(blog => (
+                        //  <div className="col-md-3">
                          <div className="card bg-dark">
                              <img className="card-img-top" src="https://via.placeholder.com/150" alt="Card image cap" />
                              <div className="card-body">
                                  <h5 className="card-title main-card-title">{blog.blogTitle}</h5>
-                                 <p className="card-text main-card-runningCopy">{blog.blogBody}</p>
+                                 <p className="card-text main-card-runningCopy">{blog.blogBody.substring(0, 125)} -<small>(read more)</small></p>
                                  <div className="text-center">
-                                     <a href="#" class="btn btn-danger">Visit this article</a>
+                                     <a href={"/FullBlogPost/" + blog._id} class="btn btn-danger">Visit this article</a>
                                  </div>
                              </div>
-                         </div>
+                         {/* </div> */}
                      </div>
                 ))} 
             </div>
