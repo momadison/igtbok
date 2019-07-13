@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import DatePicker from 'react-date-picker'
+import DatePicker from 'react-date-picker';
 
 function Recurring(props) {
     return (
