@@ -19,6 +19,6 @@ export default class LoginButton extends Component {
   }
 
   render(){
-    return(<a href={this.state.url}>Login with {this.props.type}</a>)
+    return(<a className='nav-link' href={this.state.url}>Login with {this.props.type}</a>)
   }
 }

@@ -8,7 +8,6 @@ function Impact() {
     <main>
       <section className="container">
         <LoginBtn type='google' />
-        <br />
         <LoginBtn type='facebook' />
         <Link className="nav-link" to="/admin" data-hover="Admin">Admin Users Adjustments</Link>
       </section>
