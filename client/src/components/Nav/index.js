@@ -9,7 +9,7 @@ function Nav() {
 
         <nav className="navbar navbar-expand-lg bg-dark">
             <a className="navbar-brand" href="/">
-                <img src="assets/img/IGTBOK-Brand-Logo.png" height="70" alt="It's Going To Be OK" />
+                <img src="assets/img/IGTBOK-Brand-Logo.png" height="60" alt="It's Going To Be OK" />
             </a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
