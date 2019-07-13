@@ -6,14 +6,14 @@ function About() {
         <main>
 
             <section className="container">
-                <h2>History</h2>
+                <h2 className="about-h2">History</h2>
                 <p><b>It’s Going To Be Ok Inc. (IGTBOK)</b> is a 170(b)(1)(A)(vi) non-profit charity started in 2014 by Tonya Stafford, a survivor herself of human trafficking, in Dallas, Texas.
                     The IGTBOK mission is to create a just world where women, children, and all vulnerable adults are safe, respected, and valued. The vision is to eradicate human trafficking, one survivor at a time, regardless of ethnicity or background.
                     With these principles, IGTBOK has grown in recognition throughout the state of Texas and continues reaching lives across the entire United States.</p>
             </section>
 
             <section className="container">
-                <h2>Our Founder</h2>
+                <h2 className="about-h2">Our Founder</h2>
                 <div className="founder-pic">
                     <img className="board-img" src=".\assets\img\Tonya-Stafford-BW.jpg" alt="Tonya Stafford" srcset=".\assets\img\Tonya-Stafford-BW-200x200.jpg 200w, .\assets\img\Tonya-Stafford-BW-400x400.jpg 400w, .\assets\img\Tonya-Stafford-BW.jpg 500w" sizes="(max-width: 800px) 100vw, 500px" style={{ width: "100%" }} />
                 </div>
@@ -45,30 +45,30 @@ function About() {
             </section>
 
             <section className="container">
-                <h2>Board of Directors</h2>
+                <h2 className="about-h2">Board of Directors</h2>
                 <p>Meet the IGTBOK Board of Directors, members of the Dallas/Fort Worth community who manage our nonprofit organization and fight to end human trafficking.</p>
 
                 <div className="card-deck">
-                    <div className="card mb-4">
+                    <div className="card about-card mb-4">
                         <img className="board-img" src="./assets/board-img/Board-Tonya-Stafford.jpg" alt="Tonya Stafford" />
-                        <div className="card-body text-center">
+                        <div className="card-body about-card-body text-center">
                             <div className="board-name">Tonya Stafford</div>
                             <div className="board-title">Founder & CEO / Board President</div>
                         </div>
                     </div>
 
-                    <div className="card mb-4">
+                    <div className="card about-card mb-4">
                         <img className="board-img" src="./assets/board-img/Board-Anthony-Miller.jpg" alt="Anthony Miller" />
-                        <div className="card-body text-center">
+                        <div className="card-body about-card-body text-center">
                             <div className="board-name">Anthony Miller</div>
                             <div className="board-title">Vice-President</div>
                         </div>
                     </div>
                     <div className="w-100 d-none d-sm-block d-md-none">{/* wrap every 2 on sm */}</div>
 
-                    <div className="card mb-4">
+                    <div className="card about-card mb-4">
                         <img className="board-img" src="./assets/board-img/Board-Sonobia-Clayton.jpg" alt="Sonobia Clayton" />
-                        <div className="card-body text-center">
+                        <div className="card-body about-card-body text-center">
                             <div className="board-name">Sonobia Clayton</div>
                             <div className="board-title">Board Chair</div>
                         </div>
@@ -76,9 +76,9 @@ function About() {
                     <div className="w-100 d-none d-md-block d-lg-none">{/* wrap every 3 on md */}</div>
 
 
-                    <div className="card mb-4">
+                    <div className="card about-card mb-4">
                         <img className="board-img" src="./assets/board-img/Board-Stephanie-Martinez.jpg" alt="Stephanie Martinez" />
-                        <div className="card-body text-center">
+                        <div className="card-body about-card-body text-center">
                             <div className="board-name">Stephanie Martinez</div>
                             <div className="board-title">Secretary</div>
                         </div>
@@ -86,18 +86,18 @@ function About() {
                     <div className="w-100 d-none d-sm-block d-md-none">{/* wrap every 2 on sm */}</div>
                     <div className="w-100 d-none d-lg-block d-xl-none">{/* wrap every 4 on lg*/}</div>
 
-                    <div className="card mb-4">
+                    <div className="card about-card mb-4">
                         <img className="board-img" src="./assets/board-img/Board-Willie-Cowart.jpg" alt="Willie Cowart" />
-                        <div className="card-body text-center">
+                        <div className="card-body about-card-body text-center">
                             <div className="board-name">Willie Cowart</div>
                             <div className="board-title">Treasurer</div>
                         </div>
                     </div>
                     <div className="w-100 d-none d-xl-block">{/* wrap every 5 on lg*/}</div>
 
-                    <div className="card mb-4">
+                    <div className="card about-card mb-4">
                         <img className="board-img" src="./assets/board-img/Camera-Shy.jpg" alt="Samantha Kang" />
-                        <div className="card-body text-center">
+                        <div className="card-body about-card-body text-center">
                             <div className="board-name">Samantha Kang</div>
                             <div className="board-title">Board Member</div>
                         </div>
@@ -105,17 +105,17 @@ function About() {
                     <div className="w-100 d-none d-sm-block d-md-none">{/* wrap every 2 on sm */}</div>
                     <div className="w-100 d-none d-md-block d-lg-none">{/* wrap every 3 on md */}</div>
 
-                    <div className="card mb-4">
+                    <div className="card about-card mb-4">
                         <img className="board-img" src="./assets/board-img/Camera-Shy.jpg" alt="Sheila Wright Green" />
-                        <div className="card-body text-center">
+                        <div className="card-body about-card-body text-center">
                             <div className="board-name">Sheila Wright Green</div>
                             <div className="board-title">Board Member & Communication / Sponsorship Coordinator</div>
                         </div>
                     </div>
 
-                    <div className="card mb-4">
+                    <div className="card about-card mb-4">
                         <img className="board-img" src="./assets/board-img/Board-Stephany-Powell.jpg" alt="Stephany Powell" />
-                        <div className="card-body text-center">
+                        <div className="card-body about-card-body text-center">
                             <div className="board-name">Stephany Powell</div>
                             <div className="board-title">Board Member</div>
                         </div>
@@ -124,18 +124,18 @@ function About() {
                     <div className="w-100 d-none d-lg-block d-xl-none">{/* wrap every 4 on lg*/}</div>
 
 
-                    <div className="card mb-4">
+                    <div className="card about-card mb-4">
                         <img className="board-img" src="./assets/board-img/Board-Jonett-Mobley.jpg" alt="Jonett Mobley" />
-                        <div className="card-body text-center">
+                        <div className="card-body about-card-body text-center">
                             <div className="board-name">Jonett Mobley</div>
                             <div className="board-title">Board Member</div>
                         </div>
                     </div>
                     <div className="w-100 d-none d-md-block d-lg-none">{/* wrap every 3 on md */}</div>
 
-                    <div className="card mb-4">
+                    <div className="card about-card mb-4">
                         <img className="board-img" src="./assets/board-img/Camera-Shy.jpg" alt="Deborah Oliver" />
-                        <div className="card-body text-center">
+                        <div className="card-body about-card-body text-center">
                             <div className="board-name">Deborah Oliver</div>
                             <div className="board-title">Board Member</div>
                         </div>
@@ -144,38 +144,38 @@ function About() {
             </section>
 
             <section className="container">
-                <h2>Advisory Board</h2>
+                <h2 className="about-h2">Advisory Board</h2>
 
                 <div className="card-deck">
-                    <div className="card mb-4">
+                    <div className="card about-card mb-4">
                         <img className="board-img" src="./assets/board-img/Advisory-Shantrell-Barnes.jpg" alt="Shantrell Barnes" />
-                        <div className="card-body text-center">
+                        <div className="card-body about-card-body text-center">
                             <div className="board-name">Shantrell Barnes</div>
                             <div className="board-title">Board Member</div>
                         </div>
                     </div>
 
-                    <div className="card mb-4">
+                    <div className="card about-card mb-4">
                         <img className="board-img" src="./assets/board-img/Advisory-Connie-Chavez.jpg" alt="Connie Chavez" />
-                        <div className="card-body text-center">
+                        <div className="card-body about-card-body text-center">
                             <div className="board-name">Connie Chavez</div>
                             <div className="board-title">Board Member</div>
                         </div>
                     </div>
                     <div className="w-100 d-none d-sm-block d-md-none">{/* wrap every 2 on sm */}</div>
 
-                    <div className="card mb-4">
+                    <div className="card about-card mb-4">
                         <img className="board-img" src="./assets/board-img/Camera-Shy.jpg" alt="Mike Coleman" />
-                        <div className="card-body text-center">
+                        <div className="card-body about-card-body text-center">
                             <div className="board-name">Mike Coleman</div>
                             <div className="board-title">Board Member</div>
                         </div>
                     </div>
                     <div className="w-100 d-none d-md-block d-lg-none">{/* wrap every 3 on md */}</div>
 
-                    <div className="card mb-4">
+                    <div className="card about-card mb-4">
                         <img className="board-img" src="./assets/board-img/Advisory-Sylvia-Collins.jpg" alt="Sylvia Collins" />
-                        <div className="card-body text-center">
+                        <div className="card-body about-card-body text-center">
                             <div className="board-name">Sylvia Collins</div>
                             <div className="board-title">Board Member</div>
                         </div>
@@ -183,18 +183,18 @@ function About() {
                     <div className="w-100 d-none d-sm-block d-md-none">{/* wrap every 2 on sm */}</div>
                     <div className="w-100 d-none d-lg-block d-xl-none">{/* wrap every 4 on lg*/}</div>
 
-                    <div className="card mb-4">
+                    <div className="card about-card mb-4">
                         <img className="board-img" src="./assets/board-img/Advisory-Nelly-Cuenca.jpg" alt="Nelly Cuenca" />
-                        <div className="card-body text-center">
+                        <div className="card-body about-card-body text-center">
                             <div className="board-name">Nelly Cuenca</div>
                             <div className="board-title">Treasurer</div>
                         </div>
                     </div>
                     <div className="w-100 d-none d-xl-block">{/* wrap every 5 on lg*/}</div>
 
-                    <div className="card mb-4">
+                    <div className="card about-card mb-4">
                         <img className="board-img" src="./assets/board-img/Advisory-Bradley-Lockhart.jpg" alt="Bradley Lockhart" />
-                        <div className="card-body text-center">
+                        <div className="card-body about-card-body text-center">
                             <div className="board-name">Bradley Lockhart</div>
                             <div className="board-title">Board Member</div>
                         </div>
@@ -202,17 +202,17 @@ function About() {
                     <div className="w-100 d-none d-sm-block d-md-none">{/* wrap every 2 on sm */}</div>
                     <div className="w-100 d-none d-md-block d-lg-none">{/* wrap every 3 on md */}</div>
 
-                    <div className="card mb-4">
+                    <div className="card about-card mb-4">
                         <img className="board-img" src="./assets/board-img/Advisory-Marina-Ruiz.jpg" alt="Marina Ruiz" />
-                        <div className="card-body text-center">
+                        <div className="card-body about-card-body text-center">
                             <div className="board-name">Marina Ruiz</div>
                             <div className="board-title">Board Member</div>
                         </div>
                     </div>
 
-                    <div className="card mb-4">
+                    <div className="card about-card mb-4">
                         <img className="board-img" src="./assets/board-img/Camera-Shy.jpg" alt="Esther Noh" />
-                        <div className="card-body text-center">
+                        <div className="card-body about-card-body text-center">
                             <div className="board-name">Esther Noh</div>
                             <div className="board-title">Board Member & Attorney</div>
                         </div>
@@ -220,9 +220,9 @@ function About() {
                     <div className="w-100 d-none d-sm-block d-md-none">{/* wrap every 2 on sm */}</div>
                     <div className="w-100 d-none d-lg-block d-xl-none">{/* wrap every 4 on lg*/}</div>
 
-                    <div className="card mb-4">
+                    <div className="card about-card mb-4">
                         <img className="board-img" src="./assets/board-img/Advisory-Judge-Paula-Rosales.jpg" alt="Judge Paula Rosales" />
-                        <div className="card-body text-center">
+                        <div className="card-body about-card-body text-center">
                             <div className="board-name">Judge Paula Rosales</div>
                             <div className="board-title">Board Member</div>
                         </div>

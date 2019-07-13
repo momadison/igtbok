@@ -1,12 +1,13 @@
 import React from "react";
 import "./style.css";
+// import "./carousel.js";
 
 function Impact() {
     return (
         <main>
             <section className="container">
-                <h2>President's Volunteer Service Award</h2>
-                <img className="pres-img" src="./assets/impact-img/PVSA-banner.jpg" />
+                <h2 className="impact-h2">President's Volunteer Service Award</h2>
+                <img className="pres-img" src="./assets/img/PVSA-banner.jpg" />
                 <p>The President’s Volunteer Service Award (PVSA) is the premier federal volunteer program, in it's own words, "recognizing, celebrating, and holding up as role models Americans making a positive impact as engaged and deeply committed volunteers." 
                     <b>It’s Going To Be Ok Inc. (IGTBOK)</b> is proud to be both officially PVSA-recognized and a certifying organization for individuals seeking to join. 
                     We encourage all volunteers interested in assisting IGTBOK and other advocacy groups to register, document their hours, and inspire others to a similar life of service!</p>
@@ -28,7 +29,7 @@ function Impact() {
             </section>
 
             <section className="container">
-                <h2>House Bill 2290</h2>
+                <h2 className="impact-h2">House Bill 2290</h2>
                 <img className="pres-img" src="./assets/hb2290-img/HB-2290-Group-Photo.jpg" alt="Group Photo" />
 
                 <p>On January 5, 2016, House Bill 2290 was officially adopted by the State Legislature of Texas to designate January as Human Trafficking Prevention Month in the state. 
@@ -43,26 +44,37 @@ function Impact() {
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/b7N3Rt_EH-c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
 
-                <div id="demo" className="carousel slide" data-ride="carousel" data-interval="7500">
-                    {/* Indicators */}
-                    <ul className="carousel-indicators">
-                        <li data-target="#demo" data-slide-to="0" className="active"/>
-                        <li data-target="#demo" data-slide-to="1"/>
-                        <li data-target="#demo" data-slide-to="2"/>
+                <div id="demo" class="carousel slide" data-ride="carousel">
+                    {/* <!-- Indicators --> */}
+                    <ul class="carousel-indicators">
+                        <li data-target="#demo" data-slide-to="0" class="active"></li>
+                        <li data-target="#demo" data-slide-to="1"></li>
+                        <li data-target="#demo" data-slide-to="2"></li>
                     </ul>
 
-                    {/* Slideshow */}
-                    <div className="carousel-inner">
-                        <div className="carousel-item active"><img src="https://via.placeholder.com/1100x500" alt="" /></div>
-                        <div className="carousel-item"><img src="https://via.placeholder.com/1100x500" alt="" /></div>
-                        <div className="carousel-item"><img src="https://via.placeholder.com/1100x500" alt="" /></div>
+                    {/* <!-- The slideshow --> */}
+                    <div class="carousel-inner">
+                        <div class="carousel-item active"><img src=".\assets\hb2290-img\web-0-800x800.jpg" alt="0"/></div>
+                        <div class="carousel-item"><img src=".\assets\hb2290-img\web-1-800x800.jpg" alt="1"/></div>
+                        <div class="carousel-item"><img src=".\assets\hb2290-img\web-2-800x800.jpg" alt="2"/></div>
+                        <div class="carousel-item"><img src=".\assets\hb2290-img\web-3-800x800.jpg" alt="3"/></div>
+                        <div class="carousel-item"><img src=".\assets\hb2290-img\web-4-800x800.jpg" alt="4"/></div>
+                        <div class="carousel-item"><img src=".\assets\hb2290-img\web-5-800x800.jpg" alt="5"/></div>
+                        <div class="carousel-item"><img src=".\assets\hb2290-img\web-6-800x800.jpg" alt="6"/></div>
+                        <div class="carousel-item"><img src=".\assets\hb2290-img\web-7-800x800.jpg" alt="7"/></div>
+                        <div class="carousel-item"><img src=".\assets\hb2290-img\web-8-800x800.jpg" alt="8"/></div>
+                        <div class="carousel-item"><img src=".\assets\hb2290-img\web-9-800x800.jpg" alt="9"/></div>
+                        <div class="carousel-item"><img src=".\assets\hb2290-img\web-10-800x800.jpg" alt="10"/></div>
                     </div>
 
-                    {/* Left and right controls */}
-                    <a className="carousel-control-prev" href="#demo" data-slide="prev"><span className="carousel-control-prev-icon"/></a>
-                    <a className="carousel-control-next" href="#demo" data-slide="next"><span className="carousel-control-next-icon"/></a>
+                    {/* <!-- Left and right controls --> */}
+                    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span></a>
+                    <a class="carousel-control-next" href="#demo" data-slide="next">
+                        <span class="carousel-control-next-icon"></span></a>
                 </div>
             </section>
+
         </main>
     )
 }
