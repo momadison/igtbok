@@ -39,18 +39,18 @@ section {
 	margin: 1em 0;
 }
 
-.carousel {
+.impact-carousel {
 	height: 380px;
 	width: 380px;
 	display: inline-block;
 	margin: 1em 1em 1em 0;
 }
-.carousel-inner {
+.impact-carousel-inner {
 	max-height: 380px !important;
 	width: 100%;
 }
-.carousel-item { height: 100%; }
-.carousel-inner img { height: 380px; }
+.impact-carousel-item { height: 100%; }
+.impact-carousel-inner img { height: 380px; }
 
 /* BUTTONS */
 
@@ -137,17 +137,17 @@ section {
 		width: 100%;
 	}
 
-	.carousel {
+	.impact-carousel {
 		padding-bottom: 100%;
 		margin: 1em 0;
 		height: 0;
 		width: 100%;
 	}
-	.carousel-inner {
+	.impact-carousel-inner {
 		max-height: 1000px !important;
 		width: 100%;
 	}
-	.carousel-inner img {
+	.impact-carousel-inner img {
 		height: 100%; 
 		width: 100%;
 	}
