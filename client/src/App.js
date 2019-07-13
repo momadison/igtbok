@@ -15,6 +15,8 @@ import Contact from "./pages/Contact";
 import Sandbox from "./components/Sandbox";
 import Wizard from "./components/Wizard";
 import Drag from "./components/Drag";
+import PriceSetup from "./components/PriceSetup";
+import BoxOffice from "./components/BoxOffice";
 
 // components
 import Nav from "./components/Nav";
@@ -33,9 +35,9 @@ function App() {
           <Route exact path="/hopepearls" component={Sandbox} />
           <Route exact path="/gallery" component={Gallery} />
           <Route exact path="/programs" component={Programs} />
-          <Route exact path="/resources" component={Drag} />
+          <Route exact path="/resources" component={PriceSetup} />
           <Route exact path="/blog" component={Wizard} />
-          <Route exact path="/contact" component={Contact} />
+          <Route exact path="/contact" component={BoxOffice} />
           {/* <Route component={NoMatch} /> */}
         </Switch>
       </div>

@@ -7,11 +7,7 @@ const tablesSchema = new Schema({
             type: Array,
             ref: "layout" 
         },
-    venue: {type: String, required: true},
-    stageX: {type: Number, required: true},
-    stageY: {type: Number, required: true},
-    windowSize: {type: Number, required: true},
-    venueRef: {type: Object}
+    venue: {type: String}
 });
 
 const Tables = mongoose.model("Tables", tablesSchema);

@@ -9,5 +9,11 @@ export default {
     },
     saveTables: function(dbModel) {
         return axios.post("/api/tables", dbModel);
+    },
+    getTables: function(dbModel) {
+        return axios.get("/api/tables", dbModel);
+    },
+    updateTables: function(dbModel) {
+        return axios.put("/api/tables", dbModel);
     }
 }
