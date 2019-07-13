@@ -7,6 +7,8 @@ import Donate from "./pages/Donate/";
 import About from "./pages/About/";
 import Impact from "./pages/Impact/";
 import Blog from "./pages/Blog/";
+import AllBlogs from "./pages/AllBlogs";
+import FullBlogPost from "./pages/FullBlogPost";
 // import HopePearls from "./pages/HopePearls";
 import Gallery from "./pages/Gallery";
 import Programs from "./pages/Programs";
@@ -33,8 +35,10 @@ function App() {
           <Route exact path="/hopepearls" component={Sandbox} />
           <Route exact path="/gallery" component={Gallery} />
           <Route exact path="/Blog/" component={Blog} />
+          <Route exact path="/AllBlogs/" component={AllBlogs} />
+          <Route exact path="/FullBlogPost/:id" component={FullBlogPost} />
           <Route exact path="/programs" component={Programs} />
-          <Route exact path="/blog" component={Wizard} />
+          {/* <Route exact path="/blog" component={Wizard} /> */}
           <Route exact path="/Contact" component={Contact} />
           {/* <Route component={NoMatch} /> */}
         </Switch>

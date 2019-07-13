@@ -92,8 +92,9 @@ function Main() {
                     </div>
                 </div>
             </div>
-            
-            <Blog />
+            <div className="card-deck">
+                <Blog />
+            </div>
 
 
             <div className="row">
