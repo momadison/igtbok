@@ -13,7 +13,10 @@ import Resources from "./pages/Resources";
 // import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import Sandbox from "./components/Sandbox";
-import Wizard from "./components/Wizard";
+import Wizard from "./components/Wizard"
+import Admin from "./pages/Admin"
+
+import PrivateRoute from './components/Auth/PrivateRoute'
 
 // components
 import Nav from "./components/Nav";
@@ -34,6 +37,11 @@ function App() {
           <Route exact path="/programs" component={Programs} />
           <Route exact path="/blog" component={Wizard} />
           <Route exact path="/contact" component={Contact} />
+          <Route exact path="/loggedin" component={() => <h1 style={{textAlign: 'center'}}>Logged In Successfully</h1>} />
+          <Route exact path="/loggedout" component={() => <h1 style={{textAlign: 'center'}}>Logged Out Successfully</h1>} />
+          <Route exact path="/unauthorized" component={() => <h1 style={{textAlign: 'center'}}>You are not authorized to access this page</h1>} />
+          <Route exact path="/admin" component={Admin} />
+          <Route exact path='/private' component={PrivateRoute} />
           {/* <Route component={NoMatch} /> */}
         </Switch>
       </div>

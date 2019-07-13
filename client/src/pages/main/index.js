@@ -18,7 +18,7 @@ function Main() {
                 </div>
             </div>
             <div className="row">
-                <div class="card-deck">
+                <div className="card-deck">
                     <div className="animated fadeIn card text-white link-white bg-dark mb-3 main-card">
                         <div className="card-header main-card-header">Together we're giving futures back</div>
                         <div className="card-body">
@@ -83,7 +83,7 @@ function Main() {
                             <p>Average cost of slave</p>
                         </div>
                         <div className="col-md-4 text-center">
-                            <i class="fas fa-dollar-sign fa-5x"></i>
+                            <i className="fas fa-dollar-sign fa-5x"></i>
                             <h3>$150 billion dollars</h3>
                             <p>How much money slavery generates</p>
                         </div>
