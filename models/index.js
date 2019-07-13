@@ -1,3 +1,5 @@
 module.exports = {
-    Venues: require("./venues")
+    Venues: require("./venues"),
+    NewBlog: require("./blog")
   };
+  
