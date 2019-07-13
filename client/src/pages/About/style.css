@@ -21,7 +21,19 @@ section {
 .about-h2:before { margin-right: .3em; }
 .about-h2:after { margin-left: .3em; }
 
-.founder-pic, .founder-vid { 
+.about-img-contain { 
+	margin: 0 auto 1em;
+	max-height: 50vh;
+	min-height: 300px;
+	display: flex;
+}
+.about-img { 
+	margin: inherit;
+	object-fit: contain;
+	overflow: auto;
+}
+
+.founder-pic /*, .founder-vid*/ { 
     float: right; 
     clear: both;
     width: 33%;
@@ -29,10 +41,22 @@ section {
 }
 
 .founder-pic { clip-path: circle(50% at center); }
+
 .founder-vid {
-    width: 45%;
-    height: 20vw;
+    float: right;
+    position: relative;
+    clear: both;
+    width: 45vw;
+    padding-bottom: 43%;
     margin-top: 25px;
+    margin-left: 15px;
+}
+.founder-vid iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 /* BOARD MEMBERS */
@@ -58,9 +82,12 @@ section {
 
 /* MEDIA QUERIES */
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) {
     .founder-pic, .founder-vid { width: 100%; }
-    .founder-vid { height: 384px; }
+    .founder-vid { 
+        height: 540px;
+        margin-bottom: 1.5em;
+    }
 }
 
 @media (max-width: 992px) {
