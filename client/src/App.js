@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // pages
 import Main from "./pages/Main/";
-import Donate from "./pages/Donate/";
+import Donate from "./pages/Donate";
 import About from "./pages/About/";
 import Impact from "./pages/Impact/";
 import Blog from "./pages/Blog/";
@@ -15,7 +15,7 @@ import PrivateRoute from './components/Auth/PrivateRoute'
 
 // components
 import Nav from "./components/Nav";
-import Footer from "./components/Footer"
+import Footer from "./components/Footer/"
 
 function App() {
   return (

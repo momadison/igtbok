@@ -21,11 +21,36 @@ section {
 .impact-h2:before { margin-right: .3em; }
 .impact-h2:after { margin-left: .3em; }
 
-.pres-img { 
+.impact-img-contain { 
 	margin: 0 auto 1em;
-	width: 66%;
+	max-height: 50vh;
+	min-height: 300px;
 	display: flex;
 }
+.impact-img { 
+	margin: inherit;
+	object-fit: cover;
+	overflow: auto;
+}
+
+.hb-media { text-align: center; }
+.hb-vid { 
+	display: inline-block; 
+	margin: 1em 0;
+}
+
+.carousel {
+	height: 380px;
+	width: 380px;
+	display: inline-block;
+	margin: 1em 1em 1em 0;
+}
+.carousel-inner {
+	max-height: 380px !important;
+	width: 100%;
+}
+.carousel-item { height: 100%; }
+.carousel-inner img { height: 380px; }
 
 /* BUTTONS */
 
@@ -35,7 +60,7 @@ section {
 	margin: 0 auto 1em;
 }
 
-.btn-1 {
+.btn-red {
 	width: 250px;
 	border: 3px solid #ED1C22;
 	color: #ED1C22;
@@ -50,8 +75,10 @@ section {
 	-moz-transition: all 0.35s;
 	transition: all 0.35s;
 }
+.btn-2 { width: 300px; }
+.btn-3 { width: 425px; }
 
-.btn-1:after {
+.btn-red:after {
 	content: '';
 	position: absolute;
 	z-index: -1;
@@ -60,7 +87,7 @@ section {
 	transition: all 0.35s;
 }
 
-.btn-1:before {
+.btn-red:before {
 	font-family: 'icomoon';
 	font-style: normal;
 	font-weight: normal;
@@ -71,7 +98,7 @@ section {
 	-webkit-font-smoothing: antialiased;
 }
 
-.btn-1b:after {
+.btn-fx:after {
 	width: 100%;
 	height: 0;
 	top: 0;
@@ -79,18 +106,65 @@ section {
 	background: #ED1C22;
 }
 
-.btn-1b:hover, .btn-1b:active {	
+.btn-fx:hover, .btn-fx:active {	
 	color: #ffffff; 
 	text-decoration: none;
 }
-.btn-1b:hover:after, .btn-1b:active:after {	height: 100%; }
+.btn-fx:hover:after, .btn-fx:active:after {	height: 100%; }
 
 /* MEDIA QUERIES */
 
 @media only screen and (max-width: 768px) {
-    .btn-1 {
+	.container { 
+		margin: 0;
+		min-width: 100%;
+	}
+
+	.btn-red {
 		display: block;
 		width: 100%;
 		margin: 15px auto;
+	}
+
+	.impact-img-contain {
+		width: 100%;
+		height: auto;
+		min-height: unset;
+	}
+
+	.impact-img {
+		margin: inherit;
+		width: 100%;
+	}
+
+	.carousel {
+		padding-bottom: 100%;
+		margin: 1em 0;
+		height: 0;
+		width: 100%;
+	}
+	.carousel-inner {
+		max-height: 1000px !important;
+		width: 100%;
+	}
+	.carousel-inner img {
+		height: 100%; 
+		width: 100%;
+	}
+
+	.hb-vid {
+		position: relative;
+		padding-bottom: 56.25%;
+		padding-top: 30px;
+		height: 0;
+		overflow: hidden;
+		display: block;
+	}
+	.hb-vid iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
 	}
 }
