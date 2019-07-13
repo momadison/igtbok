@@ -36,7 +36,7 @@ function(accessToken, refreshToken, profile, done) {
   let userEmail = profile.emails[0].value
   let username = userEmail.slice(0, userEmail.indexOf('@'))
   let provider = profile.provider
-  db.User.findOneAndUpdate({username: username, provider: 'google'}, {username: username, email: userEmail, provider: provider}, {upsert: true, useFindAndModify: false}, function(err, result){
+  db.User.findOneAndUpdate({username: username, provider: 'google'}, {username: username, email: userEmail, provider: provider}, {upsert: true, useFindAndModify: false, new: true}, function(err, result){
     console.log(result)
     done(null, result._id)
   })

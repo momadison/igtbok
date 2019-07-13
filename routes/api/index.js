@@ -3,6 +3,7 @@ const venues = require("./venues");
 const authentication = require("./authentication");
 const users = require("./users");
 const email = require("./email.js");
+const tables = require("./tables");
 
 // routes
 router.use("/venues", venues);
