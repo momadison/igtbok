@@ -8,7 +8,7 @@ function Impact() {
             {/* PRES. VOLUNTEER SERVICE AWARD */}
             <section className="container">
                 <h2 className="impact-h2">President's Volunteer Service Award</h2>
-                <div className="impact-img-contain"><img className="impact-img" src="./assets/impact-img/PVSA-banner.jpg"/></div>
+                <div className="impact-img-contain"><img className="impact-img" src="./assets/impact-img/PVSA-banner.jpg" style={{objectFit:"contain"}}/></div>
                 <p>The President’s Volunteer Service Award (PVSA) is the premier federal volunteer program, in it's own words, "recognizing, celebrating, and holding up as role models Americans making a positive impact as engaged and deeply committed volunteers." 
                     <b>It’s Going To Be Ok Inc. (IGTBOK)</b> is proud to be both officially PVSA-recognized and a certifying organization for individuals seeking to join. 
                     We encourage all volunteers interested in assisting IGTBOK and other advocacy groups to register, document their hours, and inspire others to a similar life of service!</p>
