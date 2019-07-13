@@ -35,11 +35,6 @@ function App() {
           <Route exact path="/hopepearls" component={Sandbox} />
           <Route exact path="/gallery" component={Gallery} />
           <Route exact path="/programs" component={Programs} />
-<<<<<<< HEAD
-          <Route exact path="/resources" component={PriceSetup} />
-          <Route exact path="/blog" component={Wizard} />
-          <Route exact path="/contact" component={BoxOffice} />
-=======
           <Route exact path="/blog" component={Wizard} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/loggedin" component={() => <h1 style={{textAlign: 'center'}}>Logged In Successfully</h1>} />
@@ -47,7 +42,6 @@ function App() {
           <Route exact path="/unauthorized" component={() => <h1 style={{textAlign: 'center'}}>You are not authorized to access this page</h1>} />
           <Route exact path="/admin" component={Admin} />
           <Route exact path='/private' component={PrivateRoute} />
->>>>>>> 4575c3b0fd8ffed8179d9204378e9657d9419e8a
           {/* <Route component={NoMatch} /> */}
         </Switch>
       </div>

@@ -4,8 +4,11 @@ function Checkout(props) {
     return (
         <form>
             <div className="form-group">
-                <label for="exampleFormControlInput1">Email address</label>
-                <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
+                <label for="firstName">First Name</label>
+                <input type="String" 
+                        className="form-control" 
+                        id="firstName" 
+                        placeholder="First Name" />
             </div>
             <div className="form-group">
                 <label for="exampleFormControlSelect1">Example select</label>

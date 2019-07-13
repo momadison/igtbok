@@ -44,11 +44,6 @@ export default {
         stageX = (dimension.x + (Math.round((dimension.width/2) - (stageWidth / 2))));
         stageY = dimension.top;
         }
-        //adjust stage for window width
-        // stageX = (((stageX - those.state.originalvRef.left) / (those.state.originalvRef.width)) * 
-        //                 dimension.width)+ dimension.left;
-        // stageY = (((stageY - those.state.originalvRef.top) / (those.state.originalvRef.height)) *
-        //                 dimension.height) + dimension.top;
                
         those.setState({
             stageX: stageX,
