@@ -6,5 +6,11 @@ export default {
     },
     getVenue: function(dbModel) {
         return axios.get("/api/venues", dbModel);
+    },
+    getAuth: function(security) {
+        return axios.get("/api/auth/checkAuth");
+    },
+    getAllUsers: function() {
+      return axios.get("/api/users/getAllUsers")
     }
 }

@@ -3,3 +3,7 @@ module.exports = {
     NewBlog: require("./blog")
   };
   
+=======
+    User: require("./user")
+  };
+
