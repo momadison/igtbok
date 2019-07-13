@@ -9,7 +9,7 @@ import Impact from "./pages/Impact/";
 import Blog from "./pages/Blog/";
 import Gallery from "./pages/Gallery";
 import Programs from "./pages/Programs";
-import Resources from "./pages/Resources";
+import Resources from "./pages/Resources/";
 import Admin from "./pages/Admin"
 import Contact from "./pages/Contact/"
 import PrivateRoute from './components/Auth/PrivateRoute'

@@ -6,15 +6,17 @@ function Resources() {
         <main>
 
             <section className="container">
-                <h2 className="about-h2">Human Trafficking Hotline</h2>
-                <div className="about-img-contain"><img className="about-img" src="./assets/img/IGTBOK-Brand-Logo.png"/></div>
-                <p><b>It’s Going To Be Ok Inc. (IGTBOK)</b> is a 170(b)(1)(A)(vi) non-profit charity started in 2014 by Tonya Stafford, a survivor herself of human trafficking, in Dallas, Texas.
-                    The IGTBOK mission is to create a just world where women, children, and all vulnerable adults are safe, respected, and valued. The vision is to eradicate human trafficking, one survivor at a time, regardless of ethnicity or background.
-                    With these principles, IGTBOK has grown in recognition throughout the state of Texas and continues reaching lives across the entire United States.</p>
+                <h2 className="res-h2">Human Trafficking Hotline</h2>
+                {/* <div className="res-img-contain"><img className="res-img" src="./assets/img/res-phone-hug.jpg" /></div>
+                <p className="res-tele">1 (800) 373-7888</p> */}
+                <div className="col-md text-center res-phone">
+                    <h1 className="main-header animated fadeInUp" id="mainHeader">1 (800) 373-7888</h1>
+                    <div className="res-phone-layer"></div>
+                </div>
             </section>
 
             <section className="container">
-                <h2 className="about-h2">Board of Directors</h2>
+                <h2 className="res-h2">Board of Directors</h2>
                 <p>Meet the IGTBOK Board of Directors, members of the Dallas/Fort Worth community who manage our nonprofit organization and fight to end human trafficking.</p>
 
                 <div className="card-deck">
