@@ -27,7 +27,7 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/public"));
 }
-
+console.log('before passport')
 // Passport functionality
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
@@ -44,6 +44,7 @@ function(accessToken, refreshToken, profile, done) {
     done(null, result._id)
   })
 }))
+console.log('after google passport')
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_CLIENT_ID,
     clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
@@ -60,6 +61,7 @@ passport.use(new FacebookStrategy({
     })
   }
 ));
+console.log('after facebook passport')
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -68,6 +70,7 @@ app.use(session({
 }))
 app.use(passport.initialize())
 app.use(passport.session())
+console.log('after session and passport app.use')
 
 passport.serializeUser(function(user, done) {
   done(null, user);
@@ -76,15 +79,15 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(user, done) {
   done(null, user);
 });
-
+console.log('after serialize and deserialize for passport')
 // Define API routes here
 app.use(routes);
-
+console.log('after routes')
 // Send every other request to the React app
 
 // Connect to Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/venuesDB", { useNewUrlParser: true })
-
+console.log('after connection to DB')
 // Define any API routes before this runs
 // app.get("*", (req, res) => {
 //   console.log("this is a test");
