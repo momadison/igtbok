@@ -4,7 +4,7 @@ import BankWithdrawl from "../../components/DonateBank/index.js"
 import Recurring from "../../components/DonateRecurring/index.js";
 import DonateForm from "../../components/donateFormPriceOther/index.js";
 import axios from "axios";
-
+import "./style.css";
 
 class Donate extends Component {
     state = {
@@ -32,6 +32,8 @@ class Donate extends Component {
         donateBankAccountType: "",
         donateRecurring: "",
         donateRecurringDate: "",
+        donateRecurringStartDate: "",
+        donateRecurringInterval: "",
         donatePaymentType: "",
         volunteerFirstName: "",
         volunteerMiddleName: "",
@@ -118,9 +120,14 @@ class Donate extends Component {
         return (
             <div className="container">
                 <div className="row">
+                    <div className="col-md-12">
+                        <p className="donateMain-header">Support IGTBOK with your Donations to End Human Trafficking</p>
+                    </div>
+                </div>
+                <div className="row">
                     <div className="col-md-6">
-                        <h2>Donating Money</h2>
-                        <div className="card">
+                        <h2 className="DonateMain-subhead">Donating Money</h2>
+                        <div className="card bg-dark text-white donate-card-spacing">
                             <div className="cardBody">
                                 <form className="p-2" onSubmit={this.DonateSubmitVerification}>
                                     <div className="row">
@@ -244,17 +251,17 @@ class Donate extends Component {
                                         />}
                                     {this.state.donateRecurring == "recurring" ? < Recurring onChange={this.DatePickerOnChange} value={this.state.donateRecurringDate} /> : ""}
 
-                                    <button type="submit" className="btn btn-primary" id="donateSubmit">Submit</button>
+                                    <button type="submit" className="btn btn-danger" id="donateSubmit">Submit</button>
                                 </form>
                             </div>
                         </div>
                     </div>
                     <div className="col-md-6">
-                        <h2>Volunteer Form</h2>
-                        <div className="card">
+                        <h2 className="DonateMain-subhead">Donate Time as a Volunteer</h2>
+                        <div className="card bg-dark text-white donate-card-spacing">
                             <div className="cardBody">
                                 <form className="p-2" onSubmit={this.VolunteerSubmitVerification}>
-                                    <p>Please fill out our volunteer form if you wish to volunteer your time to our organization and support your
+                                    <p className="mainDonate-runningCopy">Please fill out our volunteer form if you wish to volunteer your time to our organization and support your
                                         local community.  Once we receive your application, it will be reviewed and we will contact you with more
                                     information.</p>
                                     <h5>Contact Information</h5>
@@ -324,11 +331,16 @@ class Donate extends Component {
                                             Social Media
                                         </label>
                                     </div>
-                                    <button type="submit" className="btn btn-primary">Submit</button>
+                                    <button type="submit" className="btn btn-danger">Submit</button>
                                 </form>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className="row">
+                    <div className="col">
+                        <p className="mainDonate-subhead text-center">Your tax deductible receipt will be sent to your email address provided.</p>
+                    </div>    
                 </div>
             </div>
         )
