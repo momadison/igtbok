@@ -65,7 +65,7 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
-  store: 'connect-mongodb-session',
+  // store: 'connect-mongodb-session', --MAY NEED TO ADD THIS LATER, BUT THIS BREAKS IF I TRY TO CHANGE IT.
 }))
 app.use(passport.initialize())
 app.use(passport.session())
