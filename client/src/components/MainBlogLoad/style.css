@@ -74,3 +74,8 @@
     background-color: transparent;
     text-align: center;
 } */
+.main-card-img {
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
+}
