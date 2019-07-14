@@ -93,12 +93,23 @@ function Main() {
                     </div>
                 </div>
             </div>
-            <div className="card-deck">
-                <Blog />
+            <div className="row">
+                <div className="card-deck">
+                    <Blog />
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-md-12 text-center">
+                        <div className="main-allBlog">
+                    <a href="/AllBlogs">
+                            <button className="btn btn-lg btn-danger">View all past blogs</button>
+                    </a>
+                        </div>
+                </div>
             </div>
 
-
-            <div className="row">
+            {/* This area on the home page was intended to be where someone can hook up Instagram and Twitter to this home page */}
+            {/* <div className="row">
                 <div className="col-md-6">
                     <div class="card">
                         <div class="card-header">
@@ -129,7 +140,7 @@ function Main() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }
