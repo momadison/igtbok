@@ -1,4 +1,6 @@
-require('dotenv').config()
+if(process.env.NODE_ENV != 'production'){
+  require('dotenv').config()
+}
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
@@ -8,7 +10,6 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const session = require('express-session')
-const userController = require('./controllers/userController')
 // DB Imports
 const db = require('./models')
 
