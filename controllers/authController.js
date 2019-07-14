@@ -1,6 +1,8 @@
 const db = require("../models");
 const passport = require('passport');
 
+const URL = process.env.NODE_ENV === 'production' ? 'https://igtbok-org.herokuapp.com' : 'http://localhost:3000'
+
 module.exports = {
   checkAuth: function(req, res) {
     if(req.isAuthenticated()){
@@ -17,14 +19,14 @@ module.exports = {
     failureRedirect: '/'
   }),
   googleRedirect: function(req, res) {
-    res.redirect(`${process.env.PUBLIC_URL}/loggedin`)
+    res.redirect(`${URL}/loggedin`)
   },
   facebookLogin: passport.authenticate('facebook'),
   facebookCB: passport.authenticate('facebook', {
     failureRedirect: '/'
   }),
   facebookRedirect: function(req, res) {
-    res.redirect(`${process.env.PUBLIC_URL}/loggedin`)
+    res.redirect(`${URL}/loggedin`)
   },
   logout: function(req, res) {
     req.logout()

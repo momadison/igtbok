@@ -16,7 +16,7 @@ require("dotenv").config()
 
 
 const PORT = process.env.PORT || 3001;
-const URL = process.env.PUBLIC_URL === 'http://localhost:3000' ? 'http://localhost:3001' : 'https://igtbok-org.herokuapp.com'
+const URL = process.env.NODE_ENV === 'production' ? 'https://igtbok-org.herokuapp.com' : 'http://localhost:3001'
 const app = express();
 
 
