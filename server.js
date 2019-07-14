@@ -29,54 +29,54 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Passport functionality
-passport.use(new GoogleStrategy({
-  clientID: process.env.GOOGLE_CLIENT_ID,
-  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: `${URL}/api/auth/google/callback`,
-  scope: ['email']
-},
-function(accessToken, refreshToken, profile, done) {
-  let userEmail = profile.emails[0].value
-  let username = userEmail.slice(0, userEmail.indexOf('@'))
-  let provider = profile.provider
-  db.User.findOneAndUpdate({username: username, provider: 'google'}, {username: username, email: userEmail, provider: provider}, {upsert: true, useFindAndModify: false, new: true}, function(err, result){
-    console.log(result)
-    done(null, result._id)
-  })
-}))
-passport.use(new FacebookStrategy({
-    clientID: process.env.FACEBOOK_CLIENT_ID,
-    clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL: `${URL}/api/auth/facebook/callback`,
-    profileFields: ['id', 'emails', 'name']
-  },
-  function(accessToken, refreshToken, profile, done) {
-    let username = profile.username ? profile.username : profile.name.givenName + profile.name.familyName
-    let userEmail = profile.email ? profile.email : ''
-    let provider = profile.provider
-    db.User.findOneAndUpdate({username: username, provider: provider}, {username: username, email: userEmail, provider: provider}, {upsert: true, useFindAndModify: false, new: true}, function(err, result){
-      console.log(result)
-      done(null, result._id)
-    })
-  }
-));
-
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
-  // store: 'connect-mongodb-session', --MAY NEED TO ADD THIS LATER, BUT THIS BREAKS IF I TRY TO CHANGE IT.
-}))
-app.use(passport.initialize())
-app.use(passport.session())
-
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-
-passport.deserializeUser(function(user, done) {
-  done(null, user);
-});
+// passport.use(new GoogleStrategy({
+//   clientID: process.env.GOOGLE_CLIENT_ID,
+//   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+//   callbackURL: `${URL}/api/auth/google/callback`,
+//   scope: ['email']
+// },
+// function(accessToken, refreshToken, profile, done) {
+//   let userEmail = profile.emails[0].value
+//   let username = userEmail.slice(0, userEmail.indexOf('@'))
+//   let provider = profile.provider
+//   db.User.findOneAndUpdate({username: username, provider: 'google'}, {username: username, email: userEmail, provider: provider}, {upsert: true, useFindAndModify: false, new: true}, function(err, result){
+//     console.log(result)
+//     done(null, result._id)
+//   })
+// }))
+// passport.use(new FacebookStrategy({
+//     clientID: process.env.FACEBOOK_CLIENT_ID,
+//     clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+//     callbackURL: `${URL}/api/auth/facebook/callback`,
+//     profileFields: ['id', 'emails', 'name']
+//   },
+//   function(accessToken, refreshToken, profile, done) {
+//     let username = profile.username ? profile.username : profile.name.givenName + profile.name.familyName
+//     let userEmail = profile.email ? profile.email : ''
+//     let provider = profile.provider
+//     db.User.findOneAndUpdate({username: username, provider: provider}, {username: username, email: userEmail, provider: provider}, {upsert: true, useFindAndModify: false, new: true}, function(err, result){
+//       console.log(result)
+//       done(null, result._id)
+//     })
+//   }
+// ));
+//
+// app.use(session({
+//   secret: process.env.SESSION_SECRET,
+//   resave: false,
+//   saveUninitialized: false,
+//   // store: 'connect-mongodb-session', --MAY NEED TO ADD THIS LATER, BUT THIS BREAKS IF I TRY TO CHANGE IT.
+// }))
+// app.use(passport.initialize())
+// app.use(passport.session())
+//
+// passport.serializeUser(function(user, done) {
+//   done(null, user);
+// });
+//
+// passport.deserializeUser(function(user, done) {
+//   done(null, user);
+// });
 
 // Define API routes here
 app.use(routes);
