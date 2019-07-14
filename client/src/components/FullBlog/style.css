@@ -1,37 +1,20 @@
-.main-cat1 {
-    background-size: cover;
-    background-position: center;
-    height: 400px;
-    overflow: auto;
-    margin: auto;
-    background-image: url("/assets/img/main-donate.jpg");
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 50%;
-    flex-direction: column;
-}
-.main-cat2 {
-    background-size: cover;
-    background-position: center;
-    height: 400px;
-    overflow: auto;
-    margin: auto;
-    background-image: url("/assets/img/main-help.jpg");
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 50%;
-    flex-direction: column;
-}
-.main-header {
-    color: white;
-    animation-delay: 200ms;
+.Fullblog-header {
+    /* color: white; */
+    /* animation-delay: 200ms; */
     font-family: 'Roboto Condensed', sans-serif;
     text-align: center;
-    font-size: 5em;
-    text-shadow: 0px 0px 15px #000000;
+    font-size: 3em;
+    /* text-shadow: 0px 0px 25px #000000; */
     font-weight: 800;
+}
+.fullblog-card {
+    padding: 1rem;
+    margin: 1rem;
+}
+.fullBlog-img {
+    height: 500px;
+    width: 100%;
+    object-fit: cover;
 }
 #subheadHeader {
     color: white;
@@ -45,6 +28,11 @@
 
 .main-card {
     margin-top: 2rem;
+}
+
+.tonya-tint {
+    opacity: 0;
+    background: #000;
 }
 
 .tonyaMain {
@@ -62,6 +50,10 @@
     flex-direction: column;
 }
 
+.tonyaMain:hover {
+    opacity: .5;
+}
+
 .main-card-header {
     font-family: 'Lato', sans-serif;
 }
@@ -69,8 +61,39 @@
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 2em;
 }
-/* .btn {
-    margin: 0;
-    background-color: transparent;
+ .little-breathing-room {
+     padding: 3rem 0 0 0;
+ }
+.main-icons {
+    color: #fff;
+}
+.main-icon-title {
+    padding-top: .5rem;
+    color: white;
+    font-family: 'Roboto Condensed', sans-serif;
     text-align: center;
-} */
+    font-size: 3em;
+    font-weight: 800;
+}
+.Fullblog-subhead {
+    /* color: white; */
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+.main-card-title {
+    padding-top: .5rem;
+    color: white;
+    font-family: 'Roboto Condensed', sans-serif;
+    /* text-align: center; */
+    font-size: 2em;
+    font-weight: 800;
+}
+.main-card-runningCopy {
+    color: white;
+    font-family: 'Lato', sans-serif;
+    /* text-align: center; */
+    font-size: 1em;
+    font-weight: 500;
+}

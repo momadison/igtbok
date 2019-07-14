@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+import "./style.css";
 
 class FullBlog extends Component {
     state = {
@@ -24,15 +24,16 @@ class FullBlog extends Component {
         console.log(this.props)
         return (
             <div>
-                <div className="card flex-row flex-wrap">
-                    <div className="card-header border-0">
-                        <img src="//placehold.it/150" alt="" />
+                <div className="card fullblog-card">
+                    <div className="text-center">
+                        <img className="fullBlog-img" src={this.state.blogs.blogImageURL} alt="" />
                     </div>
-                    <div className="card-block px-2">
-                        <h4 className="card-title">{this.state.blogs.blogTitle}</h4>
-                        <p className="card-text">{this.state.blogs.blogBody}</p>
+                    <div className="card-block">
+                        <h4 className="Fullblog-header">{this.state.blogs.blogTitle}</h4>
+                        <p className="Fullblog-subhead">{this.state.blogs.blogBody}</p>
                     </div>
                 </div>
+                <a href="/AllBlogs" class="btn btn-danger">View All Past Blogs</a>
             </div>
         )
     }

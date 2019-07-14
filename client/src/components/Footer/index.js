@@ -27,17 +27,17 @@ function Footer() {
                         </div>
                     </div>
                     <div className="col-md-2">
-                        <h5 className="text-center text-uppercase footer-title">Links</h5>
+                        <h5 className="text-uppercase footer-title">Links</h5>
+                        <a className="text-center text-dark text-uppercase" href="/">Home</a> <br/>
+                        <a className="text-center text-dark text-uppercase" href="/donate">Donate</a> <br/>
+                        <a className="text-center text-dark text-uppercase" href="/resources">Get Help</a> <br/>
+                        <a className="text-center text-dark text-uppercase" href="/about">About</a> <br/>
+                        <a className="text-center text-dark text-uppercase" href="/Impact">Impact</a> <br/>
+                        <a className="text-center text-dark text-uppercase" href="/contact">Contact</a> <br/>
+                        {/* <a className="text-center text-dark text-uppercase" href="/contact">Contact</a> <br/>
                         <a className="text-center text-dark text-uppercase" href="/contact">Contact</a> <br/>
                         <a className="text-center text-dark text-uppercase" href="/contact">Contact</a> <br/>
-                        <a className="text-center text-dark text-uppercase" href="/contact">Contact</a> <br/>
-                        <a className="text-center text-dark text-uppercase" href="/contact">Contact</a> <br/>
-                        <a className="text-center text-dark text-uppercase" href="/contact">Contact</a> <br/>
-                        <a className="text-center text-dark text-uppercase" href="/contact">Contact</a> <br/>
-                        <a className="text-center text-dark text-uppercase" href="/contact">Contact</a> <br/>
-                        <a className="text-center text-dark text-uppercase" href="/contact">Contact</a> <br/>
-                        <a className="text-center text-dark text-uppercase" href="/contact">Contact</a> <br/>
-                        <a className="text-center text-dark text-uppercase" href="/contact">Contact</a> <br/>
+                        <a className="text-center text-dark text-uppercase" href="/contact">Contact</a> <br/> */}
                     </div>
                 </div>
                 <div className="row bg-danger">
