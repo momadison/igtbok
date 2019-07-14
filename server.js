@@ -13,7 +13,7 @@ const userController = require('./controllers/userController')
 const db = require('./models')
 
 require("dotenv").config()
-
+console.log('testing...')
 
 const PORT = process.env.PORT || 3001;
 const URL = process.env.NODE_ENV === 'production' ? 'https://igtbok-org.herokuapp.com' : 'http://localhost:3001'
