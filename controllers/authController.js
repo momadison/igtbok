@@ -29,6 +29,7 @@ module.exports = {
     res.redirect(`${URL}/loggedin`)
   },
   logout: function(req, res) {
+    console.log('should be logging out..')
     req.logout()
     req.user = null
     res.redirect(`${process.env.PUBLIC_URL}/loggedout`)
