@@ -22,7 +22,7 @@ function Main() {
             <div className="row">
                 <div className="card-deck">
                     <div className="animated fadeIn card text-white link-white bg-dark mb-3 main-card">
-                        <div className="card-header main-card-header">Together we're giving futures back</div>
+                        {/* <div className="card-header main-card-header">Together we're giving futures back</div> */}
                         <div className="card-body">
                             <h5 className="card-title main-card-title">YOU ARE IMPORTANT</h5>
                             <p className="card-text">With your donations, we combine all our resources and talents
@@ -33,7 +33,7 @@ function Main() {
                     <div className="animated fadeIn card text-white link-white bg-dark mb-3 main-card tonyaMain tonya-tint">
                     </div>
                     <div className="animated fadeIn card text-white link-white bg-dark mb-3 main-card">
-                        <div className="card-header main-card-header">All financial gifts support our mission</div>
+                        {/* <div className="card-header main-card-header">All financial gifts support our mission</div> */}
                         <div className="card-body">
                             <h5 className="card-title main-card-title">HOW TO DONATE</h5>
                             <p className="card-text">All financial gifts support our mission: rescuing and support
@@ -47,6 +47,7 @@ function Main() {
                     </div>
                 </div>
             </div>
+
             <div className="row">
                 <div className="col main-flood text-center">
                     <h1 className="main-header animated fadeInUp" id="mainHeader">HB 2290 - Human Trafficking Awareness Month</h1>
@@ -54,6 +55,7 @@ function Main() {
                     <button className="btn btn-lg btn-danger">Learn More</button>
                 </div>
             </div>
+
             <div className="row bg-dark little-breathing-room">
                 <div className="col">
                     <div className="row">
@@ -95,8 +97,6 @@ function Main() {
             <div className="card-deck">
                 <Blog />
             </div>
-
-
             <div className="row">
                 <div className="col-md-6">
                     <div class="card">
