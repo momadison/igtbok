@@ -27,6 +27,7 @@ section {
     height: 500px;
     width: 100%;
     float: left;
+    margin: 2em;
 }
 
 /* CONTACT CARDS */
@@ -66,16 +67,19 @@ section {
 }
 
 .con-icon {
-    width: 28px;
+    width: 26px;
     margin-right: 10px;
 }
 
 /* MEDIA QUERIES */
 
-/* @media only screen and (max-width: 768px) {
-    .mapouter { width: 100%; }
-} */
+@media only screen and (max-width: 768px) {
+    .contact-deck { 
+        display: inline;
+        text-align: center;
+    }
 
-@media (max-width: 992px) {
-    /* Horizontal red lines change */
+    .contact-card {
+        margin: 0 auto;
+    }
 }
