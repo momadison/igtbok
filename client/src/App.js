@@ -12,7 +12,6 @@ import Gallery from "./pages/Gallery";
 import Programs from "./pages/Programs";
 import Resources from "./pages/Resources/";
 import Admin from "./pages/Admin"
-import Contact from "./pages/Contact/"
 import PrivateRoute from './components/Auth/PrivateRoute'
 
 // components
@@ -29,7 +28,6 @@ function App() {
           <Route exact path="/Donate/" component={Donate} />
           <Route exact path="/About" component={About} />
           <Route exact path="/Impact" component={Impact} />
-          <Route exact path="/About" component={About} />
           <Route exact path="/gallery" component={Gallery} />
           <Route exact path="/Blog/" component={Blog} />
           <Route exact path="/Resources" component={Resources} />
