@@ -8,7 +8,7 @@ export default class LoginButton extends Component {
     this.state = {
       type: this.props.type,
       isLoading: true,
-      isLive: '',
+      isLive: false,
       url: ''
     }
   }
