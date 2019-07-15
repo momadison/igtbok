@@ -26,6 +26,9 @@ export default {
     getBanners: function(dbModel) {
         return axios.get("/api/banners", dbModel)
     },
+    login: function(route) {
+      return axios.get(route)
+    },
     getAuth: function(security) {
         return axios.get("/api/auth/checkAuth");
     },

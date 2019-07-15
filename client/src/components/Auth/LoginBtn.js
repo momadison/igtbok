@@ -27,15 +27,21 @@ export default class LoginButton extends Component {
     })
   }
 
+  handleClick = () => {
+    API.login(this.state.url).then((res)=>{
+      console.log('testing')
+    })
+  }
+
   render(){
     if(this.state.isLoading){
       return(<h1>Loading...</h1>)
     }
     if(this.state.isLive){
       if(this.props.type === 'logout'){
-        return(<Link className='nav-link' to={this.state.url}>Logout</Link>)
+        return(<div className='nav-link' onClick={this.handleClick()}>Logout</div>)
       }
-      return(<Link className='nav-link' to={this.state.url}>Login with {this.props.type}</Link>)
+      return(<div className='nav-link' onClick={this.handleClick()}>Login with {this.props.type}</div>)
     }
     if(this.props.type === 'logout'){
       return(<a className='nav-link' href={this.state.url}>Logout</a>)
