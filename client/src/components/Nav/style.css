@@ -6,10 +6,7 @@ li a {
 	letter-spacing: 1px;
 }
 
-nav a:hover,
-nav a:focus {
-	outline: none;
-}
+nav a:hover, nav a:focus { outline: none; }
 
 .navbar-nav {
     color: #ffffff;
@@ -46,22 +43,18 @@ nav a:focus {
 	pointer-events: none;
 }
 
-.navbar-nav a:hover::before,
-.navbar-nav a:focus::before {
+.navbar-nav a:hover::before {
 	opacity: 0;
 	-webkit-transform: translateY(-2px);
 	-moz-transform: translateY(-2px);
 	transform: translateY(-2px);
 }
 
-.navbar-nav a:hover::after,
-.navbar-nav a:focus::after {
+.navbar-nav a:hover::after {
 	opacity: 1;
 	-webkit-transform: translateY(0px);
 	-moz-transform: translateY(0px);
 	transform: translateY(0px);
 }
 
-.nav-item {
-    padding: 0 3px;
-}
+.nav-item { padding: 0 3px; }

@@ -29,7 +29,7 @@ function Main() {
             <div className="row">
                 <div className="card-deck">
                     <div className="animated fadeIn card text-white link-white bg-dark mb-3 main-card">
-                        <div className="card-header main-card-header">Together we're giving futures back</div>
+                        {/* <div className="card-header main-card-header">Together we're giving futures back</div> */}
                         <div className="card-body">
                             <h5 className="card-title main-card-title">YOU ARE IMPORTANT</h5>
                             <p className="card-text">With your donations, we combine all our resources and talents
@@ -40,7 +40,7 @@ function Main() {
                     <div className="animated fadeIn card text-white link-white bg-dark mb-3 main-card tonyaMain tonya-tint">
                     </div>
                     <div className="animated fadeIn card text-white link-white bg-dark mb-3 main-card">
-                        <div className="card-header main-card-header">All financial gifts support our mission</div>
+                        {/* <div className="card-header main-card-header">All financial gifts support our mission</div> */}
                         <div className="card-body">
                             <h5 className="card-title main-card-title">HOW TO DONATE</h5>
                             <p className="card-text">All financial gifts support our mission: rescuing and support
@@ -54,6 +54,7 @@ function Main() {
                     </div>
                 </div>
             </div>
+
             <div className="row">
                 <div className="col main-flood text-center">
                     <h1 className="main-header animated fadeInUp" id="mainHeader">HB 2290 - Human Trafficking Awareness Month</h1>
@@ -63,38 +64,38 @@ function Main() {
                     </a>
                 </div>
             </div>
+
             <div className="row bg-dark little-breathing-room">
                 <div className="col">
                     <div className="row">
-                        <div className="col-md-4 text-center">
+                        <div className="col-md-4 mb-4 text-center">
                             <i className="fas fa-users fa-5x main-icons"></i>
                             <h3 className="main-icon-title">36 Million</h3>
                             <p className="main-icon-subhead">Estimated people who are slaves across the world</p>
                         </div>
-                        <div className="col-md-4 text-center">
+                        <div className="col-md-4 mb-4 text-center">
                             <i className="fas fa-female fa-5x main-icons"></i>
                             <h3 className="main-icon-title">55%</h3>
                             <p className="main-icon-subhead">Are women and girls</p>
                         </div>
-                        <div className="col-md-4 text-center">
+                        <div className="col-md-4 mb-4 text-center">
                             <i className="fas fa-male fa-5x main-icons"></i>
                             <h3 className="main-icon-title">45%</h3>
                             <p className="main-icon-subhead">Are men and boys</p>
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-md-4 text-center">
+                        <div className="col-md-4 mb-4 text-center">
                             <i className="fas fa-child fa-5x main-icons"></i>
                             <h3 className="main-icon-title">26%</h3>
                             <p className="main-icon-subhead">Are children</p>
                         </div>
-                        <div className="col-md-4 text-center">
+                        <div className="col-md-4 mb-4 text-center">
                             <i className="fas fa-money-bill-alt fa-5x main-icons"></i>
                             <h3 className="main-icon-title">$90</h3>
                             <p className="main-icon-subhead">Average cost of slave</p>
                         </div>
-                        <div className="col-md-4 text-center">
-
+                        <div className="col-md-4 mb-4 text-center">
                             <i class="fas fa-dollar-sign fa-5x main-icons"></i>
                             <h3 className="main-icon-title">$150 billion dollars</h3>
                             <p className="main-icon-subhead">How much money slavery generates</p>
