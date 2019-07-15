@@ -28,6 +28,7 @@ export default {
         let stageWidth = Math.floor(those.state.venue.stageWidth * growthRate);
         let stageLength = Math.floor(those.state.venue.stageLength * growthRate);
         let seatSize = Math.floor(seatFeet * growthRate);
+        let yOffset = window.pageYOffset - those.state.originalyOffset;
         //set stage size state
         those.setState({
             stageWidth: stageWidth,
@@ -38,17 +39,20 @@ export default {
         })
         
         //place stage in middle-top of venue if coordinates are not already given
-        let stageX = those.state.stageX;
-        let stageY = those.state.stageY;
+        
         if (!those.state.originalvRef) {
+        let stageX = those.state.stageX;
+        let stageY = those.state.stageY + window.pageYOffset;
         stageX = (dimension.x + (Math.round((dimension.width/2) - (stageWidth / 2))));
-        stageY = dimension.top;
-        }
-               
+        stageY = dimension.top + window.pageYOffset;
+
         those.setState({
             stageX: stageX,
-            stageY: stageY     
+            stageY: stageY
         })
+        }
+        
+        
 
         those.setTables();
         },
@@ -64,13 +68,15 @@ export default {
             let yOffset = radius/1.35;
             let angle;
             let myVenueBox = those.venueRef.current.getBoundingClientRect();
+            let yWindowOffset = window.pageYOffset;
+
             
             tempArray.map( (table) => {
                 xRatio = (parseInt(table.x) - parseInt(those.state.originalvRef.left)) / (parseInt(those.state.originalvRef.width))
                 yRatio = (parseInt(table.y) - parseInt(those.state.originalvRef.top)) / (parseInt(those.state.originalvRef.height))
                 
                 table.x = (myVenueBox.width * xRatio) + myVenueBox.left;
-                table.y = (myVenueBox.height * yRatio) + myVenueBox.top;
+                table.y = (myVenueBox.height * yRatio) + myVenueBox.top + yOffset;
                 table.seat.map( (seat, index) => {
                     angle = (index / (those.state.venue.seatCount/2)) * Math.PI;
                     seat.x = (radius * Math.cos(angle)) + xOffset;
@@ -81,13 +87,13 @@ export default {
             //adjust stage
             if (stageX === 0 && stageY === 0) {
                 stageX = (myVenueBox.x + (Math.round((myVenueBox.width/2) - (those.state.stageWidth / 2))));
-                stageY = myVenueBox.top;
+                stageY = myVenueBox.top + yWindowOffset;
             } else {
                 // adjust stage for window width
                 stageX = (((those.state.stageX - those.state.originalvRef.left) / (those.state.originalvRef.width)) * 
                                 myVenueBox.width)+ myVenueBox.left;
                 stageY = (((those.state.stageY - those.state.originalvRef.top) / (those.state.originalvRef.height)) *
-                                myVenueBox.height) + myVenueBox.top;
+                                myVenueBox.height) + myVenueBox.top + yWindowOffset;
             }
                 
             those.setState({
@@ -96,19 +102,5 @@ export default {
                 stageY: stageY 
             })
                 
-        },
-        windowAdjust: (those) => {
-            let tempArray = those.state.originalTables;
-            let myVenueBox = those.venueRef.current.getBoundingClientRect();
-            for (var i=0; i<tempArray.length; i++) {
-                console.log("originalvref: " + those.state.orginalvRef + "tempArray: ", tempArray[i].x)
-                tempArray[i].x = (((tempArray[i].x - those.state.originalvRef.left) / (those.state.originalvRef.width)) *
-                    myVenueBox.width) + myVenueBox.left;
-            }
-
-            those.setState({
-                tables: tempArray
-            })
-
         }
 }

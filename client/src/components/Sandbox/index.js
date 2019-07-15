@@ -15,6 +15,7 @@ class Sandbox extends Component {
         super(props);
         this.venueRef = React.createRef();
         this.stageRef = React.createRef();
+        this.tablesRef = React.createRef();
     }
 
     state = {
@@ -62,7 +63,7 @@ class Sandbox extends Component {
 
     renderRedirect = () => {
         if (this.state.redirect) {
-            return <Redirect to='../resources' />
+            return <Redirect to='../PriceSetup' />
         }
     }
 
@@ -85,7 +86,7 @@ class Sandbox extends Component {
     setTables= () => {
         //SET TABLES
         //get table count and set an array with each table in it spaced out by table size
-        const stageBoundary = this.stageRef.current.getBoundingClientRect();
+        let stageBoundary = this.stageRef.current.getBoundingClientRect();
         let xCoord = 0;
         let yCoord = 0;
         let dimension = this.state.dimension;
@@ -95,12 +96,13 @@ class Sandbox extends Component {
         let table = {};
         let seat = {};
         let tableArray=[];
+        let yWindowOffset = window.pageYOffset;
         
         for (var i=0; i < this.state.venue.tableCount; i++) {
             if (i === 0) {
                 //set the position of the first table
                 xCoord = dimension.left + tableSize;
-                yCoord = dimension.top + tableSize;
+                yCoord = dimension.top + tableSize + yWindowOffset;
             } else  {
                    
                 //if the table is below the venue
@@ -119,8 +121,8 @@ class Sandbox extends Component {
                 //if the table lands on the stage move it off of the stage
                 if (xCoord > (Math.floor(stageBoundary.left) - (Math.floor((tableSize+(this.state.seatSize*2)) * this.state.stageMargin)))  &&  
                 xCoord < (Math.floor(stageBoundary.right) + (Math.floor((tableSize+(this.state.seatSize*2)) * this.state.stageMargin))) &&
-                (yCoord < (stageBoundary.bottom + (tableSize * this.state.stageMargin)) && 
-                yCoord > stageBoundary.top)) {
+                (yCoord < (stageBoundary.bottom + (tableSize * this.state.stageMargin) + yWindowOffset) && 
+                yCoord > stageBoundary.top - tableSize*this.state.stageMargin  - yWindowOffset)) {
                     xCoord = (stageBoundary.right + ((tableSize+(this.state.seatSize*2)) * this.state.stageMargin))
                     if ((xCoord+(tableSize*2.5)*(this.state.spacing)) >= dimension.right - (tableSize)) {
                         xCoord = dimension.left + tableSize;
@@ -175,17 +177,20 @@ class Sandbox extends Component {
 
     handleTransition = (e) => {
         e.preventDefault();
+        if (window.pageYOffset === 0) {
         API.saveTables({
             venue: this.state.venue.venueName,
             stageX: this.state.stageX,
             stageY: this.state.stageY,
             windowSize: this.state.windowSize,
             tables: this.state.tables,
-            venueRef: this.venueRef.current.getBoundingClientRect()
+            venueRef: this.venueRef.current.getBoundingClientRect(),
+            yOffset: window.pageYOffset
         })
         .then(res=>console.log(res.data))
         .catch(err=> console.log(err))
         this.setRedirect();
+    } else alert("please scroll up and resubmit");
     }
 
     handleInputChange = event => {
@@ -219,6 +224,16 @@ class Sandbox extends Component {
             this.setTables();
         } else {
             document.removeEventListener('mousemove', this.handleMouseMove);
+            //attempt to only allow dropping of the item within the box
+            // let tempArray = this.state.tables;
+            // tempArray.map( (table) => {
+            //     if (table.id === event.target.id) {
+            //         if (table.y > (this.venueRef.current.getBoundingClientRect + window.pageYOffset)) {
+
+                        
+            //         }
+            //     }
+            // })
         }
     }
         this.coords = {};
@@ -232,9 +247,6 @@ class Sandbox extends Component {
 
         let xStage = this.state.stageX;
         let yStage = this.state.stageY;
-
-        const node = this.venueRef.current;
-        const dimension = node.getBoundingClientRect();
 
         let xLoc = xStage - xDiff;
         let yLoc = yStage - yDiff;
@@ -258,24 +270,18 @@ class Sandbox extends Component {
         
         const node = this.venueRef.current;
         const dimension = node.getBoundingClientRect();
+        console.log("dimension", dimension);
 
-        //Only lets you drag within the box
+        
         for (var i=0; i<tempArray.length; i++) {
             let xLoc = tempArray[i].x - xDiff;
             let yLoc = tempArray[i].y - yDiff;
             if (tempArray[i].id === activeID) {
-                if((yLoc + this.state.tableSize) < (dimension.bottom) && yLoc > (dimension.top) &&
-                xLoc < (dimension.right-this.state.tableSize) && xLoc > (dimension.left)) {
-                    
+                let xLoc = tempArray[i].x - xDiff;
+            let yLoc = tempArray[i].y - yDiff;
+
                     tempArray[i].x = xLoc;
                     tempArray[i].y = yLoc;
-                } else {
-                    if (yLoc > dimension.bottom) {
-                        tempArray[i].x = xLoc;
-                    } else {
-                        this.handleMouseUp();
-                    }
-                } 
             }
         }
             this.setState({
@@ -302,30 +308,29 @@ render() {
                     </div>
                     <div className="col-md-3">
                         <Input
-                            type="number"
-                            step="0.1"
-                            id="stageMargin"
-                            name="stageMargin"
-                            onChange={this.handleInputChange}
-                            value={this.state.stageMargin}
-                            placeholder="Stage Margin"
-                            small="table spacing from stage"/>
+                        type="number"
+                        step="0.1"
+                        id="stageMargin"
+                        name="stageMargin"
+                        onChange={this.handleInputChange}
+                        value={this.state.stageMargin}
+                        placeholder="Stage Margin"
+                        small="table spacing from stage"/>
                     </div>
                     <div className="col-md-3">
                         <span className="navbar-brand" href="#">{this.state.msg}</span>
                     </div>
                     <div className="col-md-3">
                         <FormBtn
-                            onClick={this.handleTransition}
-                            className="btn btn-danger"
+                        onClick={this.handleTransition}
+                        className="btn btn-danger"
                         >
-                            Next
+                        Next
                         </FormBtn>
                     </div>
                 </div>
             </form>
             </NavSB>
-
             <div    className="venueBox"
                     onClick = {this.handleAClick}
                     ref = {this.venueRef}
@@ -362,28 +367,23 @@ render() {
                                         </div>
                                     )
                                 })}</div>
-                            </div>          
-                )
-                
+                            </div>         
+                        )
                 })}
-                <div    
+                </div><div
                         className="stage" 
-                            ref={this.stageRef}
-                            id="mainStage"
-                            style={{    
-                            position: "absolute",
-                            width: this.state.stageWidth+"px",
-                            height: this.state.stageLength+"px",
-                            left: this.state.stageX+"px",
-                            top: this.state.stageY+"px"}}
-                            onClick={this.handleBtnClick}
-                            onMouseDown={this.handleMouseDown}
-                            onMouseUp={this.handleMouseUp}>
-                    <i className="fas fa-rectangle-landscape" style={{
-                        
-                    }}></i>
-                </div>
-                </div>
+                        ref={this.stageRef}
+                        id="mainStage"
+                        style={{    
+                        position: "absolute",
+                        width: this.state.stageWidth+"px",
+                        height: this.state.stageLength+"px",
+                        left: this.state.stageX+"px",
+                        top: this.state.stageY+"px"}}
+                        onClick={this.handleBtnClick}
+                        onMouseDown={this.handleMouseDown}
+                        onMouseUp={this.handleMouseUp}>
+                    <i className="fas fa-rectangle-landscape"></i></div>
                 {this.renderRedirect()}
                 </>
             )

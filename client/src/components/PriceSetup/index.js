@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { Redirect } from "react-router"
 import API from "../../utils/API";
 import FUNC from "../../utils/FUNC";
 import NavSB from "../NavSB";
@@ -12,6 +13,8 @@ class PriceSetup extends Component {
         this.venueRef = React.createRef();
         this.stageRef = React.createRef();
         this.modalRef = React.createRef();
+        this.tablesRef = React.createRef();
+        this.goLiveModalRef = React.createRef();
     }
 
     state = {
@@ -32,7 +35,11 @@ class PriceSetup extends Component {
         selectedItems: [],
         setItems: [],
         originalWindow: window.innerWidth,
-        originalvRef: {}
+        originalvRef: {},
+        originalyOffset: 0,
+        bannerHeader: "",
+        bannerTitle: "",
+        bannerMsg: ""
     };
 
 
@@ -80,7 +87,8 @@ class PriceSetup extends Component {
                         stageX:  res.data[0].stageX,
                         stageY:  res.data[0].stageY,
                         originalWindow: res.data[0].windowSize,
-                        originalvRef: res.data[0].venueRef
+                        originalvRef: res.data[0].venueRef,
+                        originalyOffset: res.data[0].yOffset
                     })
                 )
                 .then(res => 
@@ -101,6 +109,7 @@ class PriceSetup extends Component {
 
     handleTransition = (e) => {
     }
+
     
     handleBtnClick = (event) => {
         event.preventDefault();
@@ -115,7 +124,7 @@ class PriceSetup extends Component {
             
         } else {
             let index = tableIDArray.findIndex(function(table) {
-                return table.id === tableID
+                return table === tableID
             })
             tableIDArray.splice(index,1)
         }
@@ -127,6 +136,11 @@ class PriceSetup extends Component {
 
     handleInputChange = event => {
             let { name, value } = event.target;
+            if (event.target.id.substring(0,6) === "banner") {
+                this.setState({
+                    [name]: value
+                })
+            } else {
             let tempArray = this.state.tables;
             tempArray.map( (table) => {
                 if (this.state.selectedItems.includes(table.id)) {
@@ -134,6 +148,7 @@ class PriceSetup extends Component {
                 }
             })
             this.setState({ tables: tempArray})
+        }
       };
 
     handleTablePricing = (e) => {
@@ -165,7 +180,35 @@ class PriceSetup extends Component {
 
     openModal = event => {
         event.preventDefault();
+        if (event.target.id === "setPricing") {
         this.modalRef.current.openModal();
+        } else {
+            this.goLiveModalRef.current.openModal();
+        }
+    }
+
+    takeLive = event => {
+        event.preventDefault();
+        API.saveBanner({
+            header: this.state.bannerHeader,
+            message: this.state.bannerMsg,
+            title: this.state.bannerTitle
+        })
+        .then(res=>console.log(res.data))
+        .catch(err=> console.log(err))
+        this.setRedirect();
+    }
+
+    setRedirect = () => {
+        this.setState({
+            redirect: true
+        })
+    }
+
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            return <Redirect to='../' />
+        }
     }
     
 render() {
@@ -189,14 +232,71 @@ render() {
                         readOnly />
                     </div>
                     <div className="col-md-3">
-                        <button className="btn btn-danger"
+                        <button id="setPricing" className="btn btn-danger"
                         onClick={this.openModal}>Edit Selected</button>    
                     </div>
                     <div className="col-md-3">
-                        <button className="btn btn-success"
-                        onClick={this.takeLive}>Take Live</button>
+                        <button id="takeLive" className="btn btn-success"
+                        onClick={this.openModal}>Take Live</button>
                     </div>
                 </div>
+                <Modal ref={this.goLiveModalRef}>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12">
+                            <h2>Lets Setup your Banner</h2>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-6">
+                            <h4>Header: </h4>
+                        </div>
+                        <div className="col-md-6">
+                            <Input
+                            id="bannerHeader"
+                            type="string"
+                            name="bannerHeader"
+                            onChange={this.handleInputChange}
+                            placeholder="Banner Header"
+                            />
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-6">
+                            <h4>Title: </h4>
+                        </div>
+                        <div className="col-md-6">
+                            <Input
+                            id="bannerTitle"
+                            type="string"
+                            name="bannerTitle"
+                            onChange={this.handleInputChange}
+                            placeholder="Banner Title"
+                            />
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-6">
+                            <h4>Message: </h4>
+                        </div>
+                        <div className="col-md-6">
+                            <Input
+                            id="bannerMsg"
+                            type="string"
+                            name="bannerMsg"
+                            onChange={this.handleInputChange}
+                            placeholder="Banner Message"
+                            />
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-12">
+                        <FormBtn onClick={this.takeLive}
+                             className="btn btn-danger">Submit</FormBtn>
+                        </div>
+                    </div>
+                </div>
+                </Modal>
                 <Modal ref={this.modalRef}>
                     <table className="table">
                     <thead>
@@ -256,7 +356,8 @@ render() {
                     style={{
                     width: this.state.venueWidth+"px",
                     height: this.state.venueHeight+"px"}}>
-
+            <div className="tables"
+                ref={this.tablesRef}>
             {this.state.tables.map( (table) => {
                 return (
                         <div id={table.id}
@@ -299,7 +400,7 @@ render() {
                             </div>          
                 )
                 
-                })}
+                })}</div>
                 <div    className="stage" 
                         ref={this.stageRef}
                         style={{    
@@ -317,6 +418,7 @@ render() {
                 </div>
                     
                 </div>
+                {this.renderRedirect()}
                 </>
             )
         }
