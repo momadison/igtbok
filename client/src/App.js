@@ -32,19 +32,19 @@ function App() {
           <Route exact path="/Donate/" component={Donate} />
           <Route exact path="/About" component={About} />
           <Route exact path="/Impact" component={Impact} />
-          <Route exact path="/gallery" component={Gallery} />
+          <Route exact path="/Gallery" component={Gallery} />
           <Route exact path="/Blog/" component={Blog} />
           <Route exact path="/AllBlogs/" component={AllBlogs} />
           <Route exact path="/FullBlogPost/:id" component={FullBlogPost} />
-          <Route exact path="/programs" component={Programs} />
+          <Route exact path="/Programs" component={Programs} />
           {/* <Route exact path="/blog" component={Wizard} /> */}
           <Route exact path="/Contact" component={Contact} />
-          <Route exact path="/loggedin" component={() => <h1 style={{textAlign: 'center'}}>Logged In Successfully</h1>} />
-          <Route exact path="/loggedout" component={() => <h1 style={{textAlign: 'center'}}>Logged Out Successfully</h1>} />
-          <Route exact path="/unauthorized" component={() => <h1 style={{textAlign: 'center'}}>You are not authorized to access this page</h1>} />
-          <Route exact path="/admin" component={Admin} />
-          <Route exact path="/private" component={PrivateRoute} />
-          <Route exact path="/login" component={Login} />
+          <Route exact path="/Loggedin" component={() => <h1 style={{textAlign: 'center'}}>Logged In Successfully</h1>} />
+          <Route exact path="/Loggedout" component={() => <h1 style={{textAlign: 'center'}}>Logged Out Successfully</h1>} />
+          <Route exact path="/Unauthorized" component={() => <h1 style={{textAlign: 'center'}}>You are not authorized to access this page</h1>} />
+          <Route exact path="/Admin" component={Admin} />
+          <Route exact path="/Private" component={PrivateRoute} />
+          <Route exact path="/Login" component={Login} />
 
           {/* <Route component={NoMatch} /> */}
         </Switch>

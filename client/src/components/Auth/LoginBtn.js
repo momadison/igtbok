@@ -6,7 +6,7 @@ export default class LoginButton extends Component {
     let isLive = false
     this.state = {
       type: this.props.type,
-      url: isLive ? `https://igtbok-org.herokuapp.com//api/auth/${this.props.type}` : `http://localhost:3001/api/auth/${this.props.type}`
+      url: isLive ? `https://igtbok-org.herokuapp.com/api/auth/${this.props.type}` : `http://localhost:3001/api/auth/${this.props.type}`
     }
   }
 

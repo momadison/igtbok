@@ -19,19 +19,19 @@ module.exports = {
     failureRedirect: '/'
   }),
   googleRedirect: function(req, res) {
-    res.redirect(`${URL}/loggedin`)
+    res.redirect(`${URL}/Loggedin`)
   },
   facebookLogin: passport.authenticate('facebook'),
   facebookCB: passport.authenticate('facebook', {
     failureRedirect: '/'
   }),
   facebookRedirect: function(req, res) {
-    res.redirect(`${URL}/loggedin`)
+    res.redirect(`${URL}/Loggedin`)
   },
   logout: function(req, res) {
     console.log('should be logging out..')
     req.logout()
     req.user = null
-    res.redirect(`${process.env.PUBLIC_URL}/loggedout`)
+    res.redirect(`${process.env.PUBLIC_URL}/Loggedout`)
   }
 }
