@@ -8,14 +8,18 @@ import Contact from "./pages/Contact";
 import About from "./pages/About/";
 import Impact from "./pages/Impact/";
 import Blog from "./pages/Blog/";
+import AllBlogs from "./pages/AllBlogs";
+import FullBlogPost from "./pages/FullBlogPost";
+// import HopePearls from "./pages/HopePearls";
 import Gallery from "./pages/Gallery";
 import Programs from "./pages/Programs";
 import Resources from "./pages/Resources/";
 import Admin from "./pages/Admin"
+import Login from "./pages/Login"
+
 import Sandbox from "./components/Sandbox/"
 import PriceSetup from "./components/PriceSetup"
 import BoxOffice from "./components/BoxOffice"
-// import Contact from "./components/Contact/"
 import PrivateRoute from './components/Auth/PrivateRoute'
 import Banner from './components/Banner'
 import Wizard from './components/Wizard'
@@ -50,6 +54,7 @@ function App() {
           <Route exact path='/Private' component={PrivateRoute} />
           <Route exact path="/Resources" component={Resources} />
           <Route exact path="/Contact" component={Contact} />
+          <Route exact path="/Login" component={Login} />
 
           {/* <Route component={NoMatch} /> */}
         </Switch>

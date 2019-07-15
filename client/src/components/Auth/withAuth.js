@@ -15,7 +15,6 @@ export default function withAuth(WrappedComponent, security) {
 
     componentDidMount(){
       API.getAuth().then((res)=>{
-        console.log(res.data)
         this.checkAuthentication(res.data)
       })
     }
@@ -40,7 +39,7 @@ export default function withAuth(WrappedComponent, security) {
       if(this.state.isUserLoggedIn){
         return <WrappedComponent authData={this.state} {...this.props} />
       } else {
-        return <Redirect to={{pathname: "/unauthorized", state: { from: this.props.location }}} />
+        return <Redirect to={{pathname: "/Unauthorized", state: { from: this.props.location }}} />
       }
     }
   }

@@ -2,8 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css"
 
-import LoginBtn from '../Auth/LoginBtn'
-
 function Nav() {
     return (
 
@@ -30,10 +28,6 @@ function Nav() {
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="/contact" data-hover="Contact">Contact</Link>
-                    </li>
-                    <li>
-                      <LoginBtn type='google' />
-                      <LoginBtn type='facebook' />
                     </li>
                 </ul>
             </div>
