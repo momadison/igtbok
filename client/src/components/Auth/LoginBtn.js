@@ -39,9 +39,9 @@ export default class LoginButton extends Component {
     }
     if(this.state.isLive){
       if(this.props.type === 'logout'){
-        return(<div className='nav-link' onClick={this.handleClick()}>Logout</div>)
+        return(<div className='nav-link' onClick={this.handleClick}>Logout</div>)
       }
-      return(<div className='nav-link' onClick={this.handleClick()}>Login with {this.props.type}</div>)
+      return(<div className='nav-link' onClick={this.handleClick}>Login with {this.props.type}</div>)
     }
     if(this.props.type === 'logout'){
       return(<a className='nav-link' href={this.state.url}>Logout</a>)
