@@ -4,11 +4,13 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // pages
 import Main from "./pages/Main/";
 import Donate from "./pages/Donate";
+import Contact from "./pages/Contact";
 import About from "./pages/About/";
 import Impact from "./pages/Impact/";
 import Blog from "./pages/Blog/";
 import Gallery from "./pages/Gallery";
 import Programs from "./pages/Programs";
+import Resources from "./pages/Resources/";
 import Admin from "./pages/Admin"
 import Sandbox from "./components/Sandbox/"
 import PriceSetup from "./components/PriceSetup"
@@ -46,6 +48,8 @@ function App() {
           <Route exact path="/Unauthorized" component={() => <h1 style={{textAlign: 'center'}}>You are not authorized to access this page</h1>} />
           <Route exact path="/Admin" component={Admin} />
           <Route exact path='/Private' component={PrivateRoute} />
+          <Route exact path="/Resources" component={Resources} />
+          <Route exact path="/Contact" component={Contact} />
 
           {/* <Route component={NoMatch} /> */}
         </Switch>

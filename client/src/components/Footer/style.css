@@ -1,41 +1,33 @@
+.footer-breathing-room {
+    padding: 4em 0 1em;
+    margin-top: 2em;
+}
 
+.footer-breathing-room .row {
+    margin-bottom: 2em;
+}
 
 .footer-img-breathing-room {
-	margin-bottom: 1rem;
+    margin: 0 15px;
+    height: 100%;
+    max-height: max-content;
 }
-.footer-breathing-room {
-	margin-bottom: 15px;
-}
+
 .nav-item {
     padding: 0 3px;
 }
-.footer-link-normal {
-	color: black;
+
+.main-link-normal {
+    line-height: 1.8em;
 }
-.noDeco {
-	list-style: none;
-	color: #fff;
-}
-.footer-link-white {
-	color: white !important;
-}
+
 .footer-title {
-	/* padding-top: .5rem; */
-    /* color: white; */
     font-family: 'Roboto Condensed', sans-serif;
-    /* text-align: center; */
     font-size: 1em;
     font-weight: 800;
+    letter-spacing: 2px;
 }
-.footer-hotline {
-    font-family: 'Roboto Condensed', sans-serif;
-	font-size: 6em;
-    font-weight: 800;
-}
-.footer-runningCopy {
-    /* color: white; */
-    font-family: 'Lato', sans-serif;
-    /* text-align: center; */
-    font-size: 1em;
-    font-weight: 500;
-}
+
+.footer-members { height: 60px; }
+
+.footer-tiny-text { font-size: .9em; }
