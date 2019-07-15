@@ -3,10 +3,13 @@ import { Component } from "react"
 import { Input, Select, FormBtn } from "../Form";
 import { Redirect } from "react-router"
 import API from "../../utils/API.js"
+import Modal from "../Modal";
 import "./Wizard.css"
 
 class Wizard extends Component {
     state = {
+        venues: [],
+        activeVenue: "",
         redirect: false,
         activeID: 0,
         venueName: "",
@@ -35,6 +38,7 @@ class Wizard extends Component {
     }
 
     handleInputChange = event => {
+        console.log(event.target, "event");
         const { name, value } = event.target;
         this.setState({
           [name]: value
@@ -56,7 +60,7 @@ class Wizard extends Component {
 
     renderRedirect = () => {
         if (this.state.redirect) {
-            return <Redirect to='../hopepearls' />
+            return <Redirect to='../Sandbox' />
         }
     }
 
@@ -72,6 +76,7 @@ class Wizard extends Component {
             tableCount: this.state.tableCount,
             tableWidth: this.state.tableWidth,
             seatCount: this.state.seatCount,
+            editVenue: false,
             active: true
         })
         .then(res => console.log(res.data))
@@ -81,6 +86,27 @@ class Wizard extends Component {
 
     getVenue = (e) => {
         e.preventDefault();
+        API.getVenues()
+            .then(res =>
+                this.setState({
+                    venues: res.data
+                })
+            )
+            .then( () => 
+                this.setState({
+                    editVenue: true
+                })
+            )
+    }
+
+    openModal = event => {
+        event.preventDefault();
+        this.myModalRef.current.openModal();
+    }
+
+    pickVenue = event => {
+        event.preventDefault();
+        this.myModalRef.current.closeModal();
     }
     
     render() {
@@ -97,9 +123,30 @@ class Wizard extends Component {
                         <div className="carousel-caption">
                             <h2 className="h3-responsive">Event Portal</h2>
                             <p>Let's plan an event!</p>
-                            <button onClick={this.handleBtnClick} type="button" className="btn btn-danger" id="newEvent">New Event</button>
-                            <button type="button" onClick={this.getVenue} className="btn btn-danger" id="editEvent">Edit Event</button>
+                            <button onClick={this.handleBtnClick} type="button" className="btn btn-danger btnspace" id="newEvent">New Event</button>
+                            <button type="button" onClick={this.getVenue} className="btn btn-danger btnspace" id="editEvent">Edit Event</button>
                         </div>
+                            {(this.state.editVenue === true) ? 
+                                        <div className="row editVenueOption">
+                                        <div className="col-md-6">
+                                            {console.log("this here: ", this.state.venues.map( (venue) => { return venue.venueName }))}
+                                        <Select
+                                        id="activeVenue"
+                                        name="activeVenue"
+                                        options={this.state.venues.map( (venue) => { return venue.venueName })}
+                                        onChange={this.handleInputChange}
+                                        small="select venue" />
+                                        </div>
+                                        <div className="col-md-6">
+                                        <FormBtn
+                                        onClick={this.editVenue}
+                                        className="btn btn-danger editVenue" >
+                                            Edit
+                                        </FormBtn>
+                                        </div>
+                                        </div> : 
+                                        <div></div>
+                                    }
                     </div>
                     
                     {/* SETTING UP EVENT SLIDE */}
@@ -228,8 +275,7 @@ class Wizard extends Component {
                             </form>
                         </div>
                     </div>
-
-                </div>
+                </div>          
             </div>
             </> 
         )

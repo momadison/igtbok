@@ -10,8 +10,13 @@ import Blog from "./pages/Blog/";
 import Gallery from "./pages/Gallery";
 import Programs from "./pages/Programs";
 import Admin from "./pages/Admin"
+import Sandbox from "./components/Sandbox/"
+import PriceSetup from "./components/PriceSetup"
+import BoxOffice from "./components/BoxOffice"
 // import Contact from "./components/Contact/"
 import PrivateRoute from './components/Auth/PrivateRoute'
+import Banner from './components/Banner'
+import Wizard from './components/Wizard'
 
 // components
 import Nav from "./components/Nav";
@@ -22,20 +27,25 @@ function App() {
     <Router>
       <div>
         <Nav />
+        <Banner />
         <Switch>
           <Route exact path="/" component={Main} />
           <Route exact path="/Donate/" component={Donate} />
           <Route exact path="/About" component={About} />
           <Route exact path="/Impact" component={Impact} />
-          <Route exact path="/gallery" component={Gallery} />
+          <Route exact path="/Gallery" component={Gallery} />
           <Route exact path="/Blog/" component={Blog} />
-          <Route exact path="/programs" component={Programs} />
+          <Route exact path="/Programs" component={Programs} />
+          <Route exact path="/Sandbox" component={Sandbox} />
+          <Route exact path="/PriceSetup" component={PriceSetup} />
+          <Route exact path="/BoxOffice" component={BoxOffice} />
+          <Route exact path="/Wizard" component={Wizard} />
           {/* <Route exact path="/Contact" component={Contact} /> */}
-          <Route exact path="/loggedin" component={() => <h1 style={{textAlign: 'center'}}>Logged In Successfully</h1>} />
-          <Route exact path="/loggedout" component={() => <h1 style={{textAlign: 'center'}}>Logged Out Successfully</h1>} />
-          <Route exact path="/unauthorized" component={() => <h1 style={{textAlign: 'center'}}>You are not authorized to access this page</h1>} />
-          <Route exact path="/admin" component={Admin} />
-          <Route exact path='/private' component={PrivateRoute} />
+          <Route exact path="/Loggedin" component={() => <h1 style={{textAlign: 'center'}}>Logged In Successfully</h1>} />
+          <Route exact path="/Loggedout" component={() => <h1 style={{textAlign: 'center'}}>Logged Out Successfully</h1>} />
+          <Route exact path="/Unauthorized" component={() => <h1 style={{textAlign: 'center'}}>You are not authorized to access this page</h1>} />
+          <Route exact path="/Admin" component={Admin} />
+          <Route exact path='/Private' component={PrivateRoute} />
 
           {/* <Route component={NoMatch} /> */}
         </Switch>

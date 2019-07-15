@@ -15,3 +15,13 @@
     top: 10px;
 }
 
+.myModal {
+    z-index: 123456;
+}
+
+.editVenueOption {
+    position: absolute;
+    top: 225px;
+    left: 40%;
+}
+

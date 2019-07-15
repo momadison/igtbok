@@ -14,7 +14,6 @@ module.exports = {
           .catch(err => res.status(422).json(err));
       },
     update: function(req, res) {
-        console.log(req.body, "req")
         db.Tables
             .update({_id: req.body._id}, {tables: req.body.tables})
             .then(dbModel => res.json(dbModel))
