@@ -24,7 +24,7 @@ class MainBlog extends Component {
                     {this.state.blogs.slice(1).slice(-4).map(blog => (
                         //  <div className="col-md-3">
                          <div className="card bg-dark">
-                             <img className="card-img-top" src="https://via.placeholder.com/150" alt="Card image cap" />
+                             <img className="card-img-top main-card-img" src={blog.blogImageURL} alt="Card image cap" />
                              <div className="card-body">
                                  <h5 className="card-title main-card-title">{blog.blogTitle}</h5>
                                  <p className="card-text main-card-runningCopy">{blog.blogBody.substring(0, 125)} -<small>(read more)</small></p>

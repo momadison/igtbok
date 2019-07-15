@@ -3,7 +3,7 @@ section {
     font-family: 'Lato', sans-serif;
 }
 
-.about-h2 {
+.contact-h2 {
     display: flex;
     align-items: center;
     text-align: center;
@@ -13,88 +13,73 @@ section {
     text-transform: uppercase;
 }
 
-.about-h2:before, .about-h2:after {
+.contact-h2:before, .contact-h2:after {
     content: "";
     flex: 1;
     border-top: 7px double #ED1C22;
 }
-.about-h2:before { margin-right: .3em; }
-.about-h2:after { margin-left: .3em; }
+.contact-h2:before { margin-right: .3em; }
+.contact-h2:after { margin-left: .3em; }
 
-.about-img-contain { 
-	margin: 0 auto 1em;
-	max-height: 50vh;
-	min-height: 300px;
-	display: flex;
-}
-.about-img { 
-	margin: inherit;
-	object-fit: contain;
-	overflow: auto;
-}
-
-.founder-pic /*, .founder-vid*/ { 
-    float: right; 
-    clear: both;
-    width: 33%;
-    margin-left: 15px;
-}
-
-.founder-pic { clip-path: circle(50% at center); }
-
-.founder-vid {
-    float: right;
+.mapouter {
     position: relative;
-    clear: both;
-    width: 45vw;
-    padding-bottom: 43%;
-    margin-top: 25px;
-    margin-left: 15px;
-}
-.founder-vid iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
+    text-align: right;
+    height: 500px;
     width: 100%;
-    height: 100%;
+    float: left;
+    margin: 2em;
 }
 
-/* BOARD MEMBERS */
+/* CONTACT CARDS */
 
-.board-img { width: 100%; }
-.board-name {
+.contact-deck {
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.contact-detail a {
+    text-decoration: none;
+    color: unset;
+}
+.contact-detail a:hover { color: #ED1C22; }
+
+
+.contact-card { 
+    width: fit-content;
+    padding: 1em;
+}
+
+.contact-name {
     color: #ED1C22;
     text-transform: uppercase;
-    font-size: 1.1em;
     font-family: 'Roboto Condensed', sans-serif;
+    font-weight: bold;
+    font-size: 1.6em;
+    letter-spacing: 1px;
 }
 
-.board-title {
-    font-style: italic;
-    font-size: .9em;
-    font-family: 'Lato', sans-serif;
+.contact-detail {
+    font-size: 1.2em;
+    font-family: 'Roboto Condensed', sans-serif;
     font-weight: 500;
+    line-height: 1.5em;
 }
 
-.about-card-body { padding: 1rem; }
-.about-card  { border: none; }
-
+.con-icon {
+    width: 26px;
+    margin-right: 10px;
+}
 
 /* MEDIA QUERIES */
 
 @media only screen and (max-width: 768px) {
-    .founder-pic, .founder-vid { width: 100%; }
-    .founder-vid { 
-        height: 540px;
-        margin-bottom: 1.5em;
+    .contact-deck { 
+        display: inline;
+        text-align: center;
+    }
+
+    .contact-card {
+        margin: 0 auto;
     }
 }
-
-@media (max-width: 992px) {
-    /* Horizontal red lines change */
-}
-
-@media (min-width: 576px) { .about-card  { max-width: 45%; } }
-@media (min-width: 768px) { .about-card  { max-width: 29.2%; } }
-@media (min-width: 992px) { .about-card  { max-width: 22%; } }
-@media (min-width: 1200px) { .about-card  { max-width: 17.4%; } }

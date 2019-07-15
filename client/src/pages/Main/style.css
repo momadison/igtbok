@@ -1,7 +1,8 @@
 .main-cat1 {
     background-size: cover;
     background-position: center;
-    height: 400px;
+    background-repeat: no-repeat;
+    height: 615px;
     overflow: auto;
     margin: auto;
     background-image: url("/assets/img/main-help2.jpg");
@@ -14,7 +15,7 @@
 .main-cat2 {
     background-size: cover;
     background-position: center;
-    height: 400px;
+    height: 615px;
     overflow: auto;
     margin: auto;
     background-image: url("/assets/img/main-help.jpg");
@@ -46,6 +47,7 @@
     font-size: 5em;
     text-shadow: 0px 0px 25px #000000;
     font-weight: 800;
+    z-index: 10;
 }
 #subheadHeader {
     color: white;
@@ -58,7 +60,7 @@
 }
 
 .main-card {
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .tonya-tint {
@@ -67,10 +69,6 @@
 }
 
 .tonyaMain {
-    /* background-size: cover;
-    background-position: center;
-    overflow: auto;
-    margin: auto; */
     background-size: cover;
     background-position: top;
     background-image: url("/assets/img/TonyaStaffordCol.jpg");
@@ -93,7 +91,8 @@
     font-size: 2em;
 }
  .little-breathing-room {
-     padding: 3rem 0;
+    padding: 4rem 0;
+    margin-top: 2em !important;
  }
 .main-icons {
     color: #fff;
@@ -117,7 +116,7 @@
     padding-top: .5rem;
     color: white;
     font-family: 'Roboto Condensed', sans-serif;
-    /* text-align: center; */
+    text-align: center;
     font-size: 2em;
     font-weight: 800;
 }
@@ -128,3 +127,23 @@
     font-size: 1em;
     font-weight: 500;
 }
+
+.row {
+    margin: 0 -15px 1em;
+}
+.main-allBlog {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 1em;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+.main-allBlog:before, .main-allBlog:after {
+    content: "";
+    flex: 1;
+    border-top: 7px double #ED1C22;
+}
+.main-allBlog:before { margin-right: .3em; }
+.main-allBlog:after { margin-left: .3em; }

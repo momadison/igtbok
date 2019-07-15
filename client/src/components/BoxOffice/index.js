@@ -31,9 +31,7 @@ class PriceSetup extends Component {
         tableToggle: false,
         originalWindow: window.innerWidth,
         originalvRef: {},
-        originalTables: [],
-        originalStateX: 0,
-        originalStateY: 0
+        originalyOffset: 0,
     };
 
 
@@ -86,40 +84,38 @@ class PriceSetup extends Component {
 
     //TODO GET TABLES FOR GIVEN VENUE
     setTables = () => {
-        
-
-        if (this.state.tableID === this.state.tableID) {
+        // if (this.state.tableID === this.state.tableID) {
         API.getTables()
             .then(res =>
                 this.setState({
-                    originalTables: res.data[0].tables,
                     tables: res.data[0].tables,
                     tableID: res.data[0]._id,
                     stageX: res.data[0].stageX,
                     stageY: res.data[0].stageY,
-                    originalStageX: res.data[0].stageX,
-                    originalStageY: res.data[0].stageY,
                     originalWindow: res.data[0].windowSize,
-                    originalvRef: res.data[0].venueRef
+                    originalvRef: res.data[0].venueRef,
+                    originalyOffset: res.data[0].yOffset
                 })
             )
             .then(res =>
                 FUNC.tableStageAdjust(this)
             )
-        }
-        else {
-            console.log("state: ", this.state);
-            this.setState({
-                originalTables: this.state.originalTables,
-                tables: this.state.originalTables,
-                tableID: this.state.tableID,
-                stageX: this.state.originalStageX,
-                stageY: this.state.originalStageY,
-                originalWindow: this.state.originalWindow,
-                originalvRef: this.state.originalvRef
-            })
-            FUNC.tableStageAdjust(this)
-        }
+        // }
+        //this will never run but is not working code meant to bypass the ajax call after it
+        //had already been made once
+        // else {
+        //     console.log("state: ", this.state);
+        //     this.setState({
+        //         originalTables: this.state.originalTables,
+        //         tables: this.state.originalTables,
+        //         tableID: this.state.tableID,
+        //         stageX: this.state.originalStageX,
+        //         stageY: this.state.originalStageY,
+        //         originalWindow: this.state.originalWindow,
+        //         originalvRef: this.state.originalvRef
+        //     })
+        //     FUNC.tableStageAdjust(this)
+        // }
     }
 
     handleTransition = (e) => {
@@ -138,7 +134,7 @@ class PriceSetup extends Component {
             
         } else {
             let index = tableIDArray.findIndex(function(table) {
-                return table.id === tableID
+                return table === tableID
             })
             tableIDArray.splice(index,1)
         }
