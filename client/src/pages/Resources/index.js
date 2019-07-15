@@ -5,6 +5,14 @@ function Resources() {
     return (
         <main>
             <section className="container">
+                <h2 className="res-h2">National Human Trafficking Hotline</h2>
+                <div className="col-md text-center res-phone">
+                    <h1 className="main-header animated fadeInUp" id="mainHeader">1 (800) 373-7888</h1>
+                    <div className="res-phone-layer"></div>
+                </div>
+            </section>
+            
+            <section className="container">
                 <h2 className="res-h2">Help is Nearby</h2>
                 <p>Human trafficking is a modern-day form of slavery involving the illegal sale/trade of people; it impacts people of all backgrounds for a variety of purposes:
                     men are often trafficked into hard labor; women and children are typically trafficked into the commercial sex industry (i.e. prostitution and sexual exploitation).
@@ -24,21 +32,15 @@ function Resources() {
                     <li>Limiting freedom of movement.</li>
                 </ul>
 
-                <p>You can receive help or give hope to victims by staying vigilant and speaking out. Call the Human Trafficking Hotline to report activity anonymously
-                    and help us eradicate human trafficking. You can also <a href="/Contact">CONTACT</a> us to volunteer to join the fight against slavery and for the freedom of
+                <p>You can receive help or give hope to victims by staying vigilant and speaking out. Call the <b>Human Trafficking Hotline</b> to report activity anonymously
+                    and help us eradicate human trafficking. You can also <a href="/Contact">contact</a> us to volunteer to join the fight against slavery and for the freedom of
                     all human beings everywhere.
 
                     Thank you for caring.
                 </p>
             </section>
 
-            <section className="container">
-                <h2 className="res-h2">Human Trafficking Hotline</h2>
-                <div className="col-md text-center res-phone">
-                    <h1 className="main-header animated fadeInUp" id="mainHeader">1 (800) 373-7888</h1>
-                    <div className="res-phone-layer"></div>
-                </div>
-            </section>
+            
         </main>
     )
 }
