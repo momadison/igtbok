@@ -21,13 +21,16 @@ export default {
     },
     saveBanner: function(dbModel) {
         console.log("dbModel", dbModel);
-        return axios.post("/api/banners", dbModel); 
+        return axios.post("/api/banners", dbModel);
     },
     getBanners: function(dbModel) {
         return axios.get("/api/banners", dbModel)
     },
     getAuth: function(security) {
         return axios.get("/api/auth/checkAuth");
+    },
+    getProductionStatus: function() {
+        return axios.get("/api/auth/getProductionStatus")
     },
     getAllUsers: function() {
       return axios.get("/api/users/getAllUsers")

@@ -14,6 +14,13 @@ module.exports = {
       res.send(false)
     }
   },
+  getProductionStatus: function(req, res) {
+    if(process.env.NODE_ENV === 'production'){
+      res.send(true)
+    } else {
+      res.send(false)
+    }
+  },
   googleLogin: passport.authenticate('google'),
   googleCB: passport.authenticate('google', {
     failureRedirect: '/'
@@ -27,6 +34,9 @@ module.exports = {
   }),
   facebookRedirect: function(req, res) {
     res.redirect(`${URL}/Loggedin`)
+  },
+  fuckoff: function(req, res){
+    console.log('fuck this project')
   },
   logout: function(req, res) {
     console.log('should be logging out..')

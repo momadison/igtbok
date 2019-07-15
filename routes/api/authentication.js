@@ -16,5 +16,7 @@ router.route('/checkAuth')
   .get(authController.checkAuth)
 router.route('/logout')
   .get(authController.logout)
+router.route('/getProductionStatus')
+  .get(authController.getProductionStatus)
 
 module.exports = router

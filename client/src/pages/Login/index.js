@@ -10,6 +10,7 @@ function Impact() {
         <LoginBtn type='google' />
         <LoginBtn type='facebook' />
         <Link className="nav-link" to="/admin" data-hover="Admin">Admin Users Adjustments</Link>
+        <LoginBtn type='logout' />
       </section>
     </main>
   )

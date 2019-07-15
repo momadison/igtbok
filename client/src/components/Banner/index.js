@@ -11,17 +11,20 @@ class Banner extends React.Component {
 
     componentDidMount() {
         API.getBanners()
-            .then(res => 
+            .then((res)=>{
+              if(res.data.length != 0){
                 this.setState({
-                    header: res.data[0].header,
-                    message: res.data[0].message,
-                    title: res.data[0].title
-                }))
+                  header: res.data[0].header,
+                  message: res.data[0].message,
+                  title: res.data[0].title
+                })
+              }
+            })
     }
 
     render() {
 
-    return (    
+    return (
         <div classname="container"
         style={{width: "100%",
         padding: "0px",

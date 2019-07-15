@@ -54,6 +54,7 @@ function App() {
           <Route exact path='/Private' component={PrivateRoute} />
           <Route exact path="/Resources" component={Resources} />
           <Route exact path="/Contact" component={Contact} />
+          <Route exact path="/Login" component={Login} />
 
           {/* <Route component={NoMatch} /> */}
         </Switch>

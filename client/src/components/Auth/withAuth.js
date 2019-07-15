@@ -15,7 +15,6 @@ export default function withAuth(WrappedComponent, security) {
 
     componentDidMount(){
       API.getAuth().then((res)=>{
-        console.log(res.data)
         this.checkAuthentication(res.data)
       })
     }
