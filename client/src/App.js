@@ -33,7 +33,7 @@ function App() {
     <Router>
       <div>
         <Nav />
-        <Banner />
+        {/* <Banner /> */}
         <Switch>
           <Route exact path="/" component={Main} />
           <Route exact path="/Donate/" component={Donate} />

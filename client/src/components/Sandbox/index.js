@@ -35,7 +35,9 @@ class Sandbox extends Component {
         dimension: {},
         spacing: 1,
         stageMargin: 1,
-        msg: "Layout Setup"
+        msg: "Layout Setup",
+        stageXRatio: 0,
+        stageYRatio: 0
     };
 
     componentDidMount() {
@@ -89,7 +91,8 @@ class Sandbox extends Component {
         let stageBoundary = this.stageRef.current.getBoundingClientRect();
         let xCoord = 0;
         let yCoord = 0;
-        let dimension = this.state.dimension;
+        const node = this.venueRef.current;
+        const dimension = node.getBoundingClientRect();
         let tableSize = this.state.tableSize;
         let placeX = 0;
         let placeY = 0;
@@ -97,6 +100,8 @@ class Sandbox extends Component {
         let seat = {};
         let tableArray=[];
         let yWindowOffset = window.pageYOffset;
+        let xStageRatio = (parseInt(stageBoundary.x) - parseInt(dimension.left)) / parseInt(dimension.width)
+        let yStageRatio = (parseInt(stageBoundary.y) - parseInt(dimension.top)) / parseInt(dimension.height)
         
         for (var i=0; i < this.state.venue.tableCount; i++) {
             if (i === 0) {
@@ -149,12 +154,15 @@ class Sandbox extends Component {
                 seating.push(seat);
                 seatTestArray.push(seat);
             }
-                
+            let xRatio = (parseInt(xCoord) - parseInt(dimension.left)) / parseInt(dimension.width);
+            let yRatio = (parseInt(yCoord) - parseInt(dimension.top)) / parseInt(dimension.height)
             //create table
             table = {
                 id: "table" + [i],
                 x: xCoord,
                 y: yCoord,
+                xRatio: xRatio,
+                yRatio: yRatio,
                 seat: seating,
                 tableCheck: false,
                 tablePrice: 0,
@@ -172,6 +180,8 @@ class Sandbox extends Component {
         this.setState({ 
             tableSize: tableSize,
             tables: tableArray,
+            stageXRatio: xStageRatio,
+            stageYRatio: yStageRatio
         })
     }
 
@@ -181,11 +191,11 @@ class Sandbox extends Component {
         API.saveTables({
             venue: this.state.venue.venueName,
             stageX: this.state.stageX,
+            stageXRatio: this.state.stageXRatio,
             stageY: this.state.stageY,
-            windowSize: this.state.windowSize,
+            stageYRatio: this.state.stageYRatio,
             tables: this.state.tables,
             venueRef: this.venueRef.current.getBoundingClientRect(),
-            yOffset: window.pageYOffset
         })
         .then(res=>console.log(res.data))
         .catch(err=> console.log(err))
@@ -244,6 +254,7 @@ class Sandbox extends Component {
         const yDiff = this.coords.y - event.pageY;
         this.coords.x = event.pageX;
         this.coords.y = event.pageY;
+        const venueBox = this.venueRef.current.getBoundingClientRect();
 
         let xStage = this.state.stageX;
         let yStage = this.state.stageY;
@@ -253,7 +264,9 @@ class Sandbox extends Component {
 
         this.setState({
             stageX: xLoc,
-            stageY: yLoc
+            stageY: yLoc,
+            stageXRatio: (xLoc - venueBox.left) / venueBox.width,
+            stageYRatio: (yLoc - venueBox.top) / venueBox.height
         })
 
     }
@@ -262,26 +275,22 @@ class Sandbox extends Component {
         let tempArray = [];
         const xDiff = this.coords.x - event.pageX;
         const yDiff = this.coords.y - event.pageY;
+        const venueBox = this.venueRef.current.getBoundingClientRect();
         this.coords.x = event.pageX;
         this.coords.y = event.pageY;
 
         //Create temp Array to load into the state
         tempArray = this.state.tables;
-        
-        const node = this.venueRef.current;
-        const dimension = node.getBoundingClientRect();
-        console.log("dimension", dimension);
 
         
         for (var i=0; i<tempArray.length; i++) {
-            let xLoc = tempArray[i].x - xDiff;
-            let yLoc = tempArray[i].y - yDiff;
             if (tempArray[i].id === activeID) {
                 let xLoc = tempArray[i].x - xDiff;
-            let yLoc = tempArray[i].y - yDiff;
-
-                    tempArray[i].x = xLoc;
-                    tempArray[i].y = yLoc;
+                let yLoc = tempArray[i].y - yDiff;
+                tempArray[i].x = xLoc;
+                tempArray[i].y = yLoc;
+                tempArray[i].xRatio = (xLoc - venueBox.left) / venueBox.width;
+                tempArray[i].yRatio = (yLoc - venueBox.top) / venueBox.height;
             }
         }
             this.setState({

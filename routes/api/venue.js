@@ -3,5 +3,6 @@ const venuesController = require("../../controllers/venuesController")
 
 router.route("/")
     .get(venuesController.getVenues)
+    .put(venuesController.newVenue)
 
 module.exports = router;

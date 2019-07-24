@@ -2,13 +2,9 @@
     margin: 20px;
 }
 
-.carousel-inner {
-    max-height: 350px;
-}
-
 .carousel-caption {
     position: absolute;
-    top: 50px;
+    top: 15px;
 }
 
 .inputCaption {
@@ -21,3 +17,11 @@
     left: 40%;
 }
 
+.carousel-item {
+    height: 775px;
+}
+
+.d-block {
+    width: 500px;
+    height: 100%;
+}
