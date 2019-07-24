@@ -33,7 +33,7 @@ function App() {
     <Router>
       <div>
         <Nav />
-        <Banner />
+        {/* <Banner /> */}
         <Switch>
           <Route exact path="/" component={Main} />
           <Route exact path="/Donate/" component={Donate} />
@@ -41,6 +41,8 @@ function App() {
           <Route exact path="/Impact" component={Impact} />
           <Route exact path="/Gallery" component={Gallery} />
           <Route exact path="/Blog/" component={Blog} />
+          <Route exact path="/AllBlogs/" component={AllBlogs} />
+          <Route exact path="/FullBlogPost/:id" component={FullBlogPost} />
           <Route exact path="/Programs" component={Programs} />
           <Route exact path="/Sandbox" component={Sandbox} />
           <Route exact path="/PriceSetup" component={PriceSetup} />
