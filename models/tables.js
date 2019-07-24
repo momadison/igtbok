@@ -9,10 +9,10 @@ const tablesSchema = new Schema({
         },
     venue: {type: String, required: true},
     stageX: {type: Number, required: true},
+    stageXRatio: {type: Number, required: true},
     stageY: {type: Number, required: true},
-    windowSize: {type: Number, required: true},
+    stageYRatio: {type: Number, required: true},
     venueRef: {type: Object},
-    yOffset: {type: Number}
 });
 
 const Tables = mongoose.model("Tables", tablesSchema);

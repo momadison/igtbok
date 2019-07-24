@@ -24,7 +24,7 @@ export function Select(props) {
       <>
       <small className="form-text">{props.small}</small>
     <select className="form-control" id={props.id} {...props}>
-        <option value="default value" disabled hidden>Choose here</option>
+        <option value="default value">Choose Venue</option>
         {props.options.map( (value) => {
             return <option key={value}>{value}</option>
         })}

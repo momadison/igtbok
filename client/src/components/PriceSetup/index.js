@@ -34,12 +34,12 @@ class PriceSetup extends Component {
         msg: "Layout Setup",
         selectedItems: [],
         setItems: [],
-        originalWindow: window.innerWidth,
         originalvRef: {},
-        originalyOffset: 0,
         bannerHeader: "",
         bannerTitle: "",
-        bannerMsg: ""
+        bannerMsg: "",
+        stageXRatio: 0,
+        stageYRatio: 0
     };
 
 
@@ -78,7 +78,7 @@ class PriceSetup extends Component {
 
     //TODO GET TABLES FOR GIVEN VENUE
     setTables = () => {
-        // if (this.state.tables.length === 0) {
+        if (this.state.tables.length === 0) {
             API.getTables()
                 .then(res =>
                     this.setState({
@@ -86,25 +86,34 @@ class PriceSetup extends Component {
                         tableID: res.data[0]._id,
                         stageX:  res.data[0].stageX,
                         stageY:  res.data[0].stageY,
-                        originalWindow: res.data[0].windowSize,
                         originalvRef: res.data[0].venueRef,
-                        originalyOffset: res.data[0].yOffset
+                        stageXRatio: res.data[0].stageXRatio,
+                        stageYRatio: res.data[0].stageYRatio
                     })
+                )
+                .then( () => 
+                    console.log("My State: ", this.state)
                 )
                 .then(res => 
                     FUNC.tableStageAdjust(this)
                 )
-        // } else {
-        //     this.setState({
-        //         tables: this.state.tables,
-        //         tableID: this.state.tableID,
-        //         stageX: this.state.stageX,
-        //         stageY: this.state.stageY,
-        //         originalWindow: window.innerWidth,
-        //         originalvRef: this.venueRef.current.getBoundingClientRect()
-        //     })
-        //         this.tableAdjust()
-        //     }
+        } else {
+            // API.getTables()
+            //     .then(res =>
+            //         this.setState({
+            //             tables: res.data[0].tables,
+            //             tableID: res.data[0]._id,
+            //             stageX:  res.data[0].stageX,
+            //             stageY:  res.data[0].stageY
+            //         })
+            //     )
+            //     .then (() =>
+            //     console.log("State Tables X :after: ", this.state.tables)
+            //     )
+            //     .then( () => 
+                FUNC.tableStageAdjust(this)
+                // )
+            }
     }
 
     handleTransition = (e) => {
@@ -155,14 +164,13 @@ class PriceSetup extends Component {
         e.preventDefault();
         API.updateTables({ _id: this.state.tableID, tables: this.state.tables })
         .then(res =>
-            console.log("response data", res.data)
+            console.log("response data" + res.data + " and state: " + this.state)
         )
         .then( () => 
         this.modalRef.current.closeModal()
         )
         .then( () =>
         this.clearSelected()
-        
         )
     }
 
