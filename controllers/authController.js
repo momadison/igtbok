@@ -35,13 +35,31 @@ module.exports = {
   facebookRedirect: function(req, res) {
     res.redirect(`${URL}/Loggedin`)
   },
-  fuckoff: function(req, res){
-    console.log('fuck this project')
+  localLogin: function(req, res, next){
+    passport.authenticate('local', function(err, user, info){
+      if(err) { return next(err) }
+      if(!user) { res.json({'result': false}) }
+      console.log(info)
+      req.logIn(user, function(err){
+        if(err) { return next(err) }
+        res.json({'result': true})
+      })
+    })(req, res, next)
+  },
+  createLocalAccount: function(req,res){
+    console.log(req.body)
+    bcrypt.hash(req.body.password, saltRounds, function(err, hash){
+      console.log(hash)
+      db.User.create({
+        username: req.body.username,
+        password: hash
+      })
+    })
   },
   logout: function(req, res) {
     console.log('should be logging out..')
     req.logout()
     req.user = null
-    res.redirect(`${process.env.PUBLIC_URL}/Loggedout`)
+    res.redirect(`${process.env.PUBLIC_URL}/Loggedout`) //Should test why I left this instead of using URL.
   }
 }

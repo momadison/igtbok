@@ -9,6 +9,7 @@ const path = require("path");
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
+const LocalStrategy = require('passport-local')
 const session = require('express-session')
 const cors = require('cors')
 const app = express();
@@ -55,11 +56,30 @@ passport.use(new FacebookStrategy({
     })
   }
 ));
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    console.log(username + ' ' + password + 'test')
+    db.User.findOne({ username: username }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) { return done(null, false); }
+      bcrypt.compare(password, user.password, function(err,result){
+        if(result){
+          console.log(`the result is true, obv`)
+          done(null, user._id)
+        } else {
+          console.log('The password did not match')
+          done(null, false)
+        }
+      })
+    })
+      .catch(err => res.status(422).json(err));
+  }
+));
+
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: false,
-  // store: 'connect-mongodb-session', --MAY NEED TO ADD THIS LATER, BUT THIS BREAKS IF I TRY TO CHANGE IT.
+  saveUninitialized: false
 }))
 app.use(passport.initialize())
 app.use(passport.session())

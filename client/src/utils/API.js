@@ -29,6 +29,12 @@ export default {
     login: function(route) {
       return axios.get(route)
     },
+    localLogin: function(loginData) {
+      return axios.post('/api/auth/local', loginData)
+    },
+    createLocalAccount: function(loginData) {
+      return axios.post('/api/auth/createLocalAccount', loginData)
+    },
     getAuth: function(security) {
         return axios.get("/api/auth/checkAuth");
     },
