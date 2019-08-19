@@ -29,6 +29,9 @@ function Nav() {
                     <li className="nav-item">
                         <Link className="nav-link" to="/contact" data-hover="Contact">Contact</Link>
                     </li>
+                <li className="nav-item">
+                        <Link className="nav-link" to="/login" data-hover="Login">Login</Link>
+                    </li>
                 </ul>
             </div>
         </nav>

@@ -1,0 +1,81 @@
+.main-cat1 {
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    overflow: auto;
+    margin: auto;
+    background-image: url("/assets/img/main-donate.jpg");
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 50%;
+    flex-direction: column;
+}
+.main-cat2 {
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    overflow: auto;
+    margin: auto;
+    background-image: url("/assets/img/main-help.jpg");
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 50%;
+    flex-direction: column;
+}
+.main-header {
+    color: white;
+    animation-delay: 200ms;
+    font-family: 'Roboto Condensed', sans-serif;
+    text-align: center;
+    font-size: 5em;
+    text-shadow: 0px 0px 15px #000000;
+    font-weight: 800;
+}
+#subheadHeader {
+    color: white;
+    animation-delay: 500ms;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    text-shadow: 0px 0px 15px #000000;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.main-card {
+    margin-top: 2rem;
+}
+
+.tonyaMain {
+    /* background-size: cover;
+    background-position: center;
+    overflow: auto;
+    margin: auto; */
+    background-size: cover;
+    background-position: top;
+    background-image: url("/assets/img/TonyaStaffordCol.jpg");
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 50%;
+    flex-direction: column;
+}
+
+.main-card-header {
+    font-family: 'Lato', sans-serif;
+}
+.main-card-title {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 2em;
+}
+/* .btn {
+    margin: 0;
+    background-color: transparent;
+    text-align: center;
+} */
+.main-card-img {
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
+}
