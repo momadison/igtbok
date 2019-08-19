@@ -1,5 +1,7 @@
 const db = require("../models");
 const passport = require('passport');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 const URL = process.env.NODE_ENV === 'production' ? 'https://igtbok-org.herokuapp.com' : 'http://localhost:3000'
 
@@ -50,10 +52,28 @@ module.exports = {
     console.log(req.body)
     bcrypt.hash(req.body.password, saltRounds, function(err, hash){
       console.log(hash)
-      db.User.create({
-        username: req.body.username,
-        password: hash
-      })
+      db.User.findOne({username: req.body.username})
+        .then(function(data){
+          console.log(data)
+          if(!data){
+            db.User.create({
+              username: req.body.username,
+              password: hash,
+              provider: 'local'
+            }).then(function(){
+              console.log('test before success')
+              res.json({result: 'Success'})
+            }).catch(function(err){
+              console.log(err)
+            })
+          } else {
+            console.log('test before failure')
+            res.json({result: 'Username already exists'})
+          }
+        })
+        .catch(function(err){
+          console.log(err)
+        })
     })
   },
   logout: function(req, res) {

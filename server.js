@@ -10,6 +10,8 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const LocalStrategy = require('passport-local')
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 const session = require('express-session')
 const cors = require('cors')
 const app = express();
@@ -51,7 +53,7 @@ passport.use(new FacebookStrategy({
     let username = profile.username ? profile.username : profile.name.givenName + profile.name.familyName
     let userEmail = profile.email ? profile.email : ''
     let provider = profile.provider
-    db.User.findOneAndUpdate({username: username, provider: provider}, {username: username, email: userEmail, provider: provider}, {upsert: true, useFindAndModify: false, new: true}, function(err, result){
+    db.User.findOneAndUpdate({username: username, provider: provider}, {username: username, password: null, email: userEmail, provider: provider}, {upsert: true, useFindAndModify: false, new: true}, function(err, result){
       done(null, result._id)
     })
   }
