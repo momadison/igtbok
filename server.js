@@ -66,7 +66,6 @@ passport.use(new LocalStrategy(
       if (!user) { return done(null, false); }
       bcrypt.compare(password, user.password, function(err,result){
         if(result){
-          console.log(`the result is true, obv`)
           done(null, user._id)
         } else {
           console.log('The password did not match')

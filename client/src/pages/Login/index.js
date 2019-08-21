@@ -13,7 +13,9 @@ class LoginPage extends Component {
     username: "",
     password: "",
     newUsername: "",
-    newPassword: ""
+    newPassword: "",
+    loginErrorMessage: "",
+    createAccountErrorMessage: ""
   };
 
   handleInputChange = event => {
@@ -32,10 +34,12 @@ class LoginPage extends Component {
         password: this.state.password
       })
         .then(res => {
-          console.log(res)
           if(res.data.result){
             this.props.history.push('/loggedin')
           } else {
+            this.setState({
+              loginErrorMessage: 'Username or password is incorrect'
+            })
             console.log('unsuccessful log in')
           }
         })
@@ -46,6 +50,9 @@ class LoginPage extends Component {
         password: this.state.newPassword
       })
         .then(res => {
+          this.setState({
+            createAccountErrorMessage: res.data.result
+          })
           console.log(res.data.result)
         })
         .catch(err => console.log(err))
@@ -79,13 +86,16 @@ class LoginPage extends Component {
               name="password"
               placeholder="Password (required)"
               />
-              <FormBtn
-              data-form="login"
-              disabled={!(this.state.username && this.state.password)}
-              onClick={this.handleFormSubmit}
-              >
-              Login
-              </FormBtn>
+              <div class='formSubmitContainer'>
+                <FormBtn
+                data-form="login"
+                disabled={!(this.state.username && this.state.password)}
+                onClick={this.handleFormSubmit}
+                >
+                Login
+                </FormBtn>
+                <span class='errorMessage' style={this.state.loginErrorMessage.length > 0 ? {'display': 'block'}:{'display': 'none'}}>{this.state.loginErrorMessage}</span>
+              </div>
             </form>
           </div>
           <div className='loginForm'>
@@ -104,13 +114,16 @@ class LoginPage extends Component {
               name="newPassword"
               placeholder="Password (required)"
               />
-              <FormBtn
-              data-form="create"
-              disabled={!(this.state.newUsername && this.state.newPassword)}
-              onClick={this.handleFormSubmit}
-              >
-              Create Account
-              </FormBtn>
+              <div class='formSubmitContainer'>
+                <FormBtn
+                data-form="create"
+                disabled={!(this.state.newUsername && this.state.newPassword)}
+                onClick={this.handleFormSubmit}
+                >
+                Create Account
+                </FormBtn>
+                <span class='errorMessage' style={this.state.createAccountErrorMessage.length > 0 ? {'display': 'block'}:{'display': 'none'}}>{this.state.createAccountErrorMessage}</span>
+              </div>
             </form>
           </div>
         </section>
