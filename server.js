@@ -9,7 +9,11 @@ const path = require("path");
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
+const LocalStrategy = require('passport-local')
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 const session = require('express-session')
+const cors = require('cors')
 const app = express();
 const PORT = process.env.PORT || 3001;
 const URL = process.env.NODE_ENV === 'production' ? 'https://igtbok-org.herokuapp.com' : 'http://localhost:3001'
@@ -19,6 +23,7 @@ const db = require('./models')
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors())
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
@@ -48,16 +53,34 @@ passport.use(new FacebookStrategy({
     let username = profile.username ? profile.username : profile.name.givenName + profile.name.familyName
     let userEmail = profile.email ? profile.email : ''
     let provider = profile.provider
-    db.User.findOneAndUpdate({username: username, provider: provider}, {username: username, email: userEmail, provider: provider}, {upsert: true, useFindAndModify: false, new: true}, function(err, result){
+    db.User.findOneAndUpdate({username: username, provider: provider}, {username: username, password: null, email: userEmail, provider: provider}, {upsert: true, useFindAndModify: false, new: true}, function(err, result){
       done(null, result._id)
     })
   }
 ));
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    console.log(username + ' ' + password + 'test')
+    db.User.findOne({ username: username }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) { return done(null, false); }
+      bcrypt.compare(password, user.password, function(err,result){
+        if(result){
+          done(null, user._id)
+        } else {
+          console.log('The password did not match')
+          done(null, false)
+        }
+      })
+    })
+      .catch(err => res.status(422).json(err));
+  }
+));
+
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: false,
-  // store: 'connect-mongodb-session', --MAY NEED TO ADD THIS LATER, BUT THIS BREAKS IF I TRY TO CHANGE IT.
+  saveUninitialized: false
 }))
 app.use(passport.initialize())
 app.use(passport.session())

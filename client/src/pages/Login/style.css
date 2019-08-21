@@ -1,0 +1,22 @@
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+.loginForm {
+  width: 45%;
+  padding: 15px;
+}
+.formSubmitContainer {
+  display: flex;
+}
+.errorMessage {
+  margin-left: 10px;
+  padding: 0 5px 0 5px;
+  flex-grow: 1;
+  border: 1px solid grey;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  background-color: #dc3545;
+}
